@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<extension type="package" version="2.5" method="upgrade">
+    <name>Компонент KsenMart</name>
+    <packagename>ksenmart</packagename>
+	<author>L.D.M. Co</author>
+	<authorEmail>boss.ldm@gmail.com</authorEmail>
+	<authorUrl>http://www.lukyan-dm.ru/</authorUrl>
+	<copyright>Copyright (C) 2008-2013 L.D.M. Co All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>1.0.0</version>
+    <description>COM_KSENMART_DESC</description>
+    <creationDate>17 February 2014</creationDate>
+
+	<updateservers>
+		<server type="extension" priority="1" name="KsenGallery">http://update.ksenmart.ru/pkg_ksenmart-update.xml</server>
+	</updateservers>
+
+	<files folder="packages">
+		<file type="component" id="ksenmart" >com_ksenmart.zip</file>
+		<file type="plugin" id="ksenmart" group="system">plg_ksencore.zip</file>
+	</files>
+ </extension>
