@@ -3,7 +3,8 @@ UPDATE
 SET 
 	`title` = 'Хлебные крошки Ksenmart', 
 	`position` = 'km-top-left', 
-	`published` = '1'
+	`published` = '1',
+	`params` = '{"views":["*"]}'
 WHERE 
 	`module` = 'mod_ks_path'
 ;
@@ -14,6 +15,6 @@ INSERT INTO
 		`menuid`
 	) 
 VALUES (
-	(SELECT `id` FROM `#__modules` WHERE `module` = 'mod_ks_path'), 
+	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_ks_path'), 
 	'0'
 );

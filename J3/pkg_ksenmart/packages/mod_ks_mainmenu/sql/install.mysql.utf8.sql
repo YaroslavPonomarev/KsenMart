@@ -1,8 +1,8 @@
 UPDATE 
 	`#__modules` 
 SET 
-	`title` = 'Главное меню Ksen', 
-	`position` = 'km-top-bottom', 
+	`title` = 'Категории KsenMart', 
+	`position` = 'km-list-left', 
 	`published` = '1'
 WHERE 
 	`module` = 'mod_ks_mainmenu'
@@ -14,6 +14,6 @@ INSERT INTO
 		`menuid`
 	) 
 VALUES (
-	(SELECT `id` FROM `#__modules` WHERE `module` = 'mod_ks_mainmenu'), 
+	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_ks_mainmenu'), 
 	'0'
 );
