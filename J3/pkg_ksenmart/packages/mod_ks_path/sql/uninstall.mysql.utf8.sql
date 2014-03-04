@@ -1,1 +1,1 @@
-DELETE FROM `#__modules` WHERE `module`='mod_km_path';
+DELETE FROM `#__modules` WHERE `module`='mod_ks_path';
