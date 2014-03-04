@@ -15,6 +15,6 @@ INSERT INTO
 		`menuid`
 	) 
 VALUES (
-	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_ks_search'), 
+	(SELECT `id` FROM `#__modules` WHERE `module` = 'mod_ks_search'), 
 	'0'
 );
