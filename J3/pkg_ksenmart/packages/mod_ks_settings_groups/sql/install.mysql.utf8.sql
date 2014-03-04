@@ -6,7 +6,7 @@ SET
 	`published` = '1',
 	`params` = '{"views":["settings"]}'
 WHERE 
-	`module` = 'mod_km_settings_groups'
+	`module` = 'mod_ks_settings_groups'
 ;
 INSERT INTO 
 	`#__modules_menu` 
@@ -15,6 +15,6 @@ INSERT INTO
 		`menuid`
 	) 
 VALUES (
-	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_km_settings_groups'), 
+	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_ks_settings_groups'), 
 	'0'
 );

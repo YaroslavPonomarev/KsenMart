@@ -1,6 +1,6 @@
 <?php defined('_JEXEC') or die;
 
-class ModKMSettingsGroupsHelper {
+class ModKSSettingsGroupsHelper {
 	
 	public static function getForms() {
 		$forms = array();
