@@ -6,7 +6,7 @@ SET
 	`published` = '1',
 	`params` = '{"views":["*"]}'
 WHERE 
-	`module` = 'mod_km_path'
+	`module` = 'mod_ks_path'
 ;
 INSERT INTO 
 	`#__modules_menu` 
@@ -15,6 +15,6 @@ INSERT INTO
 		`menuid`
 	) 
 VALUES (
-	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_km_path'), 
+	(SELECT `id` FROM `hm31q_modules` WHERE `module` = 'mod_ks_path'), 
 	'0'
 );
