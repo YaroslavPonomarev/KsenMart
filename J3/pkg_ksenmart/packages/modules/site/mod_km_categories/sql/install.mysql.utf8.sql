@@ -2,9 +2,8 @@ UPDATE
 	`#__modules` 
 SET 
 	`title` = 'Категории KsenMart', 
-	`position` = 'km-list-left', 
-	`published` = '1',
-	`params` = '{"views":["catalog"]}'
+	`position` = 'left', 
+	`published` = '1'
 WHERE 
 	`module` = 'mod_km_categories'
 ;

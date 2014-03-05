@@ -17,6 +17,7 @@
         <filename>helper.php</filename>
         <folder>tmpl</folder>
         <folder>js</folder>
+        <folder>sql</folder>
     </files>
 
     <languages folder="language">
