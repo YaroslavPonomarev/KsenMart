@@ -5,7 +5,7 @@
  * @package     Joomla.Plugin
  * @subpackage  System.Ksencore
  * @since       2.5+
- * @author		TakT
+ * @author      TakT
  */
 class plgSystemKsenCore extends JPlugin {
     /**
@@ -40,8 +40,11 @@ class plgSystemKsenCore extends JPlugin {
         
         if($config['admin']){
             KSSystem::addCSS(array('style', 'prog-style', 'nprogress'));
-            $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
-            KSSystem::addJS(array('common', 'style', 'nprogress', 'jquery.custom.min', 'list'));
+            JHtml::_('jquery.framework');
+            JHtml::_('jquery.ui');
+            JHtml::_('jquery.ui', array('sortable'));
+            //$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
+            KSSystem::addJS(array('common', 'style', 'nprogress',  'list'));
         }
         
         if($this->params->get('angularJS', 1) && $config['angularJS']){
