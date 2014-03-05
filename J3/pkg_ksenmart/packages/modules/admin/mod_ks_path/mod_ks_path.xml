@@ -38,17 +38,6 @@
 
 	<config>
 		<fields name="params">
-			<fieldset name="basic" addfieldpath="/plugins/system/ksencore/core/models/fields">
-				<field
-					name="views"
-					default="*"
-					type="ksadminviews" 
-					extension="ksenmart"
-					multiple="true"
-					size="7"
-					label="MOD_KS_PAGES_LABEL"
-					description="MOD_KS_PAGES_DESC" />
-			</fieldset>
 			<fieldset
 				name="advanced">
 				<field
