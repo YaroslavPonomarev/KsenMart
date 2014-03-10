@@ -62,15 +62,15 @@ jQuery(document).ready(function(){
 
 window.onload=function(){
 	var form=jQuery('#ksenmart-search form');
-	var url=URI_ROOT+'index.php?option=com_ksenmart&view=shopcatalog';
+	var url=URI_ROOT+'index.php?option=com_ksenmart&view=catalog';
 	var formdata=form.serialize();
 	url+='&'+formdata;
-	if (view!='shopcatalog')
+	if (view!='catalog')
 	{
 		return false;
 	}
 	jQuery.ajax({
-		url:url+'&task=shopcatalog.filter_products&tmpl=ksenmart',
+		url:url+'&task=catalog.filter_products&tmpl=ksenmart',
 		success:function(data){
 			data = JSON.parse(data);
 			var properties=data.properties;
@@ -123,7 +123,7 @@ function KMChangeFilter(obj, clicked)
 {
 	var form=jQuery('.ksenmart-search form');
 	var item=jQuery(obj).parents('.item');
-	var url='index.php?option=com_ksenmart&view=shopcatalog';
+	var url='index.php?option=com_ksenmart&view=catalog';
 	
 	var priceA=parseInt(jQuery('#search-price-less').val());
 	var priceB=parseInt(jQuery('#search-price-more').val());
@@ -181,7 +181,7 @@ function KMChangeFilter(obj, clicked)
 			url=data;
 		}
 	});
-	if (view!='shopcatalog')
+	if (view!='catalog')
 	{
 		window.location.href=url;
 		return false;
@@ -195,7 +195,7 @@ function KMChangeFilter(obj, clicked)
     }
 	history.pushState(null, null, url);
 	jQuery.ajax({
-		url:url+'&task=shopcatalog.filter_products&tmpl=ksenmart',
+		url:url+'&task=catalog.filter_products&tmpl=ksenmart',
 		success:function(data){
             data = JSON.parse(data);
 			jQuery('.content_in_wrapp').html(data.html);

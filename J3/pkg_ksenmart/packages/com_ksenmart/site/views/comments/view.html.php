@@ -17,7 +17,7 @@ class KsenMartViewComments extends JViewKS {
         $document->setTitle($doc_title);
         
         if($layout == 'shopreviews'){
-            if(!JFactory::getConfig()->getValue('config.caching', 0)) {
+            if(!JFactory::getConfig()->get('config.caching', 0)) {
                 $path->addItem(JText::_('KSM_SHOP_REVIEWS_PATH_TITLE'));
             }
             
@@ -52,14 +52,14 @@ class KsenMartViewComments extends JViewKS {
             $this->assignref('show_shop_review', $isset_review);
 
             $document->setTitle(JText::sprintf('KSM_SHOP_REVIEW_PATH_TITLE_TEXT', $review->name, $shop_name));
-            if(!JFactory::getConfig()->getValue('config.caching', 0)) {
+            if(!JFactory::getConfig()->get('config.caching', 0)) {
                 $path->addItem(JText::_('KSM_SHOP_REVIEWS_PATH_TITLE'), 'index.php?option=com_ksenmart&view=Comments&layout=shopreviews');
                 $path->addItem(JText::sprintf('KSM_SHOP_REVIEW_PATH_TITLE_TEXT', $review->name, $shop_name));
             }
             
         }elseif($layout != 'shopreviews'){
             if($id == 0) {
-                if(!JFactory::getConfig()->getValue('config.caching', 0)){
+                if(!JFactory::getConfig()->get('config.caching', 0)){
                     $path->addItem(JText::_('KSM_REVIEWS_LIST_PATH_TITLE'));
                 }
                 $comments = $this->get('Comments');
@@ -69,7 +69,7 @@ class KsenMartViewComments extends JViewKS {
                 $this->assignRef('rows', $comments);
                 $this->setLayout('comments');
             }else{
-                if(!JFactory::getConfig()->getValue('config.caching', 0)) {
+                if(!JFactory::getConfig()->get('config.caching', 0)) {
                     $path->addItem(JText::_('KSM_REVIEWS_LIST_PATH_TITLE'), 'index.php?option=com_ksenmart&view=Comments&Itemid=' . KSSystem::getShopItemid());
                     $path->addItem(JText::_('KSM_REVIEW_ITEM_PATH_TITLE'));
                 }

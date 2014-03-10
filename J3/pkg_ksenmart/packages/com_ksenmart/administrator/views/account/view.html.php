@@ -8,7 +8,7 @@ class KsenMartViewAccount extends JViewKSAdmin {
         $model_account  = KSSystem::getModel('account');
         $layout         = $this->getLayout();        
         
-        $this->document->addStyleSheet(JURI::base() . 'components/com_ksenmart/css/account.css');
+        $this->document->addStyleSheet(JURI::base() . 'components/com_ksenmart/assets/css/account.css');
 
         if(!$model_account->checkAuthorize() && $layout != 'default_login'){
             $app   = JFactory::getApplication();

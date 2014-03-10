@@ -20,7 +20,7 @@ class KsenMartViewProduct extends JViewKS {
         if ($model->_id) {
             $this->product = $model->getProduct();
             if ($this->product) {
-                if (!JFactory::getConfig()->getValue('config.caching', 0)) {
+                if (!JFactory::getConfig()->get('config.caching', 0)) {
                     $cat_path = $this->get('CategoriesPath');
                     foreach ($cat_path as $cat) {
                         $path->addItem($cat->title, $cat->link);

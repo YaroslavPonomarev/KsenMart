@@ -79,7 +79,7 @@ class ModKsenmartProductsListHelper {
 
     public static function setOtherParams($products) {
         foreach ($products as &$product) {
-            $product = KMProducts::getProduct($product->id);
+            $product = KSMProducts::getProduct($product->id);
         }
         return $products;
     }

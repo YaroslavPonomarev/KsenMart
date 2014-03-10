@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartController extends JController {
+class KsenMartController extends JControllerLegacy {
 
     protected $default_view = 'catalog';
 

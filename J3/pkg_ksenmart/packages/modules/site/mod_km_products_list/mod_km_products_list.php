@@ -19,17 +19,17 @@
 // no direct access
 defined('_JEXEC') or die('Restricted access');
 
-if (!class_exists('KMHelper')) {
-    require_once(JPATH_ROOT.DS.'administrator/components/com_ksenmart/helpers'.DS.'helper.php');
-}
-KMHelper::loadHelpers('common');
+$dispatcher = JDispatcher::getInstance();
+JPluginHelper::importPlugin('system');
+$result = $dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
 require_once (dirname(__file__) . DS . 'helper.php');
+
+KSLoader::loadLocalHelpers(array('common'));
 
 $km_params = JComponentHelper::getParams('com_ksenmart');
 if($km_params->get('modules_styles', true)){
     $document = JFactory::getDocument();
 }
-
 
 $products = ModKsenmartProductsListHelper::getList($params);
 

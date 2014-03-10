@@ -338,7 +338,7 @@ class KsenMartModelProfile extends JModelKSList {
         $query = $this->_db->getQuery(true);
 
         $conditions = array(
-            'id='.$this->_db->getEscaped($id),
+            'id='.$this->_db->escape($id),
             'user_id='.$user->id
         );
         
@@ -381,8 +381,8 @@ class KsenMartModelProfile extends JModelKSList {
                 $this->_db->quoteName('default') . '=1'
             );
             $conditions = array(
-                $this->_db->quoteName('user_id') . '='.$this->_db->getEscaped($user->id), 
-                $this->_db->quoteName('id') . '='.$this->_db->getEscaped($id)
+                $this->_db->quoteName('user_id') . '='.$this->_db->escape($user->id), 
+                $this->_db->quoteName('id') . '='.$this->_db->escape($id)
             );
             
             $query
@@ -815,9 +815,9 @@ class KsenMartModelProfile extends JModelKSList {
             $comment_o = new stdClass();
             
             $comment_o->id        = $review_id;
-            $comment_o->comment   = $this->_db->getEscaped($comment);
-            $comment_o->good      = $this->_db->getEscaped($good);
-            $comment_o->bad       = $this->_db->getEscaped($bad);
+            $comment_o->comment   = $this->_db->escape($comment);
+            $comment_o->good      = $this->_db->escape($good);
+            $comment_o->bad       = $this->_db->escape($bad);
 
             try {
                 $res = $this->_db->updateObject('#__ksenmart_comments', $comment_o, 'id');
@@ -875,7 +875,7 @@ class KsenMartModelProfile extends JModelKSList {
                     s.ordering
                 ')
                 ->from('#__ksenmart_shippings AS s')
-                ->where('s.regions LIKE \'%'.$this->_db->getEscaped($region_id).'%\'')
+                ->where('s.regions LIKE \'%'.$this->_db->escape($region_id).'%\'')
                 ->where('s.published=1')
                 ->order('s.id')
             ;
@@ -905,7 +905,7 @@ class KsenMartModelProfile extends JModelKSList {
                     p.ordering
                 ')
                 ->from('#__ksenmart_payments AS p')
-                ->where('p.regions LIKE \'%'.$this->_db->getEscaped($region_id).'%\'')
+                ->where('p.regions LIKE \'%'.$this->_db->escape($region_id).'%\'')
                 ->where('p.published=1')
                 ->order('p.id')
             ;

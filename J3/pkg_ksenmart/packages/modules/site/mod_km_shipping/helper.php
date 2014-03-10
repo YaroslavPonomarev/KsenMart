@@ -4,7 +4,7 @@
  * Class Module Helper
  * @author Bereza Kirill
  */
-class ModKMShippingHelper {
+class ModKSMShippingHelper {
     public static function getShippings() {
         $db     = JFactory::getDBO();
         $query  = $db->getQuery(true);

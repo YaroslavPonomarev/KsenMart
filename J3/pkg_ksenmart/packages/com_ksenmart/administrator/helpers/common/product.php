@@ -101,7 +101,7 @@ class KSMProducts {
                     p.old_price,
                     p.price_type
                 ')->from('#__ksenmart_products AS p')
-                ->where('p.id=' . $db->getEscaped($pid))
+                ->where('p.id=' . $db->escape($pid))
             ;
 
             $db->setQuery($query);
@@ -211,7 +211,7 @@ class KSMProducts {
         $rate->rate = 0;
         $rate->count = 0;
         $query = $db->getQuery(true);
-        $query->select('c.rate')->from('#__ksenmart_comments AS c')->where('c.product_id=' . $db->getEscaped($id));
+        $query->select('c.rate')->from('#__ksenmart_comments AS c')->where('c.product_id=' . $db->escape($id));
         $db->setQuery($query);
         $comments = $db->loadObjectList();
         $rate->count = count($comments);
@@ -309,7 +309,7 @@ class KSMProducts {
                 ')
                 ->from('#__ksenmart_products_relations AS pr')
                 ->where('pr.relation_type="set"')
-                ->where('pr.product_id=' . $db->getEscaped($pid))
+                ->where('pr.product_id=' . $db->escape($pid))
             ;
             $db->setQuery($query);
             $rows = $db->loadObjectList();
@@ -338,7 +338,7 @@ class KSMProducts {
                 ')
                 ->from('#__ksenmart_products_relations AS pr')
                 ->where('pr.relation_type="relation"')
-                ->where('pr.product_id=' . $db->getEscaped($pid))
+                ->where('pr.product_id=' . $db->escape($pid))
             ;
             
             $db->setQuery($query);
@@ -363,7 +363,7 @@ class KSMProducts {
                 ')
                 ->from('#__ksenmart_products_relations AS pr')
                 ->where('pr.relation_type="set"')
-                ->where('pr.product_id=' . $db->getEscaped($pid))
+                ->where('pr.product_id=' . $db->escape($pid))
             ;
             $db->setQuery($query);
             $rows = $db->loadResultArray ();

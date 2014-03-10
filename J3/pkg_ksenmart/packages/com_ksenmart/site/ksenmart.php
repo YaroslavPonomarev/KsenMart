@@ -13,6 +13,6 @@ if (!class_exists('KsenmartHtmlHelper')) {
 	KsenmartHtmlHelper::AddHeadTags();
 }
 
-$controller = JController::getInstance('KsenMart');
+$controller = JControllerLegacy::getInstance('KsenMart');
 $controller->execute(JRequest::getCmd('task'));
 $controller->redirect();

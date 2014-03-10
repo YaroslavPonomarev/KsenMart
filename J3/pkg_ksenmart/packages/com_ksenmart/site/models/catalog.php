@@ -319,8 +319,8 @@ class KsenMartModelcatalog extends JModelKSList {
                 $cur_price_l = $price_less * $currencies[$key]->rate;
                 $cur_price_m = $price_more * $currencies[$key]->rate;
                 
-                $price_where_l[] = '(p.price>='.$this->_db->getEscaped($cur_price_l).' AND p.price_type='.$this->_db->getEscaped($currencies[$key]->id).')';
-                $price_where_m[] = '(p.price<='.$this->_db->getEscaped($cur_price_m).' AND p.price_type='.$this->_db->getEscaped($currencies[$key]->id).')';
+                $price_where_l[] = '(p.price>='.$this->_db->escape($cur_price_l).' AND p.price_type='.$this->_db->escape($currencies[$key]->id).')';
+                $price_where_m[] = '(p.price<='.$this->_db->escape($cur_price_m).' AND p.price_type='.$this->_db->escape($currencies[$key]->id).')';
             }
             if (count($price_where_l)) {
                 $where[] = '(' . implode(' OR ', $price_where_l) . ')';
@@ -1017,7 +1017,7 @@ class KsenMartModelcatalog extends JModelKSList {
                 c.metakeywords                                                                
             ')
             ->from('#__ksenmart_categories AS c')
-            ->where('c.parent_id='.$this->_db->getEscaped($catid))
+            ->where('c.parent_id='.$this->_db->escape($catid))
             ->order('c.ordering')                        
         ;
         $this->_db->setQuery($query);
@@ -1059,7 +1059,7 @@ class KsenMartModelcatalog extends JModelKSList {
                         c.alias
                     ')
                     ->from('#__ksenmart_categories AS c')
-                    ->where('id='.$this->_db->getEscaped($catid))
+                    ->where('id='.$this->_db->escape($catid))
                 ;
                 
                 $this->_db->setQuery($query);
@@ -1077,7 +1077,7 @@ class KsenMartModelcatalog extends JModelKSList {
             $query
                 ->select('c.title')
                 ->from('#__ksenmart_manufacturers AS c')
-                ->where('id='.$this->_db->getEscaped($this->_manufacturers[0]))
+                ->where('id='.$this->_db->escape($this->_manufacturers[0]))
             ;
             $this->_db->setQuery($query);
             $title  = $this->_db->loadResult();
@@ -1090,7 +1090,7 @@ class KsenMartModelcatalog extends JModelKSList {
             $query
                 ->select('c.title')
                 ->from('#__ksenmart_countries AS c')
-                ->where('c.id='.$this->_db->getEscaped($this->_countries[0]))
+                ->where('c.id='.$this->_db->escape($this->_countries[0]))
             ;
             $this->_db->setQuery($query);
             $title  = $this->_db->loadResult();

@@ -1,14 +1,14 @@
 <?php defined('_JEXEC') or die;
 
 if(!JFactory::getUser()->get('guest')) {
-    if (!class_exists('KMHelper')) {
-        require_once(JPATH_ROOT.DS.'administrator/components/com_ksenmart/helpers'.DS.'helper.php');
-    }
-    KMHelper::loadHelpers('common');
+    
+    $dispatcher = JDispatcher::getInstance();
+    JPluginHelper::importPlugin('system');
+    $result = $dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
     
     if (!class_exists('KsenmartHtmlHelper')) {
-    	require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
-    	KsenmartHtmlHelper::AddHeadTags();
+        require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
+        KsenmartHtmlHelper::AddHeadTags();
     }
     
     $km_params = JComponentHelper::getParams('com_ksenmart');

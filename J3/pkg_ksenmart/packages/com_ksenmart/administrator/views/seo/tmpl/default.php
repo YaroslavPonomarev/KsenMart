@@ -23,7 +23,7 @@
 				</div>	
 			</td>
 			<td valign="top">
-				<div id="content">
+				<div id="seo_content">
 					<?php echo $this->loadTemplate($this->seo_type);?>
 				</div>	
 			</td>	

@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerProfile extends JController {
+class KsenMartControllerProfile extends JControllerLegacy {
 
     public function save_user() {
         $model = $this->getModel('profile');

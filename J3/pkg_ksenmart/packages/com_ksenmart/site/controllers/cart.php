@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerCart extends JController {
+class KsenMartControllerCart extends JControllerLegacy {
 
     function add_to_cart() {
         $model = $this->getModel('cart');

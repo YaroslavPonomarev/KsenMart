@@ -35,6 +35,10 @@
             <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
         </sql>
     </uninstall>
+    
+    <updateservers>
+        <server type="extension" priority="1" name="mod_km_reports">http://update.ksenmart.ru/update-info/j3/pkg_ksenmart/com_ksenmart/modules/administrator/mod_km_reports-update.xml</server>
+    </updateservers>
 
 	<config>
 		<fields name="params">

@@ -16,7 +16,7 @@ class KsenMartViewProfile extends JViewKS {
         $pref               = $this->params->get('path_separator', '');
         $doc_title          = $names_komponent . $pref . JText::_('KSM_PROFILE_PATHWAY_ITEM');
         
-        if(!JFactory::getConfig()->getValue('config.caching', 0) && $layout != 'registration'){
+        if(!JFactory::getConfig()->get('config.caching', 0) && $layout != 'registration'){
             $path->addItem(JText::_('KSM_PROFILE_PATHWAY_ITEM'), '');
         }
         $document->setTitle($doc_title);
@@ -26,14 +26,14 @@ class KsenMartViewProfile extends JViewKS {
             case 'registration':
                 $doc_title = $names_komponent . $pref . JText::_('KSM_PROFILE__REGISTRATION_PATHWAY_ITEM');
                 $document->setTitle($doc_title);
-                if(!JFactory::getConfig()->getValue('config.caching', 0)){
+                if(!JFactory::getConfig()->get('config.caching', 0)){
                     $path->addItem(JText::_('KSM_PROFILE__REGISTRATION_PATHWAY_ITEM'), '');
                 }
                 $this->setLayout('profile_registration');
             break;
             case 'profile_order':
                 $id     = JRequest::getVar('id', 0);
-                if(!JFactory::getConfig()->getValue('config.caching', 0)) {
+                if(!JFactory::getConfig()->get('config.caching', 0)) {
                     $path->addItem(JText::_('profile_orders'), 'index.php?option=com_ksenmart&view=profile&layout=profile_orders');
                     $path->addItem('Заказ №' . $id);
                 }

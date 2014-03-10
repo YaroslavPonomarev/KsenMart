@@ -104,7 +104,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		return $html;
 	}
 	
-	function onAfterExecuteDiscountsSavediscount($model, $return) {
+	function onAfterExecuteKSMDiscountsSavediscount($model, $return) {
 		$discount_id = $return['id'];
 		$db = JFactory::getDBO();
 		if (empty($discount_id)) 
@@ -144,7 +144,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		return true;
 	}
 	
-	function onAfterDisplayShopopencartDefault_content($view, $tpl = null, $html) {
+	function onAfterDisplayKSMCartDefault_content($view, $tpl = null, $html) {
 		$session = JFactory::getSession();
 		$coupon_id = $session->get('ksenmart.coupon_id', null);
 		if (!empty($coupon_id)) {
@@ -164,7 +164,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		}
 	}
 	
-	function onBeforeDisplayShopopencartDefault_shipping($view, $tpl = null, $html) {
+	function onBeforeDisplayKSMCartDefault_shipping($view, $tpl = null, $html) {
 		$document = JFactory::getDocument();
 		$session = JFactory::getSession();
 		$coupon_id = $session->get('ksenmart.coupon_id', null);
@@ -223,7 +223,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		}
 	}
 	
-	function onAfterDisplayAdminOrdersOrder_info($view, $tpl = null, $html) {
+	function onAfterDisplayAdminKSMOrdersOrder_info($view, $tpl = null, $html) {
 		if (empty($view->order->discounts)) 
 		return;
 		$view->order->discounts = json_decode($view->order->discounts, true);
@@ -329,7 +329,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		}
 	}
 	
-	function onAfterExecuteShopopencartGetcart($model, $cart = null) {
+	function onAfterExecuteKSMCartGetcart($model, $cart = null) {
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
 		$query->select('id,params')->from('#__ksenmart_discounts')->where('type=' . $db->quote($this->_name))->where('enabled=1');
@@ -393,7 +393,7 @@ class plgKMDiscountCoupons extends KMDiscountPlugin {
 		return true;
 	}
 	
-	function onAfterExecuteShopopencartCloseorder($model) {
+	function onAfterExecuteKSMCartCloseorder($model) {
 		$session = JFactory::getSession();
 		$coupon_id = $session->get('ksenmart.coupon_id', null);
 		if (!empty($coupon_id)) {

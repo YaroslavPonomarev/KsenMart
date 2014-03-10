@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerProduct extends JController {
+class KsenMartControllerProduct extends JControllerLegacy {
     
     public function __construct($config = array()) {
         parent::__construct($config);

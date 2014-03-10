@@ -27,8 +27,8 @@ class KsenMartModelManagement extends JModelKSList {
         if(!empty($order_id) && $order_id > 0){
             
             $order            = new stdClass();
-            $order->id        = $this->_db->getEscaped($order_id);
-            $order->status_id = $this->_db->getEscaped($id);
+            $order->id        = $this->_db->escape($order_id);
+            $order->status_id = $this->_db->escape($id);
 
             try {
                 $result = $this->_db->updateObject('#__ksenmart_orders', $order, 'id');

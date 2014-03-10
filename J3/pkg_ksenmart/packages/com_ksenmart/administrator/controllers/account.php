@@ -15,7 +15,7 @@ jimport('joomla.application.component.controller');
 /**
  * Accounts list controller class.
  */
-class KsenMartControllerAccount extends JController {
+class KsenMartControllerAccount extends JControllerLegacy {
 
     
     private $_session = null;

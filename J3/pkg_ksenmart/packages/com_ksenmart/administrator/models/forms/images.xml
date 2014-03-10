@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
 	<fieldset name="details"
-		addfieldpath="/administrator/components/com_ksenmart/models/fields"
+		addfieldpath="/plugins/system/ksencore/core/models/fields"
 	>
 	
 		<field 

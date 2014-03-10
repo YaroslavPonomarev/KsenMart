@@ -2,7 +2,7 @@
 <form>
 
 	<fieldset name="details"
-		addfieldpath="/administrator/components/com_ksenmart/models/fields"
+		addfieldpath="/plugins/system/ksencore/core/models/fields"
 	>
 	
 		<field name="id" type="hidden" default="0" class="id" />

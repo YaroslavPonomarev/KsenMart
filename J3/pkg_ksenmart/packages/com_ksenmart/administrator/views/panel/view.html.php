@@ -10,7 +10,6 @@ class KsenMartViewPanel extends JViewKSAdmin {
         $this->document->addScript(JURI::base().'components/com_ksenmart/js/jquery.mousewheel.min.js');
         $this->document->addScript(JURI::base().'components/com_ksenmart/js/jquery-ui.js');
         $this->document->addScript(JURI::base().'components/com_ksenmart/js/panel.js');
-        $this->document->addStyleSheet(JURI::base().'components/com_ksenmart/css/ui-lightness/jquery-ui-1.8.20.custom.css');
         $this->widgets_groups = $this->get('Widgets');
         parent::display($tpl);
     }

@@ -1,6 +1,4 @@
-<?php
-defined( '_JEXEC' ) or die;
-?>
+<?php defined( '_JEXEC' ) or die; ?>
 <li>
 <div class="km-list-left-module km-reports mod_km_reports">
 	<div class="km-list-left-module-title">
@@ -9,7 +7,7 @@ defined( '_JEXEC' ) or die;
 	</div>	
 	<div class="km-list-left-module-content">
 		<div class="lists">
-			<div class="row">	
+			<div class="row-fluid">	
 				<ul>
 					<?php foreach($reports as $report):?>
 					<li class="<?php echo ($report->selected?'active':'');?>">

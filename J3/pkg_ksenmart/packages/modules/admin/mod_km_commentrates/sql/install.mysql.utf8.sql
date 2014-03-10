@@ -4,7 +4,7 @@ SET
 	`title` = 'Рейтинги комментариев KsenMart', 
 	`position` = 'km-list-left', 
 	`published` = '1',
-	`params` = '{"views":["users"]}'
+	`params` = '{"views":["comments"]}'
 WHERE 
 	`module` = 'mod_km_commentrates'
 ;

@@ -5,7 +5,7 @@ if($this->cat_search){
         <?php $link = JRoute::_('index.php?option=com_ksenmart&view=catalog&categories[]='.$item->cat_id.'&Itemid='.$this->shop_id); ?>
         <div class="item row-fluid">
             <div class="img span1">
-                <a href="<?php echo $link; ?>" title="<?php echo $item->title; ?>"><img src="./modules/mod_km_simple_search/images/icon_cat.png" alt="<?php echo $item->title; ?>" width="32px" height="32px" /></a>
+                <a href="<?php echo $link; ?>" title="<?php echo $item->title; ?>"><img src="<?php echo JUri::root(); ?>/components/com_ksenmart/css/i/icon_cat.png" alt="<?php echo $item->title; ?>" width="32px" height="32px" /></a>
             </div>
             <div class="title span9">
                 <div>

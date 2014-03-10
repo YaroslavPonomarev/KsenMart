@@ -57,7 +57,7 @@ defined( '_JEXEC' ) or die;
 		'sortable':false
 	});	
 	
-	jQuery('.top .ok').live('click',function(){
+	jQuery('.top .ok').on('click',function(){
 		var from_date=jQuery('#from_date').val();
 		var to_date=jQuery('#to_date').val();
 		jQuery.ajax({

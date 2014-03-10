@@ -2,11 +2,12 @@
 
 KSSystem::import('views.viewksadmin');
 class KsenMartViewSettings extends JViewKSAdmin {
-
+    
     function display($tpl = null) {
         $this->path->addItem(JText::_('KS_SETTINGS'));
         $form = $this->get('Form');
         $component = $this->get('Component');
+        
         foreach ($form as $name => $f) {
             if ($f && $component->params) {
                 $form[$name]->bind($component->params);
@@ -16,5 +17,4 @@ class KsenMartViewSettings extends JViewKSAdmin {
         $this->component = $component;
         parent::display($tpl);
     }
-
 }

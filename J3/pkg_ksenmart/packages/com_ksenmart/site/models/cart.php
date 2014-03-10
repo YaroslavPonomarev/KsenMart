@@ -532,7 +532,7 @@ class KsenMartModelCart extends JModelKSList {
                     o.cost
                 ')
                 ->from('#__ksenmart_orders AS o')
-                ->where('o.id='.$this->_db->getEscaped($order_id))
+                ->where('o.id='.$this->_db->escape($order_id))
             ;
             $this->_db->setQuery($query);
             $cost = $this->_db->loadObject()->cost;
@@ -605,7 +605,7 @@ class KsenMartModelCart extends JModelKSList {
         if($count == 0){
             $query = $this->_db->getQuery(true);
             $conditions = array(
-                'id='.$this->_db->getEscaped($item_id)
+                'id='.$this->_db->escape($item_id)
             );
             
             $query

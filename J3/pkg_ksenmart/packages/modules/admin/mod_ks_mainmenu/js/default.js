@@ -14,7 +14,6 @@ jQuery(document).ready(function() {
                 success: function(data) {
                     popup_license.fadeIn(400, function() {
                         var html = '';
-                        console.log(data);
                         html += '<table><tbody>';
 
                         html += '<tr>';

@@ -96,7 +96,7 @@ class KsenMartViewCatalog extends JViewKS {
                     $model->setCatalogMetaData();
                     $this->setLayout('catalog');
                 }
-                if(!JFactory::getConfig()->getValue('config.caching', 0)) {
+                if(!JFactory::getConfig()->get('config.caching', 0)) {
                     $catalog_path = $this->get('CatalogPath');
                     $k = 0;
                     foreach($catalog_path as $c_path) {

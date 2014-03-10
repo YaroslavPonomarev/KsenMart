@@ -17,7 +17,7 @@
                     $cost           = 0;
                     //include (JPATH_ROOT . '/administrator/components/com_ksenmart/helpers/shipping/' . $ship->type . '.php');
                 ?>
-            	<p><?php echo $ship->title ?><?php echo ($cost != 0 ? ' — ' . KMPrice::showPriceWithoutTransform($cost) : ''); ?> (доставка не позднее <?php echo KMShipping::getShippingDate($ship->id); ?>)</p>
+            	<p><?php echo $ship->title ?><?php echo ($cost != 0 ? ' — ' . KSMPrice::showPriceWithoutTransform($cost) : ''); ?> (доставка не позднее <?php echo KSMShipping::getShippingDate($ship->id); ?>)</p>
             	<? } ?>
             <?php } else { ?>
             	<p>Нет способов для этого региона</p>

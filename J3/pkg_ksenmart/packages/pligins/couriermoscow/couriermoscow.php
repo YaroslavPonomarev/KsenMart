@@ -1,20 +1,20 @@
 <?php defined('_JEXEC') or die('Restricted access');
 
-if (!class_exists('KMShippingPlugin')) {
+if (!class_exists('KSMShippingPlugin')) {
 	require (JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . 'com_ksenmart' . DS . 'classes' . DS . 'kmshippingplugin.php');
 }
 
-class plgKMShippingCourierMoscow extends KMShippingPlugin {
+class plgKMShippingCourierMoscow extends KSMShippingPlugin {
 	
 	var $_params = array(
 		'city' => 0,
 		'area' => 0
 	);
 	
-	function __construct(&$subject, $config) {
+	public function __construct(&$subject, $config) {
 		parent::__construct($subject, $config); 	}
 	
-	function onDisplayParamsForm($name = '', $params = null) {
+	public function onDisplayParamsForm($name = '', $params = null) {
 		if ($name != $this->_name) 
 		return;
 		if (empty($params)) $params = $this->_params;
@@ -48,7 +48,7 @@ class plgKMShippingCourierMoscow extends KMShippingPlugin {
 		return $html;
 	}
 	
-	function onAfterExecuteShopopencartGetcart($model, $cart = null) {
+	function onAfterExecuteKSMCartGetcart($model, $cart = null) {
 		if (empty($cart)) 
 		return;
 		if (empty($cart->shipping_id)) 
@@ -75,7 +75,7 @@ class plgKMShippingCourierMoscow extends KMShippingPlugin {
 		return;
 	}
 	
-	function onAfterDisplayShopopencartDefault_shipping($view, $tpl = null, $html) {
+	public function onAfterDisplayKSMCartDefault_shipping($view, $tpl = null, $html) {
 		if (empty($view->cart)) 
 		return;
 		if (empty($view->cart->shipping_id)) 
@@ -182,7 +182,7 @@ class plgKMShippingCourierMoscow extends KMShippingPlugin {
 		';
 	}
 	
-	function onAfterExecuteOrdersGetorder($model, $order = null) {
+	public function onAfterExecuteKSMOrdersGetorder($model, $order = null) {
 		if (empty($order)) 
 		return;
 		if (empty($order->shipping_id)) 
@@ -209,9 +209,9 @@ class plgKMShippingCourierMoscow extends KMShippingPlugin {
 		return;
 	}
 	
-	function onAfterGetFormInputOrderAddress_fields($form, $field, $html) {
-		$region_id = $form->getValue('region_id');
-		$shipping_id = $form->getValue('shipping_id');
+	public function onAfterGetKSMFormInputOrderAddress_fields($form, $field, $html) {
+		$region_id = $form->get('region_id');
+		$shipping_id = $form->get('shipping_id');
 		
 		if (empty($shipping_id)) 
 		return;

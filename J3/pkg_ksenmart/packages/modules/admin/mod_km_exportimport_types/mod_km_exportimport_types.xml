@@ -37,6 +37,10 @@
         </sql>
     </uninstall>
 
+    <updateservers>
+        <server type="extension" priority="1" name="mod_km_exportimport_types">http://update.ksenmart.ru/update-info/j3/pkg_ksenmart/com_ksenmart/modules/administrator/mod_km_exportimport_types-update.xml</server>
+    </updateservers>
+    
 	<config>
 		<fields name="params">
 			<fieldset name="basic" addfieldpath="/plugins/system/ksencore/core/models/fields">

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form>
-	<fieldset name="details" addfieldpath="/administrator/components/com_ksenmart/models/fields">
+	<fieldset name="details" addfieldpath="/plugins/system/ksencore/core/models/fields">
 		<field type="text" name="title" class="inputbox imagetitles" default="" label="KSM_PHOTOS_TITLE_LBL" labelclass="inputname" />
 		<field type="hidden" name="orient" default="" />
 		<field type="imagedisplace" name="displace" default="0" label="KSM_PHOTOS_INSCRIBE_LBL" labelclass="inputname" />

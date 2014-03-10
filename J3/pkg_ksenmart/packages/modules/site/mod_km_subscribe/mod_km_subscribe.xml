@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<install type="module" version="1.0.0">
+<extension type="module" version="2.5.0" method="upgrade">
 	<name>mod_km_subscribe</name>
-	<author>ToMuH</author>
-	<copyright>Copyright (C) 2005 - 2011 Open Source Matters. All rights reserved.</copyright>
-	<license>GNU General Public License version 2 or later; see LICENSE.txt</license>
-	<authorEmail>tominpasha@mail.ru</authorEmail>
-	<authorUrl></authorUrl>
-    <version>2.0</version>
+    <author>L.D.M. Co</author>
+    <authorEmail>boss.ldm@gmail.com</authorEmail>
+    <authorUrl>http://www.lukyan-dm.ru/</authorUrl>
+    <copyright>Copyright (C) 2008-2013 L.D.M. Co All rights reserved.</copyright>
+    <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+    <version>2.0.0</version>
+    <description>COM_KSENMART_DESC</description>
     <creationDate>March 2014</creationDate>
 	<description>Модуль подписки KsenMart 2.0</description>
 	<files>
@@ -35,6 +36,10 @@
         </sql>
     </uninstall>
 
+    <updateservers>
+        <server type="extension" priority="1" name="mod_km_subscribe">http://update.ksenmart.ru/update-info/j3/pkg_ksenmart/com_ksenmart/modules/site/mod_km_subscribe-update.xml</server>
+    </updateservers>
+
 	<config>
 		<fields name="params">
 			<fieldset name="basic">	
@@ -46,4 +51,4 @@
 			</fieldset>		
 		</fields>	
 	</config>	
-</install>
+</extension>

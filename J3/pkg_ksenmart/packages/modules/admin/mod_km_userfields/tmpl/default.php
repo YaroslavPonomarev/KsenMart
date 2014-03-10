@@ -8,7 +8,7 @@
 	</div>	
 	<div class="km-list-left-module-content">
 		<div class="lists">
-			<div class="row">	
+			<div class="row-fluid">	
 				<ul>
 					<?php if (count($userfields)>0):?>
 					<?php foreach($userfields as $userfield):?>

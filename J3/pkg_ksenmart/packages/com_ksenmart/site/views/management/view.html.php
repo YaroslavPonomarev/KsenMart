@@ -14,7 +14,7 @@ class KsenMartViewManagement extends JViewKS {
         $doc_title       = $names_komponent . $pref . JText::_('KSM_PROFILE_MANAGER_PATHWAY_ITEM');
         $this->state     = $this->get('State');
 
-        if(!JFactory::getConfig()->getValue('config.caching', 0)){
+        if(!JFactory::getConfig()->get('config.caching', 0)){
             $path->addItem(JText::_('KSM_PROFILE_MANAGER_PATHWAY_ITEM'));
         }
         

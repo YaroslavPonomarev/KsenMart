@@ -612,3 +612,18 @@ ul.inline > li.sub_toolbar {
 .info_box {
     margin-bottom: 20px;
 }
+
+.search_page .categories .item .img,
+.search_page .manufacture .item .img{
+    margin-right: 5px;
+}
+
+.search_page .categories .item .img img,
+.search_page .manufacture .item .img img{
+    margin-top: 5px;
+}
+
+.search_page .categories,
+.search_page .manufacture{
+    margin-bottom: 15px;
+}

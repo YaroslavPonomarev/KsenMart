@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerManagement extends JController {
+class KsenMartControllerManagement extends JControllerLegacy {
     public function updateOrderStatus(){
         $jinput     = JFactory::getApplication()->input;
         $model      = $this->getModel('management');

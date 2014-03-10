@@ -9,7 +9,7 @@ defined( '_JEXEC' ) or die;
 	</div>	
 	<div class="km-list-left-module-content">
 		<div class="lists">
-			<div class="row">	
+			<div class="row-fluid">	
 				<ul>
 					<?php foreach($types as $type):?>
 					<li class="<?php echo ($type->selected?'active':'');?>">

@@ -23,32 +23,32 @@ class KSMOrders {
                 ')
                 ->from('#__ksenmart_orders AS o')
                 ->leftjoin('#__ksenmart_order_statuses AS os ON o.status_id=os.id')
-                ->where('o.id=' . $db->getEscaped($oid))
+                ->where('o.id=' . $db->escape($oid))
             ;
             $db->setQuery($query);
             $order = $db->loadObject();
             KSMOrders::setUserInfoField2Order($order);
-			
-			$query = $db->getQuery(true);
-			$query->select('*')->from('#__ksenmart_order_items')->where('order_id='.$oid);
-			$db->setQuery($query);
-			$order->items=$db->loadObjectList();	
+            
+            $query = $db->getQuery(true);
+            $query->select('*')->from('#__ksenmart_order_items')->where('order_id='.$oid);
+            $db->setQuery($query);
+            $order->items=$db->loadObjectList();    
 
-			$order->costs=array(
-				'cost'=>$order->cost,
-				'cost_val'=>KSMPrice::showPriceWithTransform($order->cost),
-				'discount_cost'=>0,
-				'discount_cost_val'=>KSMPrice::showPriceWithTransform(0),			
-				'shipping_cost'=>0,
-				'shipping_cost_val'=>KSMPrice::showPriceWithTransform(0),
-				'total_cost'=>$order->cost,
-				'total_cost_val'=>KSMPrice::showPriceWithTransform($order->cost)
-			);	
+            $order->costs=array(
+                'cost'=>$order->cost,
+                'cost_val'=>KSMPrice::showPriceWithTransform($order->cost),
+                'discount_cost'=>0,
+                'discount_cost_val'=>KSMPrice::showPriceWithTransform(0),           
+                'shipping_cost'=>0,
+                'shipping_cost_val'=>KSMPrice::showPriceWithTransform(0),
+                'total_cost'=>$order->cost,
+                'total_cost_val'=>KSMPrice::showPriceWithTransform($order->cost)
+            );  
 
-			$dispatcher	= JDispatcher::getInstance();
-			$dispatcher->trigger('onAfterGetOrder',array(&$order));	
-			
-			return $order;
+            $dispatcher = JDispatcher::getInstance();
+            $dispatcher->trigger('onAfterGetOrder',array(&$order)); 
+            
+            return $order;
         }
         return new stdClass;
     }
@@ -69,9 +69,9 @@ class KSMOrders {
                             pv.title AS prop_value_title
                         ');
                         $query->from('#__ksenmart_order_items AS o');
-                        $query->leftjoin('#__ksenmart_properties AS p ON p.id=' . $db->getEscaped($property->title));
-                        $query->leftjoin('#__ksenmart_property_values AS pv ON pv.id=' . $db->getEscaped($property->value));
-                        $query->where('o.order_id=' . $db->getEscaped($oid));
+                        $query->leftjoin('#__ksenmart_properties AS p ON p.id=' . $db->escape($property->title));
+                        $query->leftjoin('#__ksenmart_property_values AS pv ON pv.id=' . $db->escape($property->value));
+                        $query->where('o.order_id=' . $db->escape($oid));
 
                         $db->setQuery($query);
 
@@ -100,7 +100,7 @@ class KSMOrders {
                 o.properties
             ');
             $query->from('#__ksenmart_order_items AS o');
-            $query->where('o.order_id=' . $db->getEscaped($oid));
+            $query->where('o.order_id=' . $db->escape($oid));
             $db->setQuery($query);
             $order = $db->loadObjectList();
 
@@ -133,13 +133,13 @@ class KSMOrders {
     }
 
     public static function sendOrderMail($order_id, $admin = false) {
-		JRequest::setVar('id',$order_id);
+        JRequest::setVar('id',$order_id);
         $model=KSSystem::getModel('orders');
         $order = $model->getOrder();
-		KSMOrders::setOrderItemsProperties($order, $order_id);
-		if(!empty($order->address_fields)) {
-			$order->address_fields = implode(', ', $order->address_fields);
-		}		
+        KSMOrders::setOrderItemsProperties($order, $order_id);
+        if(!empty($order->address_fields)) {
+            $order->address_fields = implode(', ', $order->address_fields);
+        }       
         $mail = JFactory::getMailer();
         $params = JComponentHelper::getParams('com_ksenmart');
         $sender = array($params->get('shop_email'), $params->get('shop_name'));
@@ -152,7 +152,7 @@ class KSMOrders {
             'default',
             'mail'
         );
-		
+        
         $mail->isHTML(true);
         $mail->setSender($sender);
         $mail->Subject = 'Новый заказ №' . $order_id;
@@ -211,9 +211,9 @@ class KSMOrders {
             $db = JFactory::getDBO();
             $query = $db->getQuery(true);
             $query
-                ->select($db->nameQuote('o.'.$field))
+                ->select($db->quoteName('o.' . $field))
                 ->from('#__ksenmart_orders AS o')
-                ->where('o.id=' . $db->getEscaped($oid))
+                ->where($db->quoteName('o.id') . '=' . $db->escape($oid))
             ;
             $db->setQuery($query);
             return $db->loadObject();

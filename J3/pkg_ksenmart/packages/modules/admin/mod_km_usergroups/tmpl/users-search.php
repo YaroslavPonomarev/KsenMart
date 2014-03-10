@@ -7,7 +7,7 @@
 	</div>	
 	<div class="km-list-left-module-content">
 		<div class="lists">
-			<div class="row">	
+			<div class="row-fluid">	
 				<ul>
 					<?php foreach($usergroups as $usergroup):?>
 					<li class="<?php echo ($usergroup->selected?'active':'');?>">

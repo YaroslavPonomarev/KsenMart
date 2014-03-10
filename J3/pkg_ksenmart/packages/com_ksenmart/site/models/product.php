@@ -77,7 +77,7 @@ class KsenMartModelProduct extends JModelKSList {
                 ->innerjoin('#__ksenmart_products_relations AS pr ON p.id=pr.product_id')
                 ->where('p.type=\'set\'')
                 ->where('pr.relation_type=\'set\'')
-                ->where('pr.relative_id='.$this->_db->getEscaped($pid))
+                ->where('pr.relative_id='.$this->_db->escape($pid))
             ;            
             $this->_db->setQuery($query);
             $sets = $this->_db->loadObjectList();
@@ -114,7 +114,7 @@ class KsenMartModelProduct extends JModelKSList {
                 ->leftjoin('#__ksenmart_users AS kmu ON kmu.id=c.user_id')
                 ->leftjoin('#__users AS u ON kmu.id=u.id')
                 ->leftjoin('#__ksenmart_files AS uf ON uf.owner_id=u.id')
-                ->where('c.product_id=' . $this->_db->getEscaped($pid))
+                ->where('c.product_id=' . $this->_db->escape($pid))
                 ->where('c.published=1')
                 ->where('c.parent_id=0')
                 ->order('c.date_add DESC')
@@ -166,7 +166,7 @@ class KsenMartModelProduct extends JModelKSList {
 
             foreach ($comments as $comment) {
                 if (!empty($comment->id) && $comment->id > 0) {
-                    $where .= 'c.parent_id=' . $this->_db->getEscaped($comment->id);
+                    $where .= 'c.parent_id=' . $this->_db->escape($comment->id);
                     if ($comments_l != $i) {
                         $where .= ' OR ';
                     }
@@ -211,7 +211,7 @@ class KsenMartModelProduct extends JModelKSList {
         $query
             ->select('id')
             ->from('#__ksenmart_products')
-            ->where('parent_id=' . $this->_db->getEscaped($id))
+            ->where('parent_id=' . $this->_db->escape($id))
         ;
         $this->_db->setQuery($query);
         $ids = $this->_db->loadObjectList();
@@ -245,7 +245,7 @@ class KsenMartModelProduct extends JModelKSList {
                     cg.ordering
                 ')
                 ->from('#__ksenmart_products_child_groups AS cg')
-                ->where('cg.product_id=' . $this->_db->getEscaped($this->_id))
+                ->where('cg.product_id=' . $this->_db->escape($this->_id))
                 ->order('cg.ordering')
             ;
             $this->_db->setQuery($query);
@@ -260,7 +260,7 @@ class KsenMartModelProduct extends JModelKSList {
             $sql
                 ->select('p.id, p.parent_id, p.childs_group')
                 ->from("#__ksenmart_products as p")
-                ->where('p.parent_id =' . $this->_db->getEscaped($this->_id))
+                ->where('p.parent_id =' . $this->_db->escape($this->_id))
                 ->where('(p.childs_group IN(' . implode(', ', $where).'))')
                 ->order('p.ordering')
             ;
@@ -294,7 +294,7 @@ class KsenMartModelProduct extends JModelKSList {
         $query
             ->select('category_id')
             ->from('#__ksenmart_products_categories')
-            ->where('product_id=' . $this->_db->getEscaped($id))
+            ->where('product_id=' . $this->_db->escape($id))
         ;
         $this->_db->setQuery($query);
         $categories = $this->_db->loadObjectList();
@@ -399,7 +399,7 @@ class KsenMartModelProduct extends JModelKSList {
                 f.params
             ')
             ->from('#__ksenmart_files AS f')
-            ->where('f.owner_id='.$this->_db->getEscaped($this->_id))
+            ->where('f.owner_id='.$this->_db->escape($this->_id))
             ->where('f.owner_type='.$this->_db->Quote('product'))
             ->order('ordering')
         ;
@@ -423,7 +423,7 @@ class KsenMartModelProduct extends JModelKSList {
         $sql
             ->select('category_id')
             ->from('#__ksenmart_products_categories AS pc')
-            ->where('pc.product_id=' . $this->_db->getEscaped($this->_id))
+            ->where('pc.product_id=' . $this->_db->escape($this->_id))
             ->where('pc.is_default=1')
         ;
         $this->_db->setQuery($sql);
@@ -440,7 +440,7 @@ class KsenMartModelProduct extends JModelKSList {
         $sql
             ->select('pc.category_id')
             ->from('#__ksenmart_products_categories AS pc')
-            ->where('pc.product_id=' . $this->_db->getEscaped($this->_id))
+            ->where('pc.product_id=' . $this->_db->escape($this->_id))
         ;
         $this->_db->setQuery($sql);
         $categories = $this->_db->loadObjectList();

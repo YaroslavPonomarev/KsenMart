@@ -4,6 +4,7 @@ SET
 	`title` = 'Поиск KsenMart', 
 	`position` = 'km-list-left', 
 	`published` = '1',
+	`ordering` = 1,
 	`params` = '{"views":["catalog"]}'
 WHERE 
 	`module` = 'mod_ks_search'

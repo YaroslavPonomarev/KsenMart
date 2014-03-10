@@ -1,18 +1,18 @@
 <?php defined('_JEXEC') or die('Restricted access');
 
-if (!class_exists('KMShippingPlugin')) {
+if (!class_exists('KSMShippingPlugin')) {
 	require (JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . 'com_ksenmart' . DS . 'classes' . DS . 'kmshippingplugin.php');
 }
 
-class plgKMShippingFixedRegions extends KMShippingPlugin {
+class plgKMShippingFixedRegions extends KSMShippingPlugin {
 	
 	var $_params = array();
 	
-	function __construct(&$subject, $config) {
+	public function __construct(&$subject, $config) {
 		parent::__construct($subject, $config);
 	}
 	
-	function onDisplayParamsForm($name = '', $params = null) {
+	public function onDisplayParamsForm($name = '', $params = null) {
 		if ($name != $this->_name) 
 		return;
 		if (empty($params)) $params = $this->_params;
@@ -63,7 +63,7 @@ class plgKMShippingFixedRegions extends KMShippingPlugin {
 					removeFixedRegionsCountry(jQuery(this).attr("country_id"));
 			});
 			
-			jQuery(".countries li a").live("click",function(){
+			jQuery(".countries li a").on("click",function(){
 				var country_id=jQuery(this).parents("li").attr("country_id");
 				removeFixedRegionsCountry(country_id);
 				return false;
@@ -93,7 +93,7 @@ class plgKMShippingFixedRegions extends KMShippingPlugin {
 					addFixedRegionsRegion(jQuery(this).attr("region_id"));
 			});
 			
-			jQuery(".regions li a").live("click",function(){
+			jQuery(".regions li a").on("click",function(){
 				var region_id=jQuery(this).parents("li").attr("region_id");
 				removeFixedRegionsRegion(region_id);
 				return false;
@@ -137,7 +137,7 @@ class plgKMShippingFixedRegions extends KMShippingPlugin {
 		return $html;
 	}
 	
-	function onAfterExecuteShopopencartGetcart($model, $cart = null) {
+	public function onAfterExecuteKSMCartGetcart($model, $cart = null) {
 		if (empty($cart)) 
 		return;
 		if (empty($cart->shipping_id)) 
@@ -164,7 +164,7 @@ class plgKMShippingFixedRegions extends KMShippingPlugin {
 		return;
 	}
 	
-	function onAfterExecuteOrdersGetorder($model, $order = null) {
+	public function onAfterExecuteKSMOrdersGetorder($model, $order = null) {
 		if (empty($order)) 
 		return;
 		if (empty($order->shipping_id)) 

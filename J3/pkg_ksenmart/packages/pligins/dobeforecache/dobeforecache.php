@@ -12,18 +12,18 @@ class plgKMPluginsDoBeforeCache extends KMPlugin {
     
     function onBeforeStartComponent() {
         $config = JFactory::getConfig();
-        if (!$config->getValue('config.caching', 0)) 
+        if (!$config->get('config.caching', 0)) 
         return false;
         $db = JFactory::getDBO();
         $app = JFactory::getApplication();
         $path = $app->getPathway();
         $jinput = $app->input;
-        $view = $jinput->get('view', 'shopcatalog', 'string');
+        $view = $jinput->get('view', 'catalog', 'string');
         $layout = $jinput->get('layout', 'default', 'string');
         
         
         switch ($view) {
-            case 'shopcatalog':
+            case 'catalog':
                 $catalog_path = array();
                 $categories = JRequest::getVar('categories', array());
                 JArrayHelper::toInteger($categories);
@@ -38,7 +38,7 @@ class plgKMPluginsDoBeforeCache extends KMPlugin {
                         $query = "select id,parent,title,alias from #__ksenmart_categories where id='$catid'";
                         $db->setQuery($query);
                         $cat = $db->loadObject();
-                        $cat->link = JRoute::_('index.php?option=com_ksenmart&view=shopcatalog&categories[]=' . $cat->id);
+                        $cat->link = JRoute::_('index.php?option=com_ksenmart&view=catalog&categories[]=' . $cat->id);
                         $catalog_path[] = array(
                             'title' => $cat->title,
                             'link' => $cat->link
@@ -75,23 +75,23 @@ class plgKMPluginsDoBeforeCache extends KMPlugin {
                 }
                 
                 break;
-            case 'shopcomments':
+            case 'comments':
                 $id = $jinput->get('id', 0, 'int');
                 if ($id == 0) {
                     $path->addItem(JText::_('KSM_REVIEWS_LIST_PATH_TITLE'));
                 } else {
-                    $path->addItem(JText::_('KSM_REVIEWS_LIST_PATH_TITLE') , 'index.php?option=com_ksenmart&view=shopcomments&Itemid=' . KMSystem::getShopItemid());
+                    $path->addItem(JText::_('KSM_REVIEWS_LIST_PATH_TITLE') , 'index.php?option=com_ksenmart&view=comments&Itemid=' . KSSystem::getShopItemid());
                     $path->addItem(JText::_('KSM_REVIEW_ITEM_PATH_TITLE'));
                 }
                 
                 break;
-            case 'shopopenorder':
+            case 'order':
                 $path->addItem('Оформление заказа');
                 
                 break;
-            case 'shopproduct':
+            case 'product':
                 $id = $jinput->get('id', 0, 'int');
-                KMProducts::incProductHit($id);
+                KSMProducts::incProductHit($id);
                 $cat_path = array();
                 $final_categories = array();
                 
@@ -130,7 +130,7 @@ class plgKMPluginsDoBeforeCache extends KMPlugin {
                     $sql->select('title,id')->from('#__ksenmart_categories')->where('id=' . $final_category);
                     $db->setQuery($sql);
                     $category = $db->loadObject();
-                    $category->link = JRoute::_('index.php?option=com_ksenmart&view=shopcatalog&categories[]=' . $final_category . '&Itemid=' . KMSystem::getShopItemid());
+                    $category->link = JRoute::_('index.php?option=com_ksenmart&view=catalog&categories[]=' . $final_category . '&Itemid=' . KSSystem::getShopItemid());
                     $cat_path[] = $category;
                 }
                 
@@ -148,4 +148,3 @@ class plgKMPluginsDoBeforeCache extends KMPlugin {
             return true;
         }
     }
-    

@@ -4,7 +4,7 @@ class KSMShipping {
     
     public function getShippingDate($shipping_id) {
         $db = JFactory::getDBO();
-        $query = "select days from #__ksenmart_shippings where id=" . $db->getEscaped($shipping_id);
+        $query = "select days from #__ksenmart_shippings where id=" . $db->escape($shipping_id);
         $db->setQuery($query);
         $days = $db->loadResult();
         $day = date('j', time() + $days * 86400);

@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerCatalog extends JController {
+class KsenMartControllerCatalog extends JControllerLegacy {
     public function __construct($config = array()) {
         $config['base_path'] = JPATH_ROOT . DS . 'components' . DS . 'com_ksenmart';
         parent::__construct($config);

@@ -12,7 +12,7 @@ class KsenMartViewOrder extends JViewKS {
         $path            = $app->getPathway();        
         $doc_title       = $names_komponent . $pref . 'Оформление заказа';
         
-        if(!JFactory::getConfig()->getValue('config.caching', 0)){
+        if(!JFactory::getConfig()->get('config.caching', 0)){
             $path->addItem('Оформление заказа');
         }
         

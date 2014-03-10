@@ -1,6 +1,4 @@
-<?php
-defined( '_JEXEC' ) or die;
-?>
+<?php defined( '_JEXEC' ) or die; ?>
 <li>
 <div class="km-list-left-module km-categories mod_km_categories">
 	<div class="km-list-left-module-title">
@@ -10,7 +8,7 @@ defined( '_JEXEC' ) or die;
 	</div>	
 	<div class="km-list-left-module-content">
 		<div class="lists">
-			<div class="row">	
+			<div class="row-fluid">
 				<ul>
 					<?php if (count($categories)>0):?>
 					<?php foreach($categories as $category):?>
@@ -47,7 +45,7 @@ defined( '_JEXEC' ) or die;
 						<label>
 							<?php echo JText::_('mod_km_categories_no_items')?>
 						</label>
-					</li>					
+					</li>
 					<?php endif;?>
 				</ul>
 				<input type="hidden" name="categories[]" value="">
@@ -55,4 +53,4 @@ defined( '_JEXEC' ) or die;
 		</div>	
 	</div>	
 </div>
-</li>				
+</li>

@@ -3,7 +3,8 @@ UPDATE
 SET 
 	`title` = 'Список продуктов', 
 	`position` = 'content_top', 
-	`published` = '1'
+	`published` = '1',
+	`params`='{"layout":"_:dropdown"}'
 WHERE 
 	`module` = 'mod_km_products_list'
 ;

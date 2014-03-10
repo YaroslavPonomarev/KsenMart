@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerOrder extends JController {
+class KsenMartControllerOrder extends JControllerLegacy {
 
     public function get_order_id() {
         $session  = JFactory::getSession();

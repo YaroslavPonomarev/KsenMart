@@ -13,7 +13,7 @@
 <div class="login-screen clearfix">
     <div class="login-icon pull-left">
         <a href="http://ksenmart.ru/" title="Ksenmart" target="_blank">
-            <img src="components/com_ksenmart/css/i/ksen_logo.png" alt="Ksenmart" />
+            <img src="components/com_ksenmart/assets/images/ksen_logo.png" alt="Ksenmart" />
         </a>
     </div>
 

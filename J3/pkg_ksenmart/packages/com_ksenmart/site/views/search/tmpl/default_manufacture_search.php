@@ -1,11 +1,11 @@
 <?php defined( '_JEXEC' ) or die; ?>
 <?php if(!empty($this->manufacture_search)){ ?>
-<div class="manufacture clearfix">
+<div class="manufacture row-fluid">
     <?php foreach($this->manufacture_search as $item){ ?>
         <?php $link = JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]='.$item->id.'&Itemid='.$this->shop_id); ?>
         <div class="item pull-left">
             <div class="img pull-left">
-                <a href="<?php echo $link; ?>" title="<?php echo $item->title; ?>" data-type="manufacture"><img src="./modules/mod_ksenmart_simple_search/images/icon_manufacture.png" alt="<?php echo $item->title; ?>" width="32px" height="32px" /></a>
+                <a href="<?php echo $link; ?>" title="<?php echo $item->title; ?>" data-type="manufacture"><img src="<?php echo JUri::root(); ?>/components/com_ksenmart/css/i/icon_manufacture.png" alt="<?php echo $item->title; ?>" width="32px" height="32px" /></a>
             </div>
             <div class="title pull-left">
                 <div>

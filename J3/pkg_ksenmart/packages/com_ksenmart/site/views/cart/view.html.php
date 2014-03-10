@@ -16,7 +16,7 @@ class KsenMartViewCart extends JViewKS {
 		$order_id        = $session->get('shop_order_id', 0);
         $layout          = $this->getLayout();
         
-		if(!JFactory::getConfig()->getValue('config.caching', 0)){
+		if(!JFactory::getConfig()->get('config.caching', 0)){
 			$path->addItem(JText::_('KSM_CART_YOUR_ORDER_PATHWAY_ITEM'));
 		}
 		

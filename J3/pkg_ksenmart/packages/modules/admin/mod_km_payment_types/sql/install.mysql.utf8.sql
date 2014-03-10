@@ -4,7 +4,7 @@ SET
 	`title` = 'Типы оплаты KsenMart', 
 	`position` = 'km-list-left', 
 	`published` = '1',
-	`params` = '{"views":["shippings"]}'
+	`params` = '{"views":["payments"]}'
 WHERE 
 	`module` = 'mod_km_payment_types'
 ;

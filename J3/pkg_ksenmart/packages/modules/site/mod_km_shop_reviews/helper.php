@@ -33,8 +33,8 @@ class ModuleKm_Shop_ReviewsHelper {
         $query->order('date_add DESC');
 
         $db->setQuery($query, 0, $params->get('count_review', 5));
-
-        $reviews = KMUsers::setAvatarLogoInObject($db->loadObjectList());
+        $reviews = $db->loadObjectList();
+        $reviews = KSUsers::setAvatarLogoInObject($reviews);
 
         return $reviews;
     }

@@ -90,7 +90,7 @@ class modKsenmartSearchHelper {
             if (in_array($country->id, $session_countries)) $country->selected = true;
         }
         
-        $this->properties = KMProducts::getProperties();
+        $this->properties = KSMProducts::getProperties();
         foreach ($this->properties as &$property) {
             if(!empty($property->values)){
                 foreach($property->values as &$value) {
@@ -109,7 +109,7 @@ class modKsenmartSearchHelper {
         $return1 = array();
         $return[] = $catid;
         $sql = $db->getQuery(true);
-        $sql->select('id')->from('#__ksenmart_categories')->where('parent=' . $catid);
+        $sql->select('id')->from('#__ksenmart_categories')->where('parent_id=' . $catid);
         $db->setQuery($sql);
         $cats = $db->loadObjectList();
         if (count($cats) > 0) {
@@ -122,5 +122,4 @@ class modKsenmartSearchHelper {
         }
         return $return;
     }
-
 }

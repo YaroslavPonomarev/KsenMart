@@ -10,7 +10,7 @@ class plgKMPluginsDiscountdisplay extends KMPlugin {
         parent::__construct($subject, $config);
     }
     
-    function onBeforeDisplayShopopencartDefault_total($view, $tpl = null, $html) {
+    function onBeforeDisplayKSMCartDefault_total($view, $tpl = null, $html) {
         if (empty($view->cart)) 
         return;
         $discount = 0;
@@ -45,7 +45,7 @@ class plgKMPluginsDiscountdisplay extends KMPlugin {
         return;
     }
     
-    function onAfterExecuteOrdersGetorder($model, $order = null) {
+    function onAfterExecuteKSMOrdersGetorder($model, $order = null) {
         if (empty($order)) 
         return;
         $discount_value = 0;
@@ -68,7 +68,7 @@ class plgKMPluginsDiscountdisplay extends KMPlugin {
         return;
     }
     
-    function onBeforeExecuteShopopencartCloseorder($model) {
+    function onBeforeExecuteKSMCartCloseorder($model) {
         if (empty($model->order_id)) 
         return;
         $cart = $model->getCart();

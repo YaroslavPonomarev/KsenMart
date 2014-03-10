@@ -1,14 +1,11 @@
 <?php defined('_JEXEC') or die;
 
+$dispatcher = JDispatcher::getInstance();
+JPluginHelper::importPlugin('system');
+$result = $dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
 require_once(dirname(__file__) . '/helper.php');
 
-if(!class_exists('KMHelper')){
-	require_once(JPATH_ROOT.DS.'administrator/components/com_ksenmart/helpers'.DS.'helper.php');
-}
-
-KMHelper::loadHelpers('common');
-
-$user            = KMUsers::getUser();
+$user            = KSUsers::getUser();
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $km_params       = JComponentHelper::getParams('com_ksenmart');
 $reviews         = ModuleKm_Shop_ReviewsHelper::getData($params);

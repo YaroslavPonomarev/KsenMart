@@ -20,7 +20,7 @@
 	<div class="control-group">
 		<label class="control-label"><?php echo JText::_('KSM_PRODUCT_MANUFACTURER'); ?></label>
 		<div class="controls">
-			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]='.$this->product->manufacturer->id.'&Itemid='.KSSystem::getShopItemid().'&clicked=manufacturers')?>"><?php echo $this->product->manufacturer->title?></a></span>
+			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]='.$this->product->manufacturer->id.'&Itemid='.KSSystem::getShopItemid())?>"><?php echo $this->product->manufacturer->title?></a></span>
 		</div>
 	</div>
 <?php } ?>
@@ -36,7 +36,7 @@
 	<div class="control-group">
 		<label class="control-label"><?php echo JText::_('KSM_PRODUCT_COUNTRY'); ?></label>
 		<div class="controls">
-			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&countries[]='.$this->product->manufacturer->country->id.'&Itemid='.KSSystem::getShopItemid().'&clicked=countries')?>"><?php echo $this->product->manufacturer->country->title?></a></span>
+			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&countries[]='.$this->product->manufacturer->country->id.'&Itemid='.KSSystem::getShopItemid())?>"><?php echo $this->product->manufacturer->country->title?></a></span>
 		</div>
 	</div>
 <?php } ?>	

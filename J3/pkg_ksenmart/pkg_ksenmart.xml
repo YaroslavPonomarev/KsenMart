@@ -17,6 +17,52 @@
 
 	<files folder="packages">
 		<file type="component" id="ksenmart" >com_ksenmart.zip</file>
-		<file type="plugin" id="ksenmart" group="system">plg_ksencore.zip</file>
+		<file type="plugin" id="ksenmart" group="system">plugins/plg_ksencore.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscount">plugins/countdown.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscount">plugins/coupons.zip</file>
+		<file type="plugin" id="ksenmart" group="kmpayment">plugins/courier.zip</file>
+		<file type="plugin" id="ksenmart" group="kmshipping">plugins/couriermoscow.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscount">plugins/cumulative.zip</file>
+		<file type="plugin" id="ksenmart" group="kmplugins">plugins/discountdisplay.zip</file>
+		<file type="plugin" id="ksenmart" group="kmplugins">plugins/dobeforecache.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscount">plugins/fixed.zip</file>
+		<file type="plugin" id="ksenmart" group="kmshipping">plugins/fixedregions.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscount">plugins/onorder.zip</file>
+		<file type="plugin" id="ksenmart" group="kmpayment">plugins/receipt.zip</file>
+		<file type="plugin" id="ksenmart" group="kmpayment">plugins/robokassa.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscountactions">plugins/sitevisits.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscountactions">plugins/time.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscountactions">plugins/viewpages.zip</file>
+		<file type="plugin" id="ksenmart" group="kmdiscountactions">plugins/viewproducts.zip</file>
+
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_categories.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_commentrates.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_countries.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_currencies_rates.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_discount_types.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_exportimport_types.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_manufacturers.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_order_statuses.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_payment_types.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_reports.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_seo_types.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_shipping_methods.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_userfields.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_km_usergroups.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_ks_mainmenu.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_ks_path.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_ks_search.zip</file>
+		<file type="module" id="ksenmart" client="administrator">admin/mod_ks_settings_groups.zip</file>
+
+		<file type="module" id="ksenmart" client="site">site/mod_km_categories.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_contacts.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_filter.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_minicart.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_products_list.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_profile_info.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_shipping.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_shop_reviews.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_simple_search.zip</file>
+		<file type="module" id="ksenmart" client="site">site/mod_km_subscribe.zip</file>
 	</files>
  </extension>

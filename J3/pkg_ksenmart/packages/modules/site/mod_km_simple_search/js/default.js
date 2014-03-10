@@ -21,7 +21,7 @@ jQuery(document).ready(function(){
         search_length   = value.length;
         if(search_length >= 3){
 			jQuery.ajax({
-                url: URI_ROOT+'index.php?option=com_ksenmart&view=shopsearch&task=shopsearch.productSearch&value='+value+'&ajax_search=1&tmpl=ksenmart',
+                url: URI_ROOT+'index.php?option=com_ksenmart&view=search&task=search.productSearch&value='+value+'&ajax_search=1&tmpl=ksenmart',
 				success: function(data){
                     if(data.length > 0){
                         empty_result_block.css('display', 'none');

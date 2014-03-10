@@ -36,6 +36,10 @@
         </sql>
     </uninstall>
 
+    <updateservers>
+        <server type="extension" priority="1" name="mod_ks_path">http://update.ksenmart.ru/update-info/j3/ksen_extensions/modules/administrator/mod_ks_path-update.xml</server>
+    </updateservers>
+    
 	<config>
 		<fields name="params">
 			<fieldset

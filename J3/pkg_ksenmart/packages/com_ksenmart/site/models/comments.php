@@ -173,7 +173,7 @@ class KsenMartModelComments extends JModelKSList {
             $object = new stdClass();
 
             $object->id      = $id;
-            $object->comment = $this->_db->getEscaped($comment);
+            $object->comment = $this->_db->escape($comment);
             
             try {
                 $result = $this->_db->updateObject('#__ksenmart_comments', $object, 'id');

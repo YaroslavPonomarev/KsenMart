@@ -2,7 +2,7 @@
 <li>
 	<div class="km-list-left-module ksenmart-settings-groups active">
 		<div class="km-list-left-module-title ksenmart-settings-groups-title">
-			<label><?php echo JText::_('MOD_KM_ALLSETTINGS_GROUPS_TITLE')?></label>
+			<label><?php echo JText::_('MOD_KS_SETTINGS_GROUPS_TITLE')?></label>
 			<a class="sh hides" href="#" onclick="shModuleContent(this,'.ksenmart-settings-groups-content');return false;"></a>
 		</div>	
 		<div class="km-list-left-module-content ksenmart-settings-groups-content">

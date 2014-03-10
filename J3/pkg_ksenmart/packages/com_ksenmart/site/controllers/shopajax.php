@@ -1,7 +1,7 @@
-<?php defined('_JEXEC') or die('=;)');
+<?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerShopAjax extends JController {
+class KsenMartControllerShopAjax extends JControllerLegacy {
 	
 	function get_md5($array, $secret_key) {
 		ksort($array);

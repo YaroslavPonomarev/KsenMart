@@ -1,7 +1,7 @@
-<?php defined('_JEXEC') or die('=;)');
+<?php defined('_JEXEC') or die;
 
 jimport('joomla.application.component.controller');
-class KsenMartControllerSearch extends JController {
+class KsenMartControllerSearch extends JControllerLegacy {
     
     public $value = null;
 

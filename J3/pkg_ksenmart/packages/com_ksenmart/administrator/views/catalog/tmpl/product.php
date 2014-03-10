@@ -1,14 +1,13 @@
-<?php
-defined( '_JEXEC' ) or die;
-JHtml::_('behavior.tooltip');
+<?php defined( '_JEXEC' ) or die;
+	JHtml::_('behavior.keepalive');
 ?>
-<form class="form" method="post">
+<form class="form clearfix" method="POST">
 	<div class="heading">
 		<h3>
 			<?php echo $this->title; ?>
 		</h3>
 		<div class="save-close">
-			<input type="button" value="<?php echo JText::_('ksm_save')?>" class="save">
+			<input type="submit" value="<?php echo JText::_('ksm_save')?>" class="btn btn-save">
 			<input type="button" class="close" onclick="parent.closePopupWindow();">
 		</div>
 	</div>

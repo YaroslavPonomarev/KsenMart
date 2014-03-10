@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `#__ksenmart_categories` (
   `introcontent` text NOT NULL,
   `published` int(2) NOT NULL DEFAULT '1',
   `hits` int(11) NOT NULL,
-  `parent` int(11) NOT NULL,
+  `parent_id` int(11) NOT NULL,
   `ordering` int(11) NOT NULL,
   `metatitle` varchar(256) NOT NULL,
   `metadescription` text NOT NULL,
