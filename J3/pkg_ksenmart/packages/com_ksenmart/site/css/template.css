@@ -692,6 +692,25 @@ a.btn:hover {
 	vertical-align: top;
 }
 
+.ksenmart-categories-item .caret{
+	margin-top: -15px;
+}
+
+.ksenmart-categories-item ul{
+	margin-top:1px;
+}
+
+.ksenmart-categories-item a:hover {
+	background-color: #eee!important;
+	color:#005580!important;
+	text-shadow:none!important;
+}
+
+#dropdownCat .accordion-heading .accordion-toggle:hover{
+	text-decoration: none;
+	background-color: #EEE;
+}
+
 #dropdownCat .caret{
 	margin-top: 8px;
 }

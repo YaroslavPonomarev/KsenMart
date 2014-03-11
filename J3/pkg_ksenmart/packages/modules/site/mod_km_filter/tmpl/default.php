@@ -23,7 +23,7 @@
 	<?php } ?>
 	// -->	
 </script>
-<div class="ksenmart-search well noTransition filter <?php echo $class_sfx; ?>" id="ksenmart-search">
+<div class="ksenmart-search filter  well noTransition <?php echo $class_sfx; ?>" id="ksenmart-search">
 	<?php if($module->showtitle){ ?>
 	<h3><?php echo $module->title; ?></h3>
 	<?php } ?>
@@ -33,7 +33,7 @@
 				<div class="inputs">
 					<span><?php echo JText::_('MOD_KM_FILTER_PRICE')?></span>
 					<span><?php echo JText::_('MOD_KM_FILTER_PRICE_LESS')?></span><input type="text" id="search-price-less" class="search-price" name="price_less" value="<?php echo (int)$price_less; ?>" />
-					<span><?php echo JText::_('MOD_KM_FILTER_PRICE_MORE')?></span><?php echo KSMPrice::showPriceWithoutTransform('<input type="text" id="search-price-more" class="search-price" name="price_more" value="'. $price_more .'" />')?>
+					<span><?php echo JText::_('MOD_KM_FILTER_PRICE_MORE')?></span><?php echo KSMPrice::showPriceWithoutTransform('<input type="text" id="search-price-more" class="search-price" name="price_more" value="'. (int)$price_more .'" />')?>
 				</div>
 				<div class="tracker">
 					<div id="track1"></div>

@@ -356,28 +356,32 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 	}
 	
 	function site_auth() {
+
 		$app = JFactory::getApplication();
+
+		// Populate the data array:
+		$data = array();
+		$data['username'] = JRequest::getVar('login', '', 'GET', 'username');
+		$data['password'] = JRequest::getString('password', '', 'GET', JREQUEST_ALLOWRAW);
+
+		// Get the log in options.
 		$options = array();
-		$options['remember'] = true;
-		$options['return'] = '';
+		$options['remember'] = $this->input->getBool('remember', false);
+
+		// Get the log in credentials.
 		$credentials = array();
-		$login = JRequest::getVar('login', '');
-		$password = JRequest::getVar('password', '');
-		$credentials['username'] = $login;
-		$credentials['password'] = $password;
-		$db = JFactory::getDBO();
-		$query = "select * from #__users where username='$login'";
-		$db->setQuery($query);
-		$db_user = $db->loadObject();
-		if (count($db_user) > 0) {
-			$parts = explode(':', $db_user->password);
-			$crypt = $parts[0];
-			$salt = @$parts[1];
-			$testcrypt = JUserHelper::getCryptedPassword($password, $salt);
-			
-			if ($crypt == $testcrypt && $app->login($credentials, $options) === true) {
-				echo 'login';
+		$credentials['username']  = $data['username'];
+		$credentials['password']  = $data['password'];
+
+		// Perform the log in.
+		if (true === $app->login($credentials, $options)){
+			// Success
+			if ($options['remember'] = true){
+				$app->setUserState('rememberLogin', true);
 			}
+
+			$app->setUserState('users.login.form.data', array());
+
 			$user = JFactory::getUser();
 			$session = & JFactory::getSession();
 			$order_id = $session->get('shop_order_id', 0);
@@ -386,8 +390,13 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 				$db->setQuery($query);
 				$db->Query();
 			}
+			$app->close('login');
+		}else{
+			// Login failed !
+			$data['remember'] = (int) $options['remember'];
+			$app->setUserState('users.login.form.data', $data);
+			$app->redirect(JRoute::_('index.php?option=com_users&view=login', false));
 		}
-		exit();
 	}
 	
 	public function site_reg() {
@@ -594,6 +603,7 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 		$prop_id = JRequest::getVar('prop_id', 0);
 		$properties = KSMProducts::getProperties($pid, $prop_id, $val_prop_id);
 		$price = KSMProducts::getProductPrices($pid)->price;
+		$price_type = KMProducts::getProductPrices($pid)->price_type;
 		
 		
 		foreach ($properties as $property) {
@@ -632,7 +642,9 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 					$price+= $edit_price;
 			}
 		}
-		echo KSMPrice::getPriceInCurrency($price) . '^^^' . $price;
+		$price = KMPrice::getPriceInDefaultCurrency($price, $price_type);
+		$price = KMPrice::getPriceWithDiscount($price, 2);
+		echo KMPrice::getPriceInCurrency($price) . '^^^' . $price;
 		exit();
 	}
 	

@@ -192,7 +192,6 @@
 			type="productcategories" 
 			name="categories" 
 			label="KSM_CATALOG_PRODUCT_CATEGORIES_LBL" 
-			class="active"
 			wrap="slidemodule"
 		/>		
 		
@@ -238,7 +237,5 @@
 			name="type"
 			default="child" 
 		/>
-		
-		
 	</fieldset>
 </form>

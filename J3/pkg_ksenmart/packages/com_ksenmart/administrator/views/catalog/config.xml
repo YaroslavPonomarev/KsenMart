@@ -3,6 +3,24 @@
 	<fieldset name="KSM_PRODUCT_CATALOG_CONFIG"
 		label="KSM_PRODUCT_CATALOG_CONFIG_LABEL"
 		description="KSM_PRODUCT_CATALOG_CONFIG_DESC">
+
+		<field
+			name="catalog_default_view"
+			type="list"
+			default="grid"
+			label="KSM_PRODUCT_CATALOG_DEFAULT_VIEW_LABEL"
+			description="KSM_PRODUCT_CATALOG_DEFAULT_VIEW_DESC"
+			labelclass="inputname"
+			class="sel"
+			>
+			<option
+				value="grid">KSM_PRODUCT_CATALOG_DEFAULT_VIEW_GRID</option>
+			<option
+				value="list">KSM_PRODUCT_CATALOG_DEFAULT_VIEW_LIST</option>
+			<option
+				value="list_ext">KSM_PRODUCT_CATALOG_DEFAULT_VIEW_LIST_EXT</option>
+		</field>
+
 		<field
 			name="show_products_from_subcategories"
 			type="radio"
@@ -171,8 +189,8 @@
 			name="path_separator"
 			type="text"
 			default=" - "
-			label="KSM_ALLSETTINGS_PATHSEPARATOR_LABEL"
-			description="KSM_ALLSETTINGS_PATHSEPARATOR_DESC"
+			label="KSM_SETTINGS_PATHSEPARATOR_LABEL"
+			description="KSM_SETTINGS_PATHSEPARATOR_DESC"
 			labelclass="inputname"
 			class="inputbox_205"
 			/>			

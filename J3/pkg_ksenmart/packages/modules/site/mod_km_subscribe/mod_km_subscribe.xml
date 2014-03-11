@@ -6,8 +6,7 @@
     <authorUrl>http://www.lukyan-dm.ru/</authorUrl>
     <copyright>Copyright (C) 2008-2013 L.D.M. Co All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
-    <version>2.0.0</version>
-    <description>COM_KSENMART_DESC</description>
+    <version>2.0.1</version>
     <creationDate>March 2014</creationDate>
 	<description>Модуль подписки KsenMart 2.0</description>
 	<files>

@@ -4,16 +4,14 @@ $task = JRequest::getVar('task', '');
 $view = JRequest::getVar('view', '');
 
 if ($task != 'display_manufacturers' && $view != 'profile') {
-
-    $dispatcher = JDispatcher::getInstance();
-    JPluginHelper::importPlugin('system');
-    $result = $dispatcher->trigger('onLoadKsen', array('ksenmart.KSM', array('common'), array(), array('angularJS' => 0)));
-    KSLoader::loadLocalHelpers(array('common'));
     
+    JDispatcher::getInstance()->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
+
+    KSLoader::loadLocalHelpers(array('common'));
     if (!class_exists('KsenmartHtmlHelper')) {
-        include (JPATH_ROOT . '/components/com_ksenmart/helpers/head.php');
-        KsenmartHtmlHelper::AddHeadTags();
+        require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
     }
+    KsenmartHtmlHelper::AddHeadTags();
     
     require_once dirname(__file__) . '/helper.php';
     $modKsenmartSearchHelper = new modKsenmartSearchHelper();

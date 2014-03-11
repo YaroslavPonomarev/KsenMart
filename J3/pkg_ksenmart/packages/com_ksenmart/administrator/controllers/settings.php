@@ -63,12 +63,17 @@ class KsenMartControllerSettings extends KsenMartController {
         
         return true;
     }
-    
+
     function del_images_cache() {
         $path = JPATH_ROOT . DS . 'media' . DS . 'ksenmart' . DS . 'images' . DS . 'products';
         $folders = scandir($path);
-        
-        foreach ($folders as $folder) if ($folder != '.' && $folder != 'original' && $folder != '..' && is_dir($path . DS . $folder)) JFolder::delete($path . DS . $folder);
-        exit();
+        foreach($folders as $folder){
+            if($folder != '.' && $folder != 'original' && $folder != '..' && is_dir($path . DS . $folder)){
+                JFolder::delete($path . DS . $folder);
+            }
+        }
+        $this->setRedirect('index.php?option=com_ksenmart&view=allsettings');
+
+        return true;
     }
 }

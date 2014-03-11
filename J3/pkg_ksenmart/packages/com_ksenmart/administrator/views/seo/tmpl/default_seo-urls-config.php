@@ -1,6 +1,4 @@
-<?php	 		 		 	
-defined( '_JEXEC' ) or die;
-?>
+<?php defined('_JEXEC') or die; ?>
 <form method="post" class="form" enctype="multipart/form-data">
 	<?php foreach($this->configs as $config_key=>$config):?>
 	<table class="cat" width="100%" cellspacing="0" id="<?php echo $config_key;?>">	
@@ -63,17 +61,18 @@ defined( '_JEXEC' ) or die;
 	</div>
 </div>
 <script>
-var separator='';
+	var separator='';
+	clearKMListBinds();
 
-jQuery('.seo-blocks').sortable({
-	items:'.seo-block-sortable',
-	cancel:'.inactive',
-	stop: function(event, ui){
-		updateSeoExample(ui.item.parents('.seo-blocks'));
-	}
-});
+	jQuery('.seo-blocks').sortable({
+		items:'.seo-block-sortable',
+		cancel:'.inactive',
+		stop: function(event, ui){
+			updateSeoExample(ui.item.parents('.seo-blocks'));
+		}
+	});
 
-jQuery('.seo-blocks').each(function(){
-	updateSeoExample(jQuery(this));
-});
+	jQuery('.seo-blocks').each(function(){
+		updateSeoExample(jQuery(this));
+	});
 </script>

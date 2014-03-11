@@ -71,7 +71,7 @@ var KMList = function(variables) {
     this.setListSorting = function() {
         var List = this;
         jQuery('#content .cat thead .sort_field[rel="' + List.order_type + '"]').addClass('active');
-        jQuery('#content .cat thead .sort_field').on('click', function() {
+        jQuery('body').on('click', '#content .cat thead .sort_field', function() {
             var order_type = jQuery(this).attr('rel');
             if (order_type == List.order_type)
                 List.order_dir = List.order_dir == 'asc' ? 'desc' : 'asc';
@@ -108,7 +108,7 @@ var KMList = function(variables) {
                             html += '<div rel="' + item_id + '">';
                             html += '<a class="del"></a>';
                             html += ui.item.html();
-                            html += '	<input type="hidden" name="ids[]" value="' + item_id + '">';
+                            html += ' <input type="hidden" name="ids[]" value="' + item_id + '">';
                             html += '</div>';
                             jQuery('.drop').append(html);
                         }
@@ -157,13 +157,13 @@ var KMList = function(variables) {
     this.setListButtons = function() {
         var List = this;
         if (List.delete_button) {
-            jQuery('#content .top .delete-items').on('click', function() {
+            jQuery('body').on('click', '#content .top .delete-items', function() {
                 List.deleteSelectedItems();
                 return false;
             });
         }
         if (List.copy_button) {
-            jQuery('#content .top .copy-items').on('click', function() {
+            jQuery('body').on('click', '#content .top .copy-items', function() {
                 List.copySelectedItems();
                 return false;
             });
@@ -180,12 +180,12 @@ var KMList = function(variables) {
             if (e.which == 17)
                 List.ctrl = false;
         });
-        jQuery('#content .cat .list_item').on('mouseover', function() {
+        jQuery('body').on('mouseover', '#content .cat .list_item', function() {
             jQuery(this).find('.name p').css('visibility', 'visible');
             jQuery(this).find('.changeble span').hide();
             jQuery(this).find('.changeble p').show();
         });
-        jQuery('#content .cat .list_item').on('mouseout', function() {
+        jQuery('body').on('mouseout', '#content .cat .list_item', function() {
             jQuery(this).find('.name p').css('visibility', 'hidden');
             jQuery(this).find('.changeble p').hide();
             jQuery(this).find('.changeble span').show();
@@ -193,14 +193,14 @@ var KMList = function(variables) {
             if (data)
                 List.saveItem(data);
         });
-        jQuery('#content .cat .list_item .changeble').on('keypress', function(e) {
+        jQuery('body').on('keypress', '#content .cat .list_item .changeble', function(e) {
             if (e.keyCode == 13) {
                 var data = List.getItemData(jQuery(this).parents('.list_item'));
                 if (data)
                     List.saveItem(data);
             }
         });
-        jQuery('#content .cat .list_item').on('click', function() {
+        jQuery('body').on('click', '#content .cat .list_item', function() {
             if (jQuery(this).is('.active'))
                 jQuery(this).removeClass('active');
             else {
@@ -213,7 +213,7 @@ var KMList = function(variables) {
             else
                 jQuery('#content .top .button').hide();
         });
-        jQuery('#content .cat .list_item input[type="checkbox"]').on('click', function() {
+        jQuery('body').on('click', '#content .cat .list_item input[type="checkbox"]', function() {
             var data = {};
             var value = jQuery(this).is(':checked') ? 1 : 0;
             if (jQuery(this).is('.status')) {
@@ -229,7 +229,7 @@ var KMList = function(variables) {
 
     this.setListDeleting = function() {
         var List = this;
-        jQuery('#content .cat .list_item .del a').on('click', function() {
+        jQuery('body').on('click', '#content .cat .list_item .del a', function() {
             if (confirm(Joomla.JText._('KSM_DELETE_CONFIRMATION'))) {
                 var data = {
                     "items": []
@@ -242,7 +242,7 @@ var KMList = function(variables) {
             }
             return false;
         });
-        jQuery('#content .cat th.del span').on('click', function() {
+        jQuery('body').on('click', '#content .cat th.del span', function() {
             if (confirm(Joomla.JText._('KSM_DELETE_CONFIRMATION'))) {
                 var data = {
                     "items": []
@@ -270,7 +270,6 @@ var KMList = function(variables) {
             }
             html += '<p>' + Joomla.JText._('KSM_PAGI_SHOWED') + ' ' + showed_from + ' — ' + showed_to + ' ' + Joomla.JText._('KSM_PAGI_SHOWED_FROM') + ' ' + List.total + '</p>';
         }
-        console.log(List);
         jQuery('#content .pagi').html(html);
     }
 
@@ -361,6 +360,17 @@ var KMList = function(variables) {
 
     this.copySelectedItems = function() {
         var List = this;
+        if (confirm(Joomla.JText._('KSM_COPY_CONFIRMATION'))) {
+            var data = {
+                "items": []
+            };
+            jQuery('#content .cat tr.active').each(function() {
+                data['items'].push(jQuery(this).find('.id').val());
+            });
+            List.copyListItems(data);
+            jQuery('#content .cat tr.active').remove();
+            List.refreshList();
+        }
     }
 
     this.getItemData = function(item) {
@@ -427,6 +437,23 @@ var KMList = function(variables) {
         });
     }
 
+    this.copyListItems = function(data) {
+        var List = this;
+        data['task'] = 'copy_list_items';
+        data['view'] = List.view;
+        jQuery.ajax({
+            url: 'index.php?option=com_ksenmart',
+            data: data,
+            dataType: 'json',
+            async: false,
+            success: function(responce) {
+                if (responce.errors != 0) {
+                    KMShowMessage(responce.message.join('<br>'));
+                }
+            }
+        });
+    }
+
     this.scrollTopList = function() {
         jQuery('body,html').animate({
             'scrollTop': jQuery('#cat').offset().top
@@ -436,3 +463,17 @@ var KMList = function(variables) {
     this.init();
 
 }
+
+    function clearKMListBinds() {
+        jQuery(document).unbind('scroll');
+        jQuery('#content .cat thead .sort_field').unbind('click');
+        jQuery('#content .top .delete-items').unbind('click');
+        jQuery('#content .top .copy-items').unbind('click');
+        jQuery('#content .cat .list_item').unbind('mouseover');
+        jQuery('#content .cat .list_item').unbind('mouseout');
+        jQuery('#content .cat .list_item .changeble').unbind('keypress');
+        jQuery('#content .cat .list_item').unbind('click');
+        jQuery('#content .cat .list_item input[type="checkbox"]').unbind('click');
+        jQuery('#content .cat .list_item .del a').unbind('click');
+        jQuery('#content .cat th.del span').unbind('click');
+    }

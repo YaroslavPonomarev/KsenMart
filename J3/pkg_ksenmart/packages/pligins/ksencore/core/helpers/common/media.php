@@ -304,7 +304,7 @@ class KSMedia {
             if($subfolder != '.' && $subfolder != '..' && is_dir(JPATH_ROOT . '/media/'. $ext_name_com .'/images/' . $folder . '/' . $subfolder)) {
                 $files = scandir(JPATH_ROOT . '/media/'. $ext_name_com .'/images/' . $folder . '/' . $subfolder);
                 foreach($files as $file) {
-                    if($subfolder != '.' && $subfolder != '..' && strpos($file, $filename) === true) unlink(JPATH_ROOT . '/media/'. $ext_name_com .'/images/' . $folder . '/' . $subfolder . '/' . $file);
+                    if($subfolder != '.' && $subfolder != '..' && strpos($file, $filename) !== false) unlink(JPATH_ROOT . '/media/'. $ext_name_com .'/images/' . $folder . '/' . $subfolder . '/' . $file);
                 }
             }
         }

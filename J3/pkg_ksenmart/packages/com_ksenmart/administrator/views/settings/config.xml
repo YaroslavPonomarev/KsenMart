@@ -161,7 +161,7 @@
 			<option value="left">KS_SETTINGS_IMAGE_HALIGN_LEFT</option>
 			<option value="center">KS_SETTINGS_IMAGE_HALIGN_CENTER</option>
 			<option value="right">KS_SETTINGS_IMAGE_HALIGN_RIGHT</option>
-		</field>	
+		</field>
 
 		<field
 			name="background_type"
@@ -175,9 +175,9 @@
 				value="file">KS_SETTINGS_IMAGE_BACKGROUND_TYPE_FILE</option>
 			<option
 				value="color">KS_SETTINGS_IMAGE_BACKGROUND_TYPE_COLOR</option>
-		</field>	
+		</field>
 
-		<field name="background_file" label="KS_SETTINGS_IMAGE_BACKGROUND_FILE_LBL" type="media" directory="com_ksenmart" default="" labelclass="inputname" />		
+		<field name="background_file" label="KS_SETTINGS_IMAGE_BACKGROUND_FILE_LBL" type="media" directory="com_ksenmart" default="" labelclass="inputname" />
 		
 		<field
 			name="background_color"
@@ -187,7 +187,14 @@
 			description="KS_SETTINGS_IMAGE_BACKGROUND_COLOR_DESC"
 			labelclass="inputname"
 			class="inputbox_205"
-			/>		
+			/>
+		
+		<field 
+			type="clearimagecache" 
+			name="clearimagecache" 
+			label="KSM_SETTINGS_CLEARIMAGECACHE_LBL" 
+			labelclass="inputname" 
+		/>
 		
 	</fieldset>
 		

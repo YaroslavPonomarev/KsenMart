@@ -676,23 +676,47 @@ class KsenMartModelcatalog extends JModelKSList {
         $config         = KSSystem::getSeoTitlesConfig('category');
         $title          = array();
 
-        if (!empty($shop_name)){
-            $title[] = $shop_name;
-        }
-        
-        if($config){
-            foreach ($config as $key => $val) {
-                if ($val->user == 0) {
-                    if ($val->active == 1) {
-                        if ($key == 'seo-category') {
-                            $title[] = $category->title;
+        if (empty($category->metatitle)){
+            if (!empty($shop_name)){
+                $title[] = $shop_name;
+            }
+            
+            if($config){
+                foreach ($config as $key => $val) {
+                    if ($val->user == 0) {
+                        if ($val->active == 1) {
+                            if ($key=='seo-parent-category')
+                            {
+                                $categories=array();
+                                $parent=$category->id;
+                                while($parent!=0)
+                                {
+                                    $query = $this->_db->getQuery(true);
+                                    $query->select('title,parent_id')
+                                    ->from('#__ksenmart_categories')
+                                    ->where('id='.$parent);
+                                    $this->_db->setQuery($query);
+                                    $db_category=$this->_db->loadObject();  
+                                    if ($db_category->title!='' && $parent!=$category->id)
+                                        $categories[]=$db_category->title;
+                                    $parent=$db_category->parent_id;
+                                }
+                                $categories=array_reverse($categories);
+                                foreach($categories as $category_title)
+                                    $title[]=$category_title;
+                            }                   
+                            elseif ($key == 'seo-category') {
+                                $title[] = $category->title;
+                            }
                         }
+                    } else{
+                        $title[] = $val->title;
                     }
-                } else{
-                    $title[] = $val->title;
                 }
             }
         }
+        else
+            $title[] = $category->metatitle;
         
         $this->onExecuteAfter('getCategoryTitle', array(&$path_separator, &$title));
         return implode($path_separator, $title);
@@ -744,31 +768,34 @@ class KsenMartModelcatalog extends JModelKSList {
         $shop_name      = $this->_params->get('shop_name', '');
         $path_separator = $this->_params->get('path_separator', ' ');
         $country        = $this->getCountry();
-        $config         = KSSystem::getSeoTitlesConfig('title');
+        $config         = KSSystem::getSeoTitlesConfig('country');
         $title          = array();
 
-        if ($shop_name != ''){
-            $title[] = $shop_name;
-        }
+        if (empty($country->metatitle)){
+            if ($shop_name != ''){
+                $title[] = $shop_name;
+            }
 
-        if($config){
-            foreach ($config as $key => $val) {
-                if ($val->user == 0) {
-                    if ($val->active == 1) {
-                        if ($key == 'seo-country') {
-                            $title[] = $country->title;
+            if($config){
+                foreach ($config as $key => $val) {
+                    if ($val->user == 0) {
+                        if ($val->active == 1) {
+                            if ($key == 'seo-country') {
+                                $title[] = $country->title;
+                            }
                         }
+                    } else {
+                        $title[] = $val->title;
                     }
-                } else {
-                    $title[] = $val->title;
                 }
             }
         }
+        else
+            $title[] = $country->metatitle;
         
         $this->onExecuteAfter('getCountryTitle', array(&$path_separator, &$title));
         return implode($path_separator, $title);
     }
-
     /**
      * KsenMartModelcatalog::getManufacturers()
      * 
@@ -812,12 +839,12 @@ class KsenMartModelcatalog extends JModelKSList {
 
         foreach ($manufacturers as &$manufacturer) {
             if (!empty($manufacturer->folder)){
-                $manufacturer->img_link = JURI::root() . 'media/ksenmart/images/' . $manufacturer->folder . '/original/' . $manufacturer->filename;
+                $manufacturer->img_link = JURI::root() . 'media/com_ksenmart/images/' . $manufacturer->folder . '/original/' . $manufacturer->filename;
             }else{
-                $manufacturer->img_link = JURI::root() . 'media/ksenmart/images/manufacturers/no.jpg';
+                $manufacturer->img_link = JURI::root() . 'media/com_ksenmart/images/manufacturers/no.jpg';
             }
             $manufacturer->small_img = KSMedia::resizeImage($manufacturer->filename, $manufacturer->folder, $this->_params->get('thumb_width'), $this->_params->get('thumb_height'));
-            $manufacturer->link = JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]=' . $manufacturer->id . '&Itemid=' . KSSystem::getShopItemid() . '&clicked=manufacturers');
+            $manufacturer->link = JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]=' . $manufacturer->id . '&Itemid=' . KSSystem::getShopItemid());
         }
         
         $this->onExecuteAfter('getManufacturers', array(&$manufacturers));
@@ -844,17 +871,17 @@ class KsenMartModelcatalog extends JModelKSList {
         $query
             ->leftjoin("#__ksenmart_files AS f ON m.id=f.owner_id AND f.owner_type='manufacturer'")
             ->group('m.id')
-        ;		
+        ;       
         $this->_db->setQuery($query);
         $manufacturers = $this->_db->loadObjectList();
         
         $brands_group = array();
         foreach($manufacturers as $manufacturer){
             if (!empty($manufacturer->folder)){
-                $manufacturer->img_link = JURI::root() . 'media/ksenmart/images/' . $manufacturer->folder . '/original/' . $manufacturer->filename;
+                $manufacturer->img_link = JURI::root() . 'media/com_ksenmart/images/' . $manufacturer->folder . '/original/' . $manufacturer->filename;
             }else{
-                $manufacturer->img_link = JURI::root() . 'media/ksenmart/images/manufacturers/no.jpg';
-            }		
+                $manufacturer->img_link = JURI::root() . 'media/com_ksenmart/images/manufacturers/no.jpg';
+            }       
             $brands_group[$manufacturer->c_title][] = $manufacturer;
         }
         
@@ -955,35 +982,40 @@ class KsenMartModelcatalog extends JModelKSList {
         $manufacturer   = $this->getManufacturer();
         $title          = array();
         
-        if ($shop_name != ''){
-            $title[] = $shop_name;
-        }
-        if($config){
-            foreach ($config as $key => $val) {
-                if ($val->user == 0) {
-                    if ($val->active == 1) {
-                        if ($key == 'seo-manufacturer') {
-                            $title[] = $manufacturer->title;
-                        }
-                        if ($key == 'seo-country') {
-                            $query = $this->_db->getQuery(true);
-                            $query
-                                ->select('c.title')
-                                ->from('#__ksenmart_manufacturers as m')
-                                ->leftjoin('#__ksenmart_countries as c on m.country=c.id')
-                                ->where('m.id=' . $manufacturer->id)
-                            ;
-                            $this->_db->setQuery($query);
-                            $country_title = $this->_db->loadResult();
-                            if (!empty($country_title)){
-                                $title[] = $country_title;
+        if (empty($manufacturer->metatitle)){
+            if ($shop_name != ''){
+                $title[] = $shop_name;
+            }
+            if($config){
+                foreach ($config as $key => $val) {
+                    if ($val->user == 0) {
+                        if ($val->active == 1) {
+                            if ($key == 'seo-manufacturer') {
+                                $title[] = $manufacturer->title;
+                            }
+                            if ($key == 'seo-country') {
+                                $query = $this->_db->getQuery(true);
+                                $query
+                                    ->select('c.title')
+                                    ->from('#__ksenmart_manufacturers as m')
+                                    ->leftjoin('#__ksenmart_countries as c on m.country=c.id')
+                                    ->where('m.id=' . $manufacturer->id)
+                                ;
+                                $this->_db->setQuery($query);
+                                $country_title = $this->_db->loadResult();
+                                if (!empty($country_title)){
+                                    $title[] = $country_title;
+                                }
                             }
                         }
+                    } else{
+                        $title[] = $val->title;
                     }
-                } else{
-                    $title[] = $val->title;
                 }
             }
+        }
+        else{
+            $title[] = $manufacturer->metatitle;
         }
         
         $this->onExecuteAfter('getManufacturerTitle', array(&$path_separator, &$title));
@@ -1236,7 +1268,7 @@ class KsenMartModelcatalog extends JModelKSList {
             $metakeywords = $category->metakeywords;
         }
         if (!empty($metatitle)) {
-            $document->setMetaData('title', $metatitle);
+            //$document->setMetaData('title', $metatitle);
         }
         if (!empty($metadescription)){
             $document->setMetaData('description', $metadescription);

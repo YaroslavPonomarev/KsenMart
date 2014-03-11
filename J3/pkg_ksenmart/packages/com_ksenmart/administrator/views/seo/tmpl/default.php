@@ -1,4 +1,6 @@
-<?php defined( '_JEXEC' ) or die; ?>
+<?php defined('_JEXEC') or die;
+	JHTML::_( 'behavior.modal' );
+?>
 <div class="clearfix panel">
     <div class="pull-left">
         <?php echo KSSystem::loadModules('km-top-left'); ?>

@@ -1,6 +1,4 @@
-<?php	 		 		 	
-defined( '_JEXEC' ) or die;
-?>
+<?php defined('_JEXEC') or die; ?>
 <form method="post" class="form" enctype="multipart/form-data">
 	<?php foreach($this->configs as $config_key=>$config):?>
 	<table class="cat" width="100%" cellspacing="0" id="<?php echo $config_key;?>">	
@@ -51,3 +49,6 @@ defined( '_JEXEC' ) or die;
 	<?php endforeach;?>
 	<input type="hidden" name="task" value="seo.save_meta_configs" />
 </form>
+<script>
+clearKMListBinds();
+</script>

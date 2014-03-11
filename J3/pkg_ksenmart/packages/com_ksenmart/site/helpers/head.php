@@ -8,9 +8,10 @@ class KsenmartHtmlHelper {
         if(self::$_headAdded == true) return;
         $session = JFactory::getSession();
         $document = JFactory::getDocument();
-        if(!class_exists('KSSystem')){
-            require (JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_ksenmart' . DS . 'helpers' . DS . 'common' . DS . 'system.php');
-        }
+
+        JDispatcher::getInstance()->trigger('onLoadKsen', array('ksenmart.KSM', array('common'), array(), array('angularJS' => 0)));
+        KSLoader::loadLocalHelpers(array('common'));
+
         $params = JComponentHelper::getParams('com_ksenmart');
         if($params->get('include_jquery', 1)) {
             $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');

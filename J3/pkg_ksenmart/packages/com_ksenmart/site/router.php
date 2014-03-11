@@ -1,5 +1,4 @@
 <?php
-
 function KsenMartBuildRoute(&$query) {
 	$app = JFactory::getApplication();
 	$menu = $app->getMenu();
@@ -27,7 +26,7 @@ function KsenMartBuildRoute(&$query) {
 				unset($query['layout']);
 			}
 		break;
-		case 'Comments':
+		case 'comments':
 			$segments[] = 'reviews';
 			if (isset($query['id']) && !empty($query['id']) && $query['id'] != 0) {
 				$segments[] = $query['id'];
@@ -41,6 +40,7 @@ function KsenMartBuildRoute(&$query) {
 					$sql->select('config')->from('#__ksenmart_seo_config')->where('type="url"')->where('part="product"');
 					$db->setQuery($sql);
 					$config = json_decode($db->loadResult());
+					
 					
 					foreach ($config as $key => $val) {
 						if ($val->user == 0) {
@@ -57,37 +57,38 @@ function KsenMartBuildRoute(&$query) {
 									$db->setQuery($sql);
 									$manufacturer = $db->loadObject();
 									if (!empty($manufacturer) && $manufacturer->alias != '') $segments[] = $manufacturer->alias;
-								} elseif ($key == 'seo-category') {
-									$final_categories = array();
+								} elseif ($key == 'seo-parent-category') {
+									$categories = array();
 									$sql = $db->getQuery(true);
 									$sql->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . (int)$query['id'])->where('is_default=1');
 									$db->setQuery($sql);
 									$default_category = $db->loadResult();
-									$sql = $db->getQuery(true);
-									$sql->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . (int)$query['id']);
-									$db->setQuery($sql);
-									$product_categories = $db->loadObjectList();
+									$parent = $default_category;
 									
-									foreach ($product_categories as $product_category) {
-										if (!empty($default_category)) $id_default_way = false;
-										else $id_default_way = true;
-										$categories = array();
-										$parent = $product_category->category_id;
-										
-										while ($parent != 0) {
-											if ($parent == $default_category) $id_default_way = true;
-											$sql = $db->getQuery(true);
-											$sql->select('alias,parent_id')->from('#__ksenmart_categories')->where('id=' . $parent);
-											$db->setQuery($sql);
-											$category = $db->loadObject();
-											if ($category->alias != '') $categories[] = $category->alias;
-											$parent = $category->parent_id;
-										}
-										if ($id_default_way && count($categories) > count($final_categories)) $final_categories = $categories;
+									
+									while ($parent != 0) {
+										$sql = $db->getQuery(true);
+										$sql->select('alias,parent')->from('#__ksenmart_categories')->where('id=' . $parent);
+										$db->setQuery($sql);
+										$category = $db->loadObject();
+										if ($category->alias != '' && $parent != $default_category) $categories[] = $category->alias;
+										$parent = $category->parent;
 									}
-									$final_categories = array_reverse($final_categories);
+									$categories = array_reverse($categories);
 									
-									foreach ($final_categories as $final_category) $segments[] = $final_category;
+									
+									foreach ($categories as $category) $segments[] = $category;
+								} elseif ($key == 'seo-category') {
+									$sql = $db->getQuery(true);
+									$sql->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . (int)$query['id'])->where('is_default=1');
+									$db->setQuery($sql);
+									$default_category = $db->loadResult();
+									
+									$sql = $db->getQuery(true);
+									$sql->select('alias')->from('#__ksenmart_categories')->where('id=' . $default_category);
+									$db->setQuery($sql);
+									$alias = $db->loadResult();
+									if (!empty($alias)) $segments[] = $alias;
 								} elseif ($key == 'seo-parent-product') {
 									$sql = $db->getQuery(true);
 									$sql->select('pp.alias')->from('#__ksenmart_products as p')->leftjoin('#__ksenmart_products as pp on p.parent_id=pp.id')->where('p.id=' . (int)$query['id']);
@@ -113,8 +114,26 @@ function KsenMartBuildRoute(&$query) {
 				unset($query['id']);
 			}
 			
+			
 			break;
 		case 'catalog':
+			$search = false;
+			$search_add = 0;
+			if (isset($query['categories']) && !empty($query['categories']) && is_array($query['categories']) && count($query['categories']) >= 1) $search_add++;
+			if (isset($query['manufacturers']) && !empty($query['manufacturers']) && is_array($query['manufacturers']) && count($query['manufacturers']) >= 1) $search_add++;
+			if (isset($query['countries']) && !empty($query['countries']) && is_array($query['countries']) && count($query['countries']) >= 1) $search_add++;
+			if ($search_add > 1) $search = true;
+			
+			if (isset($query['categories']) && !empty($query['categories']) && is_array($query['categories']) && count($query['categories']) > 1) $search = true;
+			if (isset($query['manufacturers']) && !empty($query['manufacturers']) && is_array($query['manufacturers']) && count($query['manufacturers']) > 1) $search = true;
+			if (isset($query['countries']) && !empty($query['countries']) && is_array($query['countries']) && count($query['countries']) > 1) $search = true;
+			if (isset($query['properties']) && !empty($query['properties']) && is_array($query['properties']) && count($query['properties']) > 0) $search = true;
+			
+			if (isset($query['price_less'])) $search = true;
+			if (isset($query['price_more'])) $search = true;
+			
+			if ($search) $segments[] = 'search';
+			
 			if (isset($query['categories'])) {
 				$categories = array();
 				if (!empty($query['categories']) && is_array($query['categories'])) {
@@ -124,29 +143,40 @@ function KsenMartBuildRoute(&$query) {
 						$db->setQuery($sql);
 						$config = json_decode($db->loadResult());
 						
+						
 						foreach ($config as $key => $val) {
 							if ($val->user == 0) {
 								if ($val->active == 1) {
-									if ($key == 'seo-category') {
+									if ($key == 'seo-parent-category') {
 										$categories = array();
 										$parent = $query['categories'][0];
 										
+										
 										while ($parent != 0) {
 											$sql = $db->getQuery(true);
-											$sql->select('alias, parent_id')->from('#__ksenmart_categories')->where('id=' . $parent);
+											$sql->select('alias,parent')->from('#__ksenmart_categories')->where('id=' . $parent);
 											$db->setQuery($sql);
 											$category = $db->loadObject();
-											if ($category->alias != '') $categories[] = $category->alias;
-											$parent = $category->parent_id;
+											if ($category->alias != '' && $parent != $query['categories'][0]) $categories[] = $category->alias;
+											$parent = $category->parent;
 										}
 										$categories = array_reverse($categories);
 										
+										
 										foreach ($categories as $category) $segments[] = $category;
+									} elseif ($key == 'seo-category') {
+										$category_id = $query['categories'][0];
+										$sql = $db->getQuery(true);
+										$sql->select('alias')->from('#__ksenmart_categories')->where('id=' . $category_id);
+										$db->setQuery($sql);
+										$alias = $db->loadResult();
+										if (!empty($alias)) $segments[] = $alias;
 									}
 								}
 							} else $segments[] = $val->title;
 						}
 					} else {
+						
 						
 						foreach ($query['categories'] as $category) {
 							$sql = $db->getQuery(true);
@@ -167,6 +197,7 @@ function KsenMartBuildRoute(&$query) {
 					$sql->select('config')->from('#__ksenmart_seo_config')->where('type="url"')->where('part="manufacturer"');
 					$db->setQuery($sql);
 					$config = json_decode($db->loadResult());
+					
 					
 					foreach ($config as $key => $val) {
 						if ($val->user == 0) {
@@ -194,6 +225,7 @@ function KsenMartBuildRoute(&$query) {
 					$manufacturers = array();
 					if (!empty($query['manufacturers']) && is_array($query['manufacturers'])) {
 						
+						
 						foreach ($query['manufacturers'] as $manufacturer) {
 							$sql = $db->getQuery(true);
 							$sql->select('alias')->from('#__ksenmart_manufacturers')->where('id=' . $manufacturer);
@@ -214,6 +246,7 @@ function KsenMartBuildRoute(&$query) {
 					$db->setQuery($sql);
 					$config = json_decode($db->loadResult());
 					
+					
 					foreach ($config as $key => $val) {
 						if ($val->user == 0) {
 							if ($val->active == 1) {
@@ -231,6 +264,7 @@ function KsenMartBuildRoute(&$query) {
 				} else {
 					$countries = array();
 					if (!empty($query['countries']) && is_array($query['countries'])) {
+						
 						
 						foreach ($query['countries'] as $country) {
 							$sql = $db->getQuery(true);
@@ -250,6 +284,7 @@ function KsenMartBuildRoute(&$query) {
 				$properties = array();
 				if (!empty($query['properties']) && is_array($query['properties'])) {
 					
+					
 					foreach ($query['properties'] as $property) {
 						$sql = $db->getQuery(true);
 						$sql->select('alias,property_id')->from('#__ksenmart_property_values')->where('id=' . $property);
@@ -259,6 +294,7 @@ function KsenMartBuildRoute(&$query) {
 						if (!empty($property_value->alias)) $properties[$property_value->property_id][] = $property_value->alias;
 						else $properties[$property_value->property_id][] = 'propertyvalue-' . $property;
 					}
+					
 					
 					foreach ($properties as $key => $property_values) {
 						$sql = $db->getQuery(true);
@@ -287,6 +323,17 @@ function KsenMartBuildRoute(&$query) {
 				$segments[] = 'order_dir=' . $query['order_dir'];
 				unset($query['order_dir']);
 			}
+			if (isset($query['clicked'])) {
+				$segments[] = 'clicked=' . $query['clicked'];
+				unset($query['clicked']);
+			}
+			if (isset($query['layout']) && $query['layout'] == 'manufacturers') {
+				$segments[] = $query['layout'];
+				unset($query['layout']);
+			}
+			
+			
+			break;
 		}
 		unset($query['view']);
 		if (isset($query['categories'])) unset($query['categories']);
@@ -309,6 +356,7 @@ function KsenMartBuildRoute(&$query) {
 		
 		foreach ($segments as $segment) {
 			
+			
 			switch ($segment) {
 				case 'cart':
 					$vars['view'] = 'cart';
@@ -317,17 +365,27 @@ function KsenMartBuildRoute(&$query) {
 					$vars['view'] = 'profile';
 					if (isset($segments[1])) $vars['layout'] = $segments[1];
 					
+					
 					break;
 				case 'reviews':
-					$vars['view'] = 'Comments';
+					$vars['view'] = 'comments';
 					if (isset($segments[1])) $vars['id'] = $segments[1];
+					
 					
 					break;
 				default:
 					if (strpos($segment, '=') === false) {
 						$segment = explode('+', $segment);
 						
+						
 						foreach ($segment as $alias) {
+							if ($alias == 'manufacturers') {
+								$vars['view'] = 'catalog';
+								$vars['layout'] = 'manufacturers';
+								
+								
+								continue;
+							}
 							$id = null;
 							$sql = $db->getQuery(true);
 							$sql->select('id')->from('#__ksenmart_categories')->where('alias=' . $db->Quote($alias));
@@ -336,6 +394,9 @@ function KsenMartBuildRoute(&$query) {
 							if (!empty($id)) {
 								$categories[] = $id;
 								$vars['view'] = 'catalog';
+								
+								
+								continue;
 							}
 							$sql = $db->getQuery(true);
 							$sql->select('id')->from('#__ksenmart_manufacturers')->where('alias=' . $db->Quote($alias));
@@ -344,6 +405,9 @@ function KsenMartBuildRoute(&$query) {
 							if (!empty($id)) {
 								$manufacturers[] = $id;
 								$vars['view'] = 'catalog';
+								
+								
+								continue;
 							}
 							$sql = $db->getQuery(true);
 							$sql->select('id')->from('#__ksenmart_countries')->where('alias=' . $db->Quote($alias));
@@ -352,6 +416,9 @@ function KsenMartBuildRoute(&$query) {
 							if (!empty($id)) {
 								$countries[] = $id;
 								$vars['view'] = 'catalog';
+								
+								
+								continue;
 							}
 							$sql = $db->getQuery(true);
 							$sql->select('id')->from('#__ksenmart_products')->where('alias=' . $db->Quote($alias));
@@ -360,10 +427,14 @@ function KsenMartBuildRoute(&$query) {
 							if (!empty($id)) {
 								$vars['view'] = 'product';
 								$vars['id'] = $id;
+								
+								
+								continue;
 							}
 						}
 					} else {
 						$segment = explode('=', $segment);
+						
 						
 						switch ($segment[0]) {
 							case 'price_less':
@@ -378,8 +449,12 @@ function KsenMartBuildRoute(&$query) {
 							case 'order_dir':
 								$vars['order_dir'] = $segment[1];
 							break;
+							case 'clicked':
+								$vars['clicked'] = $segment[1];
+							break;
 							default:
 								$segment = explode('+', $segment[1]);
+								
 								
 								foreach ($segment as $alias) {
 									$sql = $db->getQuery(true);
@@ -398,10 +473,11 @@ function KsenMartBuildRoute(&$query) {
 			if (count($categories) > 0) {
 				$count = count($categories);
 				
+				
 				for ($k = 1;$k < $count;$k++) {
 					if (isset($categories[1])) {
 						$sql = $db->getQuery(true);
-						$sql->select('parent_id')->from('#__ksenmart_categories')->where('id=' . $categories[1]);
+						$sql->select('parent')->from('#__ksenmart_categories')->where('id=' . $categories[1]);
 						$db->setQuery($sql);
 						$parent = $db->loadResult();
 						if ($categories[0] == $parent) array_shift($categories);
@@ -419,7 +495,5 @@ function KsenMartBuildRoute(&$query) {
 				JError::raiseError(404, 'Page not found');
 			}
 			
-			
 			return $vars;
 		}
-?>

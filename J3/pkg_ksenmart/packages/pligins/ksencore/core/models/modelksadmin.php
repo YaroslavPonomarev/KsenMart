@@ -22,10 +22,10 @@ abstract class JModelKSAdmin extends JModelAdmin {
         global $ext_name_com, $ext_prefix;
         $this->ext_name_com = $ext_name_com;
         $this->ext_prefix = $ext_prefix;
-        
+
         $this->context = $this->ext_name_com;
-        $this->context.= ($layout = JRequest::getVar('layout', 'default')) ? '.' . $layout : '';
-        $this->context.= ($layout && $view = JRequest::getVar('view', false)) ? '.' . $view : '';
+        $this->context .= '.'.$this->getName();
+        $this->context .= ($layout = JRequest::getVar('layout', 'default'))?'.'.$layout:'';
         $this->params = JComponentHelper::getParams($this->ext_name_com);
     }
     

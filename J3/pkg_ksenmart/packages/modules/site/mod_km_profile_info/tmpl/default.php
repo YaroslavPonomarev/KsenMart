@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die; ?>
 <?php
-	$user          = KMUsers::getUser();
-    $profile_link  = JRoute::_('index.php?option=com_ksenmart&view=shopprofile');
+	$user          = KSUsers::getUser();
+    $profile_link  = JRoute::_('index.php?option=com_ksenmart&view=profile');
 ?>
 <h3><?php echo $module->title; ?></h3>
 <div class="user-info text-center">

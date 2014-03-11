@@ -1,8 +1,12 @@
 <?php defined('_JEXEC') or die;
 
-$dispatcher = JDispatcher::getInstance();
-JPluginHelper::importPlugin('system');
-$result = $dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
+JDispatcher::getInstance()->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
+
+KSLoader::loadLocalHelpers(array('common'));
+if (!class_exists('KsenmartHtmlHelper')) {
+	require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
+}
+KsenmartHtmlHelper::AddHeadTags();
 require_once(dirname(__file__) . '/helper.php');
 
 $user            = KSUsers::getUser();

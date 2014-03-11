@@ -3,15 +3,17 @@
 jimport('joomla.application.component.controller');
 
 $dispatcher = JDispatcher::getInstance();
-JPluginHelper::importPlugin('system');
-$result  = $dispatcher->trigger('onLoadKsen', array('ksenmart.KSM', array('common'), array(), array('angularJS' => 0)));
-KSLoader::loadLocalHelpers(array('common'));
-$results = $dispatcher->trigger('onBeforeStartComponent',array());
+$dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), array('angularJS' => 0)));
+$dispatcher->trigger('onBeforeStartComponent',array());
 
 if (!class_exists('KsenmartHtmlHelper')) {
 	require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
-	KsenmartHtmlHelper::AddHeadTags();
 }
+KsenmartHtmlHelper::AddHeadTags();
+
+$document = JFactory::getDocument();
+$document->addStyleSheet(JURI::base().'components/com_ksenmart/css/style.css');
+$document->addScript(JURI::base().'components/com_ksenmart/js/style.js');
 
 $controller = JControllerLegacy::getInstance('KsenMart');
 $controller->execute(JRequest::getCmd('task'));

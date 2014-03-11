@@ -7,7 +7,7 @@ class KsenMartModelExportImport extends JModelKSAdmin {
         parent::__construct();
     }
 
-    function populateState() {
+    protected function populateState($ordering = null, $direction = null){
         $this->onExecuteBefore('populateState');
 
         $app = JFactory::getApplication();
@@ -473,7 +473,7 @@ class KsenMartModelExportImport extends JModelKSAdmin {
                                 }
                                 break;
                             default:
-                                $prop_vals = explode(',', $product_data['property_' . $property->id]);
+                                $prop_vals = explode(';', $product_data['property_' . $property->id]);
                                 $prop_values = '';
                                 foreach($prop_vals as $prop_val) {
                                     if($prop_val != '') {

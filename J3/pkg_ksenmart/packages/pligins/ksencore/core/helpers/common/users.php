@@ -7,7 +7,7 @@ class KSUsers {
     public static function getSubscribersGroupID() {
         $db = JFactory::getDBO();
         $query = $db->getQuery(true);
-        $query->select('id')->from('#__usergroups')->where('title like ' . $db->quote('Подписчики'));
+        $query->select('id')->from('#__usergroups')->where('title LIKE ' . $db->quote('Подпис%'));
         $db->setQuery($query);
         $group_id = $db->loadResult();
         
@@ -76,7 +76,7 @@ class KSUsers {
             if (!empty($item->social) && $user->email == $user->username . '@email.ru') $user->email = '';
             
             if (empty($user->groups)) {
-                $user->groups = KSUsers::getUserGroups($id);
+                $user->groups = JFactory::getUser()->groups;
             } else {
                 $user->groups = array();
             }
@@ -98,7 +98,7 @@ class KSUsers {
             }
 
             if(is_object($user->settings)){
-               $user->settings = '{"catalog_layout":"grid"}';
+               $user->settings = '{"catalog_layout":"' . $params->get('catalog_default_view', 'grid') . '"}';
             }
             $user->settings = json_decode($user->settings);
             $user->address  = KSUsers::getDefaultAddress($id);
@@ -115,7 +115,8 @@ class KSUsers {
 
     private static function getEmptyUserObject(){
         $session = JFactory::getSession();
-        $user = new stdClass();
+        $params  = JComponentHelper::getParams('com_ksenmart');
+        $user    = new stdClass();
         
         $user->id = 0;
         $user->region_id = $session->get('user_region', 0);
@@ -138,7 +139,7 @@ class KSUsers {
         $user->address = null;
         $user->sendmails = null;
         $user->params = null;
-        $user->settings = json_decode('{"catalog_layout":"grid"}');
+        $user->settings = json_decode('{"catalog_layout":"' . $params->get('catalog_default_view', 'grid') . '"}');
         
         $user->folder = 'users';
         $user->filename = 'no.jpg';
@@ -253,27 +254,7 @@ class KSUsers {
         
         return $rows;
     }
-    /**
-     * KSUsers::getUserGroups()
-     *
-     * @param mixed $uid
-     * @return
-     */
-    public static function getUserGroups($uid) {
-        $db = JFactory::getDbo();
-        $query = $db->getQuery(true);
-        $groups = array();
-        
-        $query->select($db->quoteName(array(
-            'group_id'
-        )))->from($db->quoteName('#__user_usergroup_map'))->where($db->quoteName('user_id') . '=' . $db->escape($uid));
-        
-        $db->setQuery($query);
-        $groups = $db->loadResultArray();
-        
-        
-        return $groups;
-    }
+
     /**
      * KSSystem::getDefaultAddress()
      *
@@ -389,7 +370,7 @@ class KSUsers {
     public function setUserSubscribeGroup($uid) {
         if (!empty($uid) && $uid > 0) {
             $db = JFactory::getDBO();
-            $groups = KSUsers::getUserGroups($uid);
+            $groups = JFactory::getUser($uid)->groups;
             if (!in_array(KSUsers::getSubscribersGroupID() , $groups)) {
                 
                 $user_map = new stdClass;

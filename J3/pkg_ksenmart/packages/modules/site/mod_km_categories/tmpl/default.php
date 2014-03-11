@@ -11,9 +11,9 @@ defined('_JEXEC') or die;
 
 // Note. It is important to remove spaces between elements.
 ?>
-<div class="<?php echo $class_sfx?>">
+<div class="accordion ksm-categories <?php echo $class_sfx?>">
 	<h3><?php echo $module->title?></h3>
-	<ul class="ksenmart-categories menu-list-1">
+	<ul class="nav nav-list menu-list-1">
 	<?php
 	foreach ($list as $i => &$item) :
 		$class = 'ksenmart-categories-item';
@@ -26,7 +26,7 @@ defined('_JEXEC') or die;
 		}
 
 		if ($item->deeper) {
-			$class .= ' deeper';
+			$class .= ' deeper in';
 		}
 
 		if (!empty($class)) {
@@ -38,7 +38,11 @@ defined('_JEXEC') or die;
 		require JModuleHelper::getLayoutPath('mod_km_categories', 'default_url');
 
 		if ($item->deeper) {
-			echo '<ul class="menu-list-'.($item->level+1).'">';
+			$class = 'nav nav-list menu-list-'.($item->level+1);
+			if (!in_array($item->id, $path)) {
+				$class .= ' hide';
+			}		
+			echo '<ul class="'.$class.'">';
 		}
 		elseif ($item->shallower) {
 			echo '</li>';

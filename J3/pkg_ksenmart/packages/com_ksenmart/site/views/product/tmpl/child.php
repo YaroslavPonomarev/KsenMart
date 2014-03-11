@@ -25,6 +25,4 @@
 	   <?php echo $this->loadTemplate('sets', 'product'); ?>
 	<?php } ?>
 </article>
-<?php if (count($this->related) > 0){ ?>
-    <?php echo $this->loadTemplate('related', 'product'); ?>
-<?php } ?>
+<?php echo $this->loadTemplate('related', 'product'); ?>

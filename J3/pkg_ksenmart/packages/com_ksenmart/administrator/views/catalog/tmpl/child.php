@@ -117,6 +117,7 @@ JHtml::_('behavior.tooltip');
 				</td>	
 				<td class="rightcol">
 					<?php echo $this->form->getInput('images'); ?>
+					<?php echo $this->form->getInput('categories'); ?>
 					<?php echo $this->form->getInput('relative'); ?>
 				</td>
 			</tr>	

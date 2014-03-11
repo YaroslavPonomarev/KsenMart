@@ -1,6 +1,5 @@
-<?php
-defined( '_JEXEC' ) or die;
-JHtml::_('behavior.tooltip');
+<?php defined( '_JEXEC' ) or die;
+	JHtml::_('behavior.tooltip');
 ?>
 <form class="form" method="post">
 	<div class="heading">
@@ -39,6 +38,10 @@ JHtml::_('behavior.tooltip');
 					<div class="row alias" style="display: none">
 						<?php echo $this->form->getLabel('alias'); ?>
 						<?php echo $this->form->getInput('alias'); ?>
+					</div>
+					<div class="row">
+						<?php echo $this->form->getLabel('childs_title'); ?>
+						<?php echo $this->form->getInput('childs_title'); ?>
 					</div>
 					<div class="row">
 						<h3><?php echo $this->form->getLabel('content'); ?></h3>

@@ -3,21 +3,18 @@
 KSSystem::import('models.modelksadmin');
 class KsenMartModelPanel extends JModelKSAdmin {
 
-    function __construct() {
+    public function __construct() {
         parent::__construct();
     }
 
-    function populateState() {
+    protected function populateState($ordering = null, $direction = null){
         $this->onExecuteBefore('populateState');
-
+        
         $app = JFactory::getApplication();
-        if($layout = JRequest::getVar('layout', 'default')) {
-            $this->context .= '.' . $layout;
-        }
 
-        $widget_type = $app->getUserStateFromRequest($this->context . '.widget_type', 'widget_type', 'all');
-        $this->setState('widget_type', $widget_type);
-
+        $widget_type=$app->getUserStateFromRequest($this->context . '.widget_type', 'widget_type','all');
+        $this->setState('widget_type',$widget_type);
+        
         $this->onExecuteAfter('populateState');
     }
 

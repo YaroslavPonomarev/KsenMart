@@ -29,7 +29,6 @@ class KsenMartControllerCart extends JControllerLegacy {
             $model->closeOrder();
             $this->setRedirect(JRoute::_('index.php?option=com_ksenmart&view=cart&layout=congratulation&Itemid=' . KSSystem::getShopItemid(), false));
         }
-        parent::display();
     }
     
     public function updateOrderShippingField(){

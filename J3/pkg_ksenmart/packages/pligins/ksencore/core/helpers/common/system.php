@@ -27,6 +27,7 @@ class KSSystem {
         $db->setQuery($query);
         $plugins = $db->loadObjectList();
         
+        
         foreach ($plugins as $plugin) {
             JPluginHelper::importPlugin($plugin->folder);
         }
@@ -47,8 +48,10 @@ class KSSystem {
         if (!empty($km_extension)) {
             $params = json_decode($km_extension->manifest_cache);
             
+            
             return $params->version;
         }
+        
         
         return null;
     }
@@ -63,6 +66,7 @@ class KSSystem {
         $document = JFactory::getDocument();
         $renderer = $document->loadRenderer('modules');
         
+        
         return $renderer->render($position, $params, null);
     }
     /**
@@ -76,6 +80,7 @@ class KSSystem {
         $document = JFactory::getDocument();
         $module = JModuleHelper::getModule($name);
         $renderer = $document->loadRenderer('module');
+        
         
         return $renderer->render($module, $params, null);
     }
@@ -122,11 +127,14 @@ class KSSystem {
         
         if (!empty($layout) && file_exists(JPATH_ADMINISTRATOR . '/modules/' . $module_name . '/tmpl/' . $view . '-' . $layout . '.php')) {
             
+            
             return $view . '-' . $layout;
         } elseif (file_exists(JPATH_ADMINISTRATOR . '/modules/' . $module_name . '/tmpl/' . $view . '.php')) {
             
+            
             return $view;
         } else {
+            
             
             return 'default';
         }
@@ -141,9 +149,11 @@ class KSSystem {
     public static function wrapFormField($wrap = null, $element, $html) {
         if (empty($wrap)) {
             
+            
             return $html;
         }
         if (!file_exists(JPATH_COMPONENT_ADMINISTRATOR . '/models/wraps/' . $wrap . '.php')) {
+            
             
             return $html;
         }
@@ -181,6 +191,7 @@ class KSSystem {
             
             if ($version == '5.3.0' && is_array($strings)) {
                 
+                
                 foreach ($strings as $key => $string) {
                     $strings[$key] = str_replace('_QQ_', '"', $string);
                 }
@@ -208,6 +219,7 @@ class KSSystem {
     public static function loadDbItem($id = null, $table = null) {
         if (!$table) {
             
+            
             return false;
         }
         JTable::addIncludePath(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_ksenmart' . DS . 'tables');
@@ -216,6 +228,7 @@ class KSSystem {
         if ($id > 0) {
             $return = $table->load($id);
             if ($return === false && $table->getError()) {
+                
                 
                 return false;
             }
@@ -259,8 +272,10 @@ class KSSystem {
                 $address.= 'кв. ' . $address_struct->flat;
             }
             
+            
             return $address;
         }
+        
         
         return $address;
     }
@@ -305,9 +320,11 @@ class KSSystem {
             
             if ($db->getNumRows($result) >= 1) {
                 
+                
                 return true;
             }
         }
+        
         
         return false;
     }
@@ -360,10 +377,12 @@ class KSSystem {
                 $var_name
             };
             
+            
             return self::$ {
                 $var_name
             };
         }
+        
         
         return false;
     }
@@ -428,6 +447,7 @@ class KSSystem {
             
             if (!empty($params)) {
                 
+                
                 foreach ($params as $key => $param) {
                     $param = str_replace(' ', '%20', $param);
                     $link.= '&' . $key . '=' . $param;
@@ -438,9 +458,11 @@ class KSSystem {
             $data_json = file_get_contents($link);
             if (!empty($data_json)) {
                 
+                
                 return $data_json;
             }
         }
+        
         
         return false;
     }
@@ -465,6 +487,7 @@ class KSSystem {
             
             if (!empty($params)) {
                 
+                
                 foreach ($params as $key => $value) {
                     $link.= $key . '=' . $value . '&';
                 }
@@ -481,9 +504,11 @@ class KSSystem {
             
             if (!empty($response->body)) {
                 
+                
                 return json_decode($response->body);
             }
         }
+        
         
         return false;
     }
@@ -519,9 +544,11 @@ class KSSystem {
             }
             if (!empty($object)) {
                 
+                
                 return $object;
             }
         }
+        
         
         return new stdClass;
     }
@@ -534,6 +561,7 @@ class KSSystem {
      */
     public function key_implode($separator, $array) {
         $keys = array_keys($array);
+        
         
         return implode($separator, $keys);
     }
@@ -552,8 +580,10 @@ class KSSystem {
             $db->setQuery($query);
             $config = json_decode($db->loadResult());
             
+            
             return $config;
         }
+        
         
         return false;
     }
@@ -568,6 +598,7 @@ class KSSystem {
         $date = explode(' ', $date);
         $date = explode('-', $date[0]);
         $mon = '';
+        
         
         switch ($date[1]) {
             case '01':
@@ -609,6 +640,7 @@ class KSSystem {
         }
         $str_date = $date[2] . ' ' . $mon . ' ' . $date[0];
         
+        
         return $str_date;
     }
     
@@ -635,6 +667,7 @@ class KSSystem {
         
         $view->setModel($model, true);
         
+        
         foreach ($vars as $name => $var) {
             $view->assign($name, $var);
         }
@@ -642,6 +675,7 @@ class KSSystem {
         $view->addTemplatePath(JPATH_THEMES . '/' . JFactory::getApplication()->getTemplate() . '/html/com_ksenmart/' . $view->getName());
         $html = $view->loadTemplate($tmpl);
         $view->setLayout($current_layout);
+        
         
         return $html;
     }
@@ -667,12 +701,12 @@ class KSSystem {
             }
         }
         
-        
         return $html;
     }
     
     public static function addCSS(array $css) {
         $document = JFactory::getDocument();
+        
         
         foreach ($css as $style) {
             $document->addStyleSheet(KSC_ADMIN_URL_CORE_ASSETS_CSS . $style . '.css');
@@ -682,6 +716,7 @@ class KSSystem {
     public static function addJS(array $js) {
         $document = JFactory::getDocument();
         
+        
         foreach ($js as $script) {
             $document->addScript(KSC_ADMIN_URL_CORE_ASSETS_JS . $script . '.js');
         }
@@ -689,6 +724,7 @@ class KSSystem {
     
     public static function import($path) {
         if (!empty($path)) {
+            
             return JLoader::import($path, JPATH_ROOT . '/plugins/system/ksencore/core');
         }
     }
