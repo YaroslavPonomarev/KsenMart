@@ -1,8 +1,8 @@
 UPDATE 
 	`#__modules` 
 SET 
-	`title` = 'Категории KsenMart', 
-	`position` = 'km-list-left', 
+	`title` = 'Главное меню Ksen', 
+	`position` = 'km-top-bottom', 
 	`published` = '1'
 WHERE 
 	`module` = 'mod_ks_mainmenu'

@@ -274,7 +274,7 @@ class KsenMartModelSearch extends JModel {
             $title = mb_substr($value, 0, $i*(-1));
             $conditions = array("title='".$title."'");
             
-            $query->delete($this->_db->quoteName('#__ksenmart_searches_query'));
+            $query->delete(KSDb::quoteName('#__ksenmart_searches_query'));
             $query->where($conditions);
     
             $this->_db->setQuery($query);

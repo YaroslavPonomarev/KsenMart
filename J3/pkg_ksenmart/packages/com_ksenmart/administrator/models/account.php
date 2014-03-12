@@ -1939,7 +1939,7 @@ class KsenMartModelAccount extends JModelKSAdmin {
         $values = array('AES_ENCRYPT(' . $this->_db->quote($data_string) . ', ' . $this->
                 _db->quote($salt) . ')', $this->_db->quote($auth));
 
-        $query->insert($this->_db->quoteName('#__ksenmart_billing_data'))->columns($this->
+        $query->insert(KSDb::quoteName('#__ksenmart_billing_data'))->columns($this->
             _db->quoteName($columns))->values(implode(',', $values));
 
         $this->_db->setQuery($query);
@@ -1985,7 +1985,7 @@ class KsenMartModelAccount extends JModelKSAdmin {
 
         $conditions = array('sessid=' . $this->_auth);
 
-        $query->delete($this->_db->quoteName('#__ksenmart_billing_data'));
+        $query->delete(KSDb::quoteName('#__ksenmart_billing_data'));
         $query->where($conditions);
 
         $this->_db->setQuery($query);

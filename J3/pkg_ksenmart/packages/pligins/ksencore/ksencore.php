@@ -27,6 +27,7 @@ class plgSystemKsenCore extends JPlugin {
         
         $ext_name_com = 'com_' . $ext_name;
         $document = JFactory::getDocument();
+        $version  = new JVersion();
         
         include_once dirname(__FILE__) . '/core/defines.php';
         include_once KSC_ADMIN_PATH_CORE_HELPERS . 'helper.php';
@@ -36,9 +37,13 @@ class plgSystemKsenCore extends JPlugin {
         if (!isset($config['admin'])) {
             $config['admin'] = false;
         }
-        
-        JHtml::_('jquery.framework');
-        JHtml::_('jquery.ui');
+
+        if($version->RELEASE < 3.0){
+
+        }else{
+            JHtml::_('jquery.framework');
+            JHtml::_('jquery.ui');
+        }
         
         if ($config['admin']) {
             KSSystem::addCSS(array(
@@ -47,8 +52,12 @@ class plgSystemKsenCore extends JPlugin {
                 'nprogress',
                 'ui-lightness/jquery-ui-1.8.20.custom'
             ));
-            JHtml::_('jquery.ui', array('sortable'));
-            //$document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
+
+            if($version->RELEASE >= 3.0){
+                JHtml::_('jquery.ui', array('sortable'));
+            }else{
+                $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
+            }
             KSSystem::addJS(array('common', 'style', 'nprogress',  'list', 'listmodule'));
             
         }
@@ -80,5 +89,6 @@ class plgSystemKsenCore extends JPlugin {
         $document->addScriptDeclaration($script);
         
         KSSystem::loadPlugins();
+        JLoader::import('KSDb', KSC_ADMIN_PATH_CORE . 'libraries');
     }
 }

@@ -36,10 +36,10 @@ class plgKMPluginsDiscountdisplay extends KMPlugin {
         if (!$discount) 
         return;
         $view->cart->discount_sum = $discount;
-        $view->cart->discount_sum_val = KMPrice::showPriceWithTransform($discount);
+        $view->cart->discount_sum_val = KSMPrice::showPriceWithTransform($discount);
         $view->cart->total_sum = $view->cart->total_sum - $discount;
         if ($view->cart->total_sum < 0) $view->cart->total_sum = 0;
-        $view->cart->total_sum_val = KMPrice::showPriceWithTransform($view->cart->total_sum);
+        $view->cart->total_sum_val = KSMPrice::showPriceWithTransform($view->cart->total_sum);
         
         
         return;
@@ -59,10 +59,10 @@ class plgKMPluginsDiscountdisplay extends KMPlugin {
             }
         }
         $order->costs['discount_cost'] = $discount_value;
-        $order->costs['discount_cost_val'] = KMPrice::showPriceWithTransform($order->costs['discount_cost']);
+        $order->costs['discount_cost_val'] = KSMPrice::showPriceWithTransform($order->costs['discount_cost']);
         $order->costs['total_cost']-= $order->costs['discount_cost'];
         if ($order->costs['total_cost'] < 0) $order->costs['total_cost'] = 0;
-        $order->costs['total_cost_val'] = KMPrice::showPriceWithTransform($order->costs['total_cost']);
+        $order->costs['total_cost_val'] = KSMPrice::showPriceWithTransform($order->costs['total_cost']);
         
         
         return;

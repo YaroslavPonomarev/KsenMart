@@ -12,9 +12,9 @@ class ModKMUserGroupsHelper {
 		$selected_usergroups = $app->getUserStateFromRequest($context . '.usergroups', 'usergroups', array());
 		$db = JFactory::getDbo();
 		$query = $db->getQuery(true);
-		$query->select('a.*')->from($db->quoteName('#__usergroups') . ' AS a');
+		$query->select('a.*')->from(KSDb::quoteName('#__usergroups') . ' AS a');
 		$query->select('COUNT(DISTINCT c2.id) AS level');
-		$query->join('LEFT OUTER', $db->quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt');
+		$query->join('LEFT OUTER', KSDb::quoteName('#__usergroups') . ' AS c2 ON a.lft > c2.lft AND a.rgt < c2.rgt');
 		$query->group('a.id, a.lft, a.rgt, a.parent_id, a.title');
 		$query->order($db->escape('a.lft'));
 		$db->setQuery($query);

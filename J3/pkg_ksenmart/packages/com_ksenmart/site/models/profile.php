@@ -112,8 +112,8 @@ class KsenMartModelProfile extends JModelKSList {
             }
 
             $query
-                ->insert($this->_db->quoteName('#__ksenmart_user_fields_values'))
-                ->columns($this->_db->quoteName($columns))
+                ->insert(KSDb::quoteName('#__ksenmart_user_fields_values'))
+                ->columns(KSDb::quoteName($columns))
             ;
             $query .= ' ON DUPLICATE KEY UPDATE '.$this->_db->quotename('value').' = VALUES('.$this->_db->quotename('value').')';
             $this->_db->setQuery($query);
@@ -342,7 +342,7 @@ class KsenMartModelProfile extends JModelKSList {
             'user_id='.$user->id
         );
         
-        $query->delete($this->_db->quoteName('#__ksenmart_user_addresses'));
+        $query->delete(KSDb::quoteName('#__ksenmart_user_addresses'));
         $query->where($conditions);
         
         $this->_db->setQuery($query);
@@ -378,15 +378,15 @@ class KsenMartModelProfile extends JModelKSList {
             
             $query  = $this->_db->getQuery(true);
             $fields = array(
-                $this->_db->quoteName('default') . '=1'
+                KSDb::quoteName('default') . '=1'
             );
             $conditions = array(
-                $this->_db->quoteName('user_id') . '='.$this->_db->escape($user->id), 
-                $this->_db->quoteName('id') . '='.$this->_db->escape($id)
+                KSDb::quoteName('user_id') . '='.$this->_db->escape($user->id), 
+                KSDb::quoteName('id') . '='.$this->_db->escape($id)
             );
             
             $query
-                ->update($this->_db->quoteName('#__ksenmart_user_addresses'))
+                ->update(KSDb::quoteName('#__ksenmart_user_addresses'))
                 ->set($fields)
                 ->where($conditions)
             ;

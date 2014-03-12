@@ -287,7 +287,7 @@ class KsenMartModelSearch extends JModelKSList {
             $conditions[]   = $this->_db->quote($title);
         }
         
-        $query->delete($this->_db->quoteName('#__ksenmart_searches_query'));
+        $query->delete(KSDb::quoteName('#__ksenmart_searches_query'));
         $query->where('title IN('.implode(', ', $conditions).')');
         $this->_db->setQuery($query);
         

@@ -210,8 +210,8 @@ class plgKMShippingCourierMoscow extends KSMShippingPlugin {
 	}
 	
 	public function onAfterGetKSMFormInputOrderAddress_fields($form, $field, $html) {
-		$region_id = $form->get('region_id');
-		$shipping_id = $form->get('shipping_id');
+		$region_id = $form->getValue('region_id');
+		$shipping_id = $form->getValue('shipping_id');
 		
 		if (empty($shipping_id)) 
 		return;

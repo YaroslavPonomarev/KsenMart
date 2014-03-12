@@ -609,7 +609,7 @@ class KsenMartModelCart extends JModelKSList {
             );
             
             $query
-                ->delete($this->_db->quoteName('#__ksenmart_order_items'))
+                ->delete(KSDb::quoteName('#__ksenmart_order_items'))
                 ->where($conditions);
             ;
             

@@ -14,7 +14,7 @@
                 <input type="text" class="inputbox" <?php echo ($customer_field->system==1?'id="customer_'.$customer_field->title.'"':'');?> name="customer_fields[<?php echo in_array($customer_field->title, $this->system_customer_fields)?$customer_field->title:$customer_field->id; ?>]" value="<?php echo $customer_field->value; ?>"<?php echo $customer_field->required?' required="true"':''; ?> />
             <?php }else{ ?>
                 <div class="input-append">
-                    <input type="text" id="customer_phone" size="25" name="customer_fields[<?php echo in_array($customer_field->title, $this->system_customer_fields)?$customer_field->title:$customer_field->id; ?>]" value="" required="true" />
+                    <input type="text" id="customer_phone" size="25" name="customer_fields[<?php echo in_array($customer_field->title, $this->system_customer_fields)?$customer_field->title:$customer_field->id; ?>]" value="<?php echo $customer_field->value; ?>" required="true" />
                     <span class="add-on">
                         <input type="hidden" checked="true" />
                         <label id="descr">Введите номер</label>

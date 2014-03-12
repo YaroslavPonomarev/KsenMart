@@ -235,7 +235,7 @@ class KSUsers {
         $db = JFactory::getDbo();
         
         $query = $db->getQuery(true);
-        $query->select($db->quoteName(array(
+        $query->select(KSDb::quoteName(array(
             'id',
             'city',
             'zip',
@@ -246,8 +246,8 @@ class KSUsers {
             'coords',
             'default'
         )));
-        $query->from($db->quoteName('#__ksenmart_user_addresses'));
-        $query->where($db->quoteName('user_id') . '=' . $db->escape($user->id));
+        $query->from(KSDb::quoteName('#__ksenmart_user_addresses'));
+        $query->where(KSDb::quoteName('user_id') . '=' . $db->escape($user->id));
         
         $db->setQuery($query);
         $rows = $db->loadObjectList();
@@ -265,7 +265,7 @@ class KSUsers {
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         
-        $query->select($db->quoteName(array(
+        $query->select(KSDb::quoteName(array(
             'city',
             'zip',
             'street',
@@ -274,9 +274,9 @@ class KSUsers {
             'flat',
             'coords'
         )));
-        $query->from($db->quoteName('#__ksenmart_user_addresses'));
-        $query->where($db->quoteName('user_id') . '=' . $db->escape($uid));
-        $query->where($db->quoteName('default') . '=1');
+        $query->from(KSDb::quoteName('#__ksenmart_user_addresses'));
+        $query->where(KSDb::quoteName('user_id') . '=' . $db->escape($uid));
+        $query->where(KSDb::quoteName('default') . '=1');
         
         $db->setQuery($query);
         
@@ -349,7 +349,7 @@ class KSUsers {
                 'group_id=' . $db->escape(KSUsers::getSubscribersGroupID())
             );
             
-            $query->delete($db->quoteName('#__user_usergroup_map'));
+            $query->delete(KSDb::quoteName('#__user_usergroup_map'));
             $query->where($conditions);
             
             $db->setQuery($query);

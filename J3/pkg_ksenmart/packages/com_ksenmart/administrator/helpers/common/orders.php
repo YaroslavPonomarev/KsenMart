@@ -211,9 +211,9 @@ class KSMOrders {
             $db = JFactory::getDBO();
             $query = $db->getQuery(true);
             $query
-                ->select($db->quoteName('o.' . $field))
+                ->select(KSDb::quoteName('o.' . $field))
                 ->from('#__ksenmart_orders AS o')
-                ->where($db->quoteName('o.id') . '=' . $db->escape($oid))
+                ->where(KSDb::quoteName('o.id') . '=' . $db->escape($oid))
             ;
             $db->setQuery($query);
             return $db->loadObject();
