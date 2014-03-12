@@ -7,7 +7,7 @@ class JFormFieldOrderCustomerFields extends JFormField {
 	public function getInput() {
 		$db = JFactory::getDBO();
 		$session = JFactory::getSession();
-		$shipping_id = $this->form->get('shipping_id');
+		$shipping_id = $this->form->getValue('shipping_id');
 		$html = '';
 		
 		$query = $db->getQuery(true);

@@ -7,7 +7,7 @@ class JFormFieldOrderShipping extends JFormField {
 	public function getInput() {
 		
 		$db = JFactory::getDbo();
-		$region_id = $this->form->get('region_id');
+		$region_id = $this->form->getValue('region_id');
 		$shippings = array();
 		$shipping_selected = 0;
 		$html = '';
