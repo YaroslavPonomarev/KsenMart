@@ -8,7 +8,7 @@ class modKsenmartSearchHelper {
     public $countries = array();
     public $properties = array();
 
-    function init() {
+    function init($mod_params) {
         $params = JComponentHelper::getParams('com_ksenmart');
         $app    = JFactory::getApplication();
         $db     = JFactory::getDBO();
@@ -90,8 +90,14 @@ class modKsenmartSearchHelper {
             if (in_array($country->id, $session_countries)) $country->selected = true;
         }
         
+        $properties = $mod_params->get('properties',array());
         $this->properties = KSMProducts::getProperties();
-        foreach ($this->properties as &$property) {
+        foreach ($this->properties as $key=>&$property) {
+            if (!in_array($property->property_id,$properties))
+            {
+                unset($this->properties[$key]);
+                continue;
+            }
             if(!empty($property->values)){
                 foreach($property->values as &$value) {
                     $value->selected = false;
@@ -109,7 +115,7 @@ class modKsenmartSearchHelper {
         $return1 = array();
         $return[] = $catid;
         $sql = $db->getQuery(true);
-        $sql->select('id')->from('#__ksenmart_categories')->where('parent_id=' . $catid);
+        $sql->select('id')->from('#__ksenmart_categories')->where('parent=' . $catid);
         $db->setQuery($sql);
         $cats = $db->loadObjectList();
         if (count($cats) > 0) {

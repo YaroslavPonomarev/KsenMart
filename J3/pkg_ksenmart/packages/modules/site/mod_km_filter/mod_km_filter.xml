@@ -46,6 +46,12 @@
     <config>
         <fields name="params">
             <fieldset name="basic">
+                <field name="properties" type="sql"
+                    query="SELECT id as value,title as properties FROM #__ksenmart_properties WHERE published=1 ORDER BY ordering"
+                    label="MOD_KM_FILTER_PROPERTIES_LBL"
+                    multiple="true"
+                />
+                
                 <field name="layout" type="modulelayout"
                         label="JFIELD_ALT_LAYOUT_LABEL"
                         description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
