@@ -89,6 +89,6 @@ class plgSystemKsenCore extends JPlugin {
         $document->addScriptDeclaration($script);
         
         KSSystem::loadPlugins();
-        JLoader::import('KSDb', KSC_ADMIN_PATH_CORE . 'libraries');
+        KSSystem::import('libraries.ksdb');
     }
 }

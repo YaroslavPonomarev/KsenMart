@@ -4,7 +4,7 @@ class KSDb{
 	
 	protected static $nameQuote = '`';
 
-	public function quoteName($name, $as = null) {
+	public static function quoteName($name, $as = null) {
 		if (is_string($name)) {
 			$quotedName = self::quoteNameStr(explode('.', $name));
 			
@@ -52,7 +52,7 @@ class KSDb{
 	 *
 	 * @since 11.3
 	 */
-	protected function quoteNameStr($strArr) {
+	protected static function quoteNameStr($strArr) {
 		$parts = array();
 		$q = self::$nameQuote;
 		
