@@ -3,7 +3,8 @@ UPDATE
 SET 
 	`title` = 'Категории KsenMart', 
 	`position` = 'km-list-left', 
-	`published` = 2,
+	`published` = 1,
+	`ordering` = 2,
 	`params` = '{"views":["catalog", "properties"]}'
 WHERE 
 	`module` = 'mod_km_categories'
