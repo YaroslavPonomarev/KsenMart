@@ -144,7 +144,7 @@ jQuery(document).ready(function() {
         return res;
     });
 
-    jQuery('body').on('click', 'form .buy [type="submit"]', function() {
+    jQuery('.buy [type="submit"]').parents('form').on('submit', function() {
 
         var form = jQuery(this).parents('form');
         var prd_id = form.find('input[name="id"]');
