@@ -71,7 +71,7 @@ class ModKsenmartProductsListHelper {
         
         $query->group('p.id');
         
-        $db->setQuery($query, 0, $params->get('col'));
+        $db->setQuery($query, 0, $params->get('col', 10));
         $list = $db->loadObjectList();
 
         return $list;
