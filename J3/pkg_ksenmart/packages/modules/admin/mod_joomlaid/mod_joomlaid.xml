@@ -17,6 +17,7 @@
 		<folder>tmpl</folder>
 		<folder>css</folder>
 	    <folder>js</folder>
+	    <folder>images</folder>
 	    <folder>sql</folder>
 	</files>
 

@@ -438,7 +438,7 @@
             });
 
             if (ids.length > 0) {
-                $.ajax({
+                jQuery.ajax({
                     type: 'POST',
                     url: href,
                     data: {
@@ -479,7 +479,7 @@
             });
 
             if (ids.length > 0) {
-                $.ajax({
+                jQuery.ajax({
                     type: 'POST',
                     url: href,
                     data: {
@@ -526,7 +526,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=settings';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -544,7 +544,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=vhost';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -563,7 +563,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=archived_tickets';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -582,7 +582,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=profile';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -602,7 +602,7 @@
                 popup: 'popup'
             };
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -625,7 +625,7 @@
         function getDomainContactCreate() {
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=default_domaincontact_create';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 beforeSend: function() {
@@ -648,7 +648,7 @@
                 elid: elid
             };
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -692,7 +692,7 @@
             /*var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=domain_renew';
             var data = {elid: elid};
             
-			$.ajax({
+			jQuery.ajax({
                 type: 'POST',
 				url: href,
 				data: data,
@@ -721,7 +721,7 @@
                 elid: elid
             };
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -739,7 +739,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=credit_create';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -759,7 +759,7 @@
                 elid: elid
             };
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -777,7 +777,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=domain_create';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -795,7 +795,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=vhost_create';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -813,7 +813,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=tickets_list';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -832,7 +832,7 @@
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=credits_list';
             var data = '';
 
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: data,
@@ -849,7 +849,7 @@
 
         function getTicket(ticket_id) {
             var href = 'index.php?option=com_ksenmart&view=account&tmpl=ksenmart&layout=ticket';
-            $.ajax({
+            jQuery.ajax({
                 type: 'POST',
                 url: href,
                 data: {
@@ -929,7 +929,7 @@
             order_field: order_field
         };
 
-        $.ajax({
+        jQuery.ajax({
             type: 'POST',
             url: href,
             data: data,

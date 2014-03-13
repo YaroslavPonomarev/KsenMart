@@ -32,7 +32,7 @@ jQuery(document).ready(function() {
 function createPopup(title, p_class, save_button) {
     var html = '<div class="overlay ' + p_class + '"></div><form id="' + p_class + '" method="POST" action="index.php?option=com_ksenmart"><div class="popup ' + p_class + '"><header class="heading clearfix"><div class="title">' + title + '</div><div class="buttonPannel clearfix">';
 
-    html += '<input type="button" class="btn close" value="Закрыть" />';
+    html += '<input type="button" class="btn close js-popup_close" value="Закрыть" />';
     if (save_button) {
         html += '<input type="submit" value="Сохранить" class="btn save" />';
     }
