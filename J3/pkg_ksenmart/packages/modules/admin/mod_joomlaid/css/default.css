@@ -29,46 +29,54 @@
     padding: 20px;
 }
 
-.btn,
-.btn:visited,
-.btn:link{
+.popup .btn,
+.popup .btn:visited,
+.popup .btn:link{
     display: block;
-    padding: 11px 10px;
+    padding: 11px 10px !important;
     font-size: 14px;
     text-decoration: none;
     color: #fff;
-    border: none;
+    border: none !important;
     cursor: pointer;
-    background-color: #F89E00;
+    background: #F89E00;
     font-family: "Trebuchet MS";
+    border-radius: 0px !important; 
+    box-shadow: none !important;
+    -webkit-text-shadow: none !important;
+    text-shadow: none !important;
 }
 
-.btn:hover,
-.btn.btn-other:hover{
-    background-color: #1D86BA;
+.popup .btn:hover,
+.popup .btn.btn-other:hover{
+    background: #1D86BA;
 }
 
-.save {
-    background-color: #B9CE01;
+.popup .save {
+    background: #B9CE01;
 }
 
-.save:hover {
-    background-color: #A10048;
+.popup .save:hover {
+    color: #fff;
+    background: #1D86BA;
 }
 
-a.close,
-a.close:link,
-a.close:visited{
+.popup a.close,
+.popup a.close:link,
+.popup a.close:visited{
+    opacity: 1;
     color: #000;
     background-color: transparent;
     text-decoration: underline;
 }
 
-a.close:hover{
+.popup a.close:hover{
+    opacity: 1;
     text-decoration: none;
 }
 
-.close{
+.popup .close{
+    opacity: 1;
     background-color: transparent;
 }
 
@@ -160,6 +168,8 @@ a.close:hover{
 .popup > header .buttonPannel .close:hover{
     cursor: pointer;
     text-decoration: underline;
+    opacity: 1;
+    color: #FFF;
 }
 
 .loader {
