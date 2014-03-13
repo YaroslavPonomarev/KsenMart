@@ -603,7 +603,7 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 		$prop_id = JRequest::getVar('prop_id', 0);
 		$properties = KSMProducts::getProperties($pid, $prop_id, $val_prop_id);
 		$price = KSMProducts::getProductPrices($pid)->price;
-		$price_type = KMProducts::getProductPrices($pid)->price_type;
+		$price_type = KSMProducts::getProductPrices($pid)->price_type;
 		
 		
 		foreach ($properties as $property) {
@@ -642,10 +642,9 @@ class KsenMartControllerShopAjax extends JControllerLegacy {
 					$price+= $edit_price;
 			}
 		}
-		$price = KMPrice::getPriceInDefaultCurrency($price, $price_type);
-		$price = KMPrice::getPriceWithDiscount($price, 2);
-		echo KMPrice::getPriceInCurrency($price) . '^^^' . $price;
-		exit();
+		$price = KSMPrice::getPriceInDefaultCurrency($price, $price_type);
+		$price = KSMPrice::getPriceWithDiscount($price, 2);
+		exit(KSMPrice::getPriceInCurrency($price) . '^^^' . $price);
 	}
 	
 	function validate_in_stock() {
