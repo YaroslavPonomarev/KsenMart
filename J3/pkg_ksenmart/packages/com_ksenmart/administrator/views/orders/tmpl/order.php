@@ -7,7 +7,7 @@ JHtml::_('behavior.tooltip');
 		<h3><?php echo $this->title;?></h3>
 		<div class="save-close" style="width:auto;">
 			<?php echo $this->loadTemplate('printforms');?>
-			<input type="button" value="<?php echo JText::_('ksm_save')?>" class="save">
+			<input type="submit" value="<?php echo JText::_('KS_SAVE'); ?>" class="save">
 			<input type="button" class="close" onclick="parent.closePopupWindow();">
 		</div>
 	</div>

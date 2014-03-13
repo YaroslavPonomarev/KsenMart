@@ -7,7 +7,7 @@ defined( '_JEXEC' ) or die;
 			<tr>
 				<th align="left" style="position:relative;">
 					<?php echo JText::_('ksm_exportimport_yandeximport_settings')?>
-					<input type="button" id="save_yandexmarket" class="saves-green" value="<?php echo JText::_('ksm_save')?>">
+					<input type="button" id="save_yandexmarket" class="saves-green" value="<?php echo JText::_('KS_SAVE'); ?>">
 				</th>	
 			</tr>
 		<thead>

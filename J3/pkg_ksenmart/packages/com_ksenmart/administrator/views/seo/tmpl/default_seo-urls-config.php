@@ -6,7 +6,7 @@
 			<tr>
 				<th align="left" style="position:relative;">
 					<?php echo JText::_('ksm_seo-urls-config-'.$config_key)?>
-					<input type="submit" class="saves-green" value="<?php echo JText::_('ksm_save')?>">
+					<input type="submit" class="saves-green" value="<?php echo JText::_('KS_SAVE'); ?>">
 				</th>	
 			</tr>
 		<thead>

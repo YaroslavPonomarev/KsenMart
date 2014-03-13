@@ -8,7 +8,7 @@ JHtml::_('behavior.tooltip');
 			<?php echo $this->title; ?>
 		</h3>
 		<div class="save-close">
-			<input type="button" value="<?php echo JText::_('ksm_save')?>" class="save">
+			<input type="submit" value="<?php echo JText::_('KS_SAVE'); ?>" class="save">
 			<input type="button" class="close" onclick="parent.closePopupWindow();">
 		</div>
 	</div>

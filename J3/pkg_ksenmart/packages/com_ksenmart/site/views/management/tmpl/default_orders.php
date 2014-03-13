@@ -32,8 +32,8 @@
                             </select>
                         </div>
                         <div class="btn-group">
-                            <button type="submit" class="btn btn-success edit_order_status-save"><?php echo JText::_('KSM_SAVE'); ?></button>
-                            <a href="javascript:void(0);" class="btn btn-danger edit_order_status-cancel"><?php echo JText::_('KSM_CANCEL'); ?></a>
+                            <button type="submit" class="btn btn-success edit_order_status-save"><?php echo JText::_('KS_SAVE'); ?></button>
+                            <a href="javascript:void(0);" class="btn btn-danger edit_order_status-cancel"><?php echo JText::_('KS_CANCEL'); ?></a>
                         </div>
                     </form>
                 </td>
