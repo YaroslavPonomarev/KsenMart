@@ -23,13 +23,13 @@
 <?php if($this->layout != 'default'){ ?>
     <div class="clearfix panel">
         <div class="pull-left">
-            <?php echo KSSystem::loadModules('km-top-left'); ?>
+            <?php echo KSSystem::loadModules('ks-top-left'); ?>
         </div>
         <div class="pull-right">
-            <?php echo KSSystem::loadModules('km-top-right'); ?>
+            <?php echo KSSystem::loadModules('ks-top-right'); ?>
         </div>
         <div class="row-fluid">
-            <?php echo KSSystem::loadModules('km-top-bottom'); ?>
+            <?php echo KSSystem::loadModules('ks-top-bottom'); ?>
         </div>
     </div>
     <?php echo $this->loadTemplate($this->layout); ?>

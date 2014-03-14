@@ -2,7 +2,7 @@ UPDATE
 	`#__modules` 
 SET 
 	`title` = 'JoomlaID', 
-	`position` = 'km-top-right', 
+	`position` = 'ks-top-right', 
 	`published` = '1',
 	`params` = '{"views":["*"]}'
 WHERE 

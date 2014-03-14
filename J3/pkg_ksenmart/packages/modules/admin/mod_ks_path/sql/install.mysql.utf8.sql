@@ -2,7 +2,7 @@ UPDATE
 	`#__modules` 
 SET 
 	`title` = 'Хлебные крошки Ksenmart', 
-	`position` = 'km-top-left', 
+	`position` = 'ks-top-left', 
 	`published` = '1',
 	`params` = '{"views":["*"]}'
 WHERE 

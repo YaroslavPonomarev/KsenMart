@@ -10,7 +10,7 @@
         <?php echo KsenMartHelper::loadModules('top_right'); ?>
     </div>
     <div class="row-fluid">
-        <?php echo KSSystem::loadModules('km-top-bottom'); ?>
+        <?php echo KSSystem::loadModules('ks-top-bottom'); ?>
     </div>
 </div>
 <?php echo KsenMartHelper::loadModules('top'); ?>

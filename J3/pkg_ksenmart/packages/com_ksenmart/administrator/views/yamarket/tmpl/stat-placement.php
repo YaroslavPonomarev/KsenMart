@@ -2,10 +2,10 @@
 <?php JHTML::_('behavior.modal'); ?>
 <div class="clearfix panel">
     <div class="pull-left">
-        <?php echo KSSystem::loadModules('km-top-left'); ?>
+        <?php echo KSSystem::loadModules('ks-top-left'); ?>
     </div>
     <div class="pull-right">
-        <?php echo KSSystem::loadModules('km-top-right'); ?>
+        <?php echo KSSystem::loadModules('ks-top-right'); ?>
     </div>
 </div>
 <div id="center" class="yamarket">
