@@ -53,6 +53,41 @@ a.btn.close:hover{
     background: transparent;
 }
 
+.btn.btn-other,
+.btn.btn-add {
+	position: relative;
+	padding: 11px 11px 11px 30px;
+	font-size: 14px;
+	background: #F89E00 url(i/add.png) 9px 14px no-repeat;
+	text-decoration: none;
+	color: white;
+	height: 18px;
+}
+
+.btn.btn-other:hover,
+.btn.btn-add:hover {
+   background: #1D86BA url(i/add.png) 9px 14px no-repeat;
+}
+
+.btn.btn-other:hover,
+.btn.btn-other{
+	background-image: none;
+}
+
+.btn.btn-remove {
+	background: #EE1C25;
+}
+
+.admin .btn-group > .btn,
+.admin .btn-group > .btn + .btn,
+.admin .btn-group > .btn:first-child {
+	margin-left: 10px;
+}
+
+.panel {
+	padding-top: 10px;
+}
+
 .admin > .header .container-logo,
 #toolbar-box {
 	display: none;
@@ -911,9 +946,10 @@ margin:0xp;
 .form .slide_module  ul.opened {display:block!important;}
 
 .form  .row {
-float: left;
-width: 100%;
-margin: 0 0 10px;
+	float: left;
+	width: 100%;
+	margin: 0 0 10px;
+	box-sizing: border-box;
 }
 .form .inputbox_205 {
 width: 205px;
@@ -1856,6 +1892,7 @@ table.cat td.name .img {
     margin-right: 4px;
     display: inline-block;
     background: #525252;
+    overflow: hidden;
 }
 
 .btn.btn-file.active,
@@ -1863,7 +1900,7 @@ table.cat td.name .img {
 	background: #1D86BA;
 }
 
-.btn-file input[type="file"] {
+.btn input[type="file"] {
     position: absolute;
     top: 0;
     right: 0;
@@ -1874,6 +1911,7 @@ table.cat td.name .img {
     font-size: 23px;
     direction: ltr;
     cursor: pointer;
+    height: 100%;
 }
 
 .gridStyle {
@@ -1951,7 +1989,9 @@ table.cat .KSList__item td.name .image__desc p {
 
 .grid tbody tr{
 	max-width: 15%;
+	width: 200px;
 	margin-right: 15px;
+	margin-bottom: 15px;
 	display: inline-block;
 	border: 3px solid #E9E9E9;
 	background-color: #F1F2E2;
@@ -1989,6 +2029,11 @@ table.cat .KSList__item td.name .image__desc p {
 .grid tbody td.list_photo {
 	text-align: center;
 	padding: 5px !important;
+}
+
+.grid .KSList__item .stat {
+	width: 29%;
+	float: left;
 }
 
 #content .cat tr:hover td.sort-handler,
@@ -2036,7 +2081,7 @@ table.cat .KSList__item td.name .image__desc p {
 
 .grid .KSList__item .del{
 	padding-left: 8px;
-	width: 20%;
+	width: 0%;
 	padding: 0;
 	padding-top: 12px;
 }
@@ -2047,8 +2092,26 @@ table.cat .KSList__item td.name .image__desc p {
 	float: none;
 }
 
-.admin .layout_changer a.btn{
+.layout_changer {
+    font-size: 30px;
+    line-height: 40px;
+}
+
+.admin .layout_changer a{
 	display: inline-block;
+	margin-left: 10px;
+	color: #525252;
+}
+
+.admin .layout_changer a > span{
+	height: auto;
+	width: auto;
+	vertical-align: middle;
+}
+
+.admin .layout_changer a.active > span,
+.admin .layout_changer a:hover > span{
+	color: #1D86BA;
 }
 
 .list .KSList__item .list_photo img:not(.full){
@@ -2156,4 +2219,9 @@ table.cat .KSList__item td.name .image__desc p {
 
 .admin .btn.btn-subhead {
 	display: none;
+}
+
+#cat .top div.btn.btn-add {
+   float: left;
+   overflow: hidden;
 }

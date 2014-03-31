@@ -550,6 +550,8 @@ table.cat {
    border-collapse:separate;
    border-spacing:1px;
 }
+
+.KMListHead,
 table.cat th {
    color:white;
    font-size: 13px;
@@ -558,6 +560,20 @@ table.cat th {
    font-weight:normal;
    margin: 0 1px 0 0;
 }
+
+.KMListHead {
+   margin: 2px;
+   margin-bottom: 10px;
+}
+
+.KMListHead.list{
+   display: none;
+}
+
+.KMListHead.grid{
+   display: block;
+}
+
 table.cat th.art {
   width:95px;
   text-align: center;

@@ -43,6 +43,7 @@ class plgSystemKsenCore extends JPlugin {
         }else{
             JHtml::_('jquery.framework');
             JHtml::_('jquery.ui');
+            JHtml::_('bootstrap.framework');
         }
         
         if ($config['admin']) {
@@ -55,6 +56,7 @@ class plgSystemKsenCore extends JPlugin {
 
             if($version->RELEASE >= 3.0){
                 JHtml::_('jquery.ui', array('sortable'));
+                JHtml::_('bootstrap.framework');
             }else{
                 $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.8.1/jquery.min.js');
             }
