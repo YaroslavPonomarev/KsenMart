@@ -38,7 +38,7 @@
 					<?php else:?>
 					<li>
 						<label>
-							<?php echo JText::_('mod_km_categories_no_items')?>
+							<?php echo JText::_('KS_CATEGORIES_NO_ITEMS')?>
 						</label>
 					</li>					
 					<?php endif;?>

@@ -55,7 +55,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/payments/original"
+			upload_to="media/com_ksenmart/images/payments/original"
 			upload_folder="payments"
 		/>			
 

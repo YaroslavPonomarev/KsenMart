@@ -151,6 +151,7 @@
                     valueIdentifier = match[3] || match[1];
                     keyIdentifier = match[2];
                     lastBlockMap = {};
+                    rhs = 'params.data';
                     //$element.wrap('<div class="ng-repeat-reorder-parent"></div>');
                     $scope.$watchCollection(rhs, ngRepeatAction = function(collection) {
                         var arrayLength, block, childScope, collectionKeys, elementsToRemove, index, isArrayLike, key, length, nextBlockMap, nextBlockOrder, nextNode, previousNode, reorderFuncs, trackById, trackByIdFn, value;

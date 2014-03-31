@@ -49,13 +49,14 @@ class KsenMartModelPanel extends JModelKSAdmin {
             foreach($widgets as $widget) {
                 if(!isset($widgets_groups[$widget->group])) $widgets_groups[$widget->group] = array();
                 $widgets_groups[$widget->group][$widget->name] = $widget;
+                $widgets_groups[$widget->group][$widget->name]->class = str_replace(',', ' ', $widget->class);
             }
         } else {
             foreach($config as $group_id => $config_widgets) {
                 $widgets_groups[$group_id] = array();
                 foreach($config_widgets as $config_widget_name => $config_widget_size) {
                     $widgets_groups[$group_id][$config_widget_name] = $widgets[$config_widget_name];
-                    $widgets_groups[$group_id][$config_widget_name]->class = $config_widget_size;
+                    $widgets_groups[$group_id][$config_widget_name]->class = str_replace(',', ' ', $config_widget_size);
                 }
             }
         }
@@ -88,11 +89,6 @@ class KsenMartModelPanel extends JModelKSAdmin {
 
         $config = json_encode($config);
         $data = array('user_id' => $user_id, 'config_' . $widget_type => $config);
-
-        $query = $this->_db->getQuery(true);
-        $query->insert('#__ksenmart_widgets_users_config')->columns('user_id')->values(array($user_id));
-        $this->_db->setQuery($query);
-        $this->_db->query();
 
         if(!$table->bindCheckStore($data)) {
             $this->setError($table->getError());

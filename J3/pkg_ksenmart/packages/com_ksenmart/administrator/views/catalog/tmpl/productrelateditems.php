@@ -1,6 +1,4 @@
-<?php
-defined( '_JEXEC' ) or die;
-?>
+<?php defined('_JEXEC') or die; ?>
 <div class="position">
 	<div class="col1">
 		<div class="img"><img alt="" src="<?php echo $this->item->small_img;?>"></div>

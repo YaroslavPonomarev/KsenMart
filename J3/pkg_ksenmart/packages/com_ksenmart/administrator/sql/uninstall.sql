@@ -1,6 +1,5 @@
 DROP TABLE
 `#__ksenmart_billing_data`, 
-`#__ksenmart_categories`, 
 `#__ksenmart_comments`, 
 `#__ksenmart_comment_rates`, 
 `#__ksenmart_comment_rates_values`, 
@@ -14,7 +13,6 @@ DROP TABLE
 `#__ksenmart_order_items`, 
 `#__ksenmart_order_statuses`, 
 `#__ksenmart_payments`, 
-`#__ksenmart_products`, 
 `#__ksenmart_products_categories`,
 `#__ksenmart_products_child_groups`,
 `#__ksenmart_products_relations`,
@@ -41,4 +39,6 @@ DROP TABLE
 `#__ksenmart_widgets_types`, 
 `#__ksenmart_widgets_types_values`, 
 `#__ksenmart_widgets_users_config`, 
-`#__ksenmart_yandeximport`;
+`#__ksenmart_yandeximport`,
+`#__ksenmart_products`, 
+`#__ksenmart_categories`;

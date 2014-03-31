@@ -21,6 +21,7 @@ JHtml::_('behavior.formvalidation');
 				<div id="tree">
 					<ul>
 						<?php echo KSSystem::loadModules('km-list-left'); ?>
+						<?php echo KSSystem::loadModules('ks-list-left'); ?>
 					</ul>	
 				</div>
 			</td>

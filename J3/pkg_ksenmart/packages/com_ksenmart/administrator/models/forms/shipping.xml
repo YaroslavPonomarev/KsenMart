@@ -64,7 +64,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/shippings/original"
+			upload_to="media/com_ksenmart/images/shippings/original"
 			upload_folder="shippings"
 		/>			
 

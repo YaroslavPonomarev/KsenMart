@@ -45,7 +45,7 @@ class JFormFieldProductCategories extends JFormFieldCheckboxes {
             }
         } else {
             $html .= '<li>';
-            $html .= '<label>' . JText::_('ksm_catalog_no_categories') . '</label>';
+            $html .= '<label>' . JText::_('KS_CATEGORIES_NO_ITEMS') . '</label>';
             $html .= '</li>';
         }
         $html .= '</ul>';

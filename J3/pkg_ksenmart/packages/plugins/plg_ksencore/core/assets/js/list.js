@@ -49,9 +49,6 @@ var KMList = function(variables) {
         var List = this;
         var class_name = 'scrolling-without-top';
         if (jQuery('#content .top').length > 0) {
-            jQuery('#content .top').css({
-                'width': jQuery('#content .cat').width()
-            });
             class_name = 'scrolling';
         }
         jQuery('#content .cat thead .stretch').css({

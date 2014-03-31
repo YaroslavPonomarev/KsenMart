@@ -539,14 +539,14 @@ class KsenMartModelProduct extends JModelKSList {
                         } elseif ($key == 'seo-parent-category') {
                             $categories = array();
                             $query = $this->_db->getQuery(true);
-                            $query->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . (int)$this->_id)->where('is_default=1');
+                            $query->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . $this->_db->Quote((int)$this->_id))->where('is_default=1');
                             $this->_db->setQuery($query);
                             $default_category = $this->_db->loadResult();
                             $parent = $default_category;
                             
                             while ($parent != 0) {
                                 $query = $this->_db->getQuery(true);
-                                $query->select('title,parent_id')->from('#__ksenmart_categories')->where('id=' . $parent);
+                                $query->select('title,parent_id')->from('#__ksenmart_categories')->where('id=' . $this->_db->Quote($parent));
                                 $this->_db->setQuery($query);
                                 $category = $this->_db->loadObject();
                                 if ($category->title != '' && $parent != $default_category) $categories[] = $category->title;
@@ -557,12 +557,12 @@ class KsenMartModelProduct extends JModelKSList {
                             foreach ($categories as $category) $title[] = $category;
                         } elseif ($key == 'seo-category') {
                             $query = $this->_db->getQuery(true);
-                            $query->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . (int)$this->_id)->where('is_default=1');
+                            $query->select('category_id')->from('#__ksenmart_products_categories')->where('product_id=' . $this->_db->Quote((int)$this->_id))->where('is_default=1');
                             $this->_db->setQuery($query);
                             $default_category = $this->_db->loadResult();
                             
                             $query = $this->_db->getQuery(true);
-                            $query->select('title')->from('#__ksenmart_categories')->where('id=' . $default_category);
+                            $query->select('title')->from('#__ksenmart_categories')->where('id=' . $this->_db->Quote($default_category));
                             $this->_db->setQuery($query);
                             $cat_title = $this->_db->loadResult();
                             if (!empty($cat_title)) $title[] = $cat_title;
@@ -590,8 +590,7 @@ class KsenMartModelProduct extends JModelKSList {
             }
         } else $title[] = $this->_product->metatitle;
         
-        $this->onExecuteAfter('getProductTitle', array(&$path_separator, &$title
-        ));
+        $this->onExecuteAfter('getProductTitle', array(&$path_separator, &$title));
         
         return implode($path_separator, $title);
     }

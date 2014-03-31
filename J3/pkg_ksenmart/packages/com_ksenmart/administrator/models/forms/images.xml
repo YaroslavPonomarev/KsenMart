@@ -9,7 +9,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/countries/original"
+			upload_to="media/com_ksenmart/images/countries/original"
 			upload_folder="countries"
 		/>
 		

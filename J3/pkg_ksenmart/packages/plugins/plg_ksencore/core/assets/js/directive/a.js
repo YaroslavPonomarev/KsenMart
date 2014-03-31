@@ -1,5 +1,5 @@
 angular.module('KS.directives', [])
-    .directive('a', function($rootScope) {
+/*.directive('a', function($rootScope) {
         return {
             restrict: 'E',
             priority: 100, // give it higher priority than built-in ng-click
@@ -10,4 +10,4 @@ angular.module('KS.directives', [])
                 })
             }
         }
-    })
+    })*/

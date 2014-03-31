@@ -120,7 +120,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/discounts/original"
+			upload_to="media/com_ksenmart/images/discounts/original"
 			upload_folder="discounts"
 		/>			
 

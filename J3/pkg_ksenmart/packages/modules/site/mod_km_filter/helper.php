@@ -8,7 +8,7 @@ class modKsenmartSearchHelper {
     public $countries = array();
     public $properties = array();
 
-    function init($mod_params) {
+    public function init($mod_params) {
         $params = JComponentHelper::getParams('com_ksenmart');
         $app    = JFactory::getApplication();
         $db     = JFactory::getDBO();
@@ -109,13 +109,13 @@ class modKsenmartSearchHelper {
         }
     }
 
-    function getChildCats($catid) {
+    private function getChildCats($catid) {
         $db = JFactory::getDBO();
         $return = array();
         $return1 = array();
         $return[] = $catid;
         $sql = $db->getQuery(true);
-        $sql->select('id')->from('#__ksenmart_categories')->where('parent=' . $catid);
+        $sql->select('id')->from('#__ksenmart_categories')->where('parent_id=' . $db->Quote($catid));
         $db->setQuery($sql);
         $cats = $db->loadObjectList();
         if (count($cats) > 0) {

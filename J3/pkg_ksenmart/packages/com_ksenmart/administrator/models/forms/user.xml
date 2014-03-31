@@ -102,7 +102,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/users/original"
+			upload_to="media/com_ksenmart/images/users/original"
 			upload_folder="users"
 		/>		
 			

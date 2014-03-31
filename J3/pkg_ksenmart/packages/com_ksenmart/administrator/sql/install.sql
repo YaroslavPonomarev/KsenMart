@@ -585,7 +585,7 @@ CREATE TABLE IF NOT EXISTS `#__ksenmart_widgets` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `parent_id` int(11) NOT NULL,
   `group` int(2) NOT NULL,
-  `class` set('double','half','') NOT NULL DEFAULT '',
+  `class` set('double','half','main','sub') NOT NULL DEFAULT 'sub',
   `href` varchar(255) NOT NULL,
   `image` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
@@ -594,23 +594,23 @@ CREATE TABLE IF NOT EXISTS `#__ksenmart_widgets` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=18 ;
 
 INSERT INTO `#__ksenmart_widgets` (`id`, `parent_id`, `group`, `class`, `href`, `image`, `name`, `view`) VALUES
-(1, 0, 1, 'double', 'index.php?option=com_ksenmart&view=orders', 'orders.png', 'orders', 'orders'),
-(2, 0, 1, '', 'index.php?option=com_ksenmart&view=catalog', 'products.png', 'catalog', 'catalog'),
-(3, 2, 1, '', 'index.php?option=com_ksenmart&view=properties', 'properties.png', 'properties', 'properties'),
-(4, 0, 2, '', 'index.php?option=com_ksenmart&view=discounts', 'sales.png', 'discounts', 'discounts'),
-(5, 0, 2, '', 'index.php?option=com_ksenmart&view=reports', 'reports.png', 'reports', 'reports'),
-(6, 0, 2, '', 'index.php?option=com_ksenmart&view=currencies', 'currencies.png', 'currencies', 'currencies'),
-(7, 2, 1, '', 'index.php?option=com_ksenmart&view=exportimport', 'module.png', 'exportimport', 'exportimport'),
-(8, 0, 2, '', 'index.php?option=com_ksenmart&view=payments', 'payments.png', 'payments', 'payments'),
-(9, 0, 3, '', 'index.php?option=com_ksenmart&view=settings', 'settings.png', 'settings', 'settings'),
-(10, 0, 3, '', 'index.php?option=com_ksenmart&view=seo', 'seo.png', 'seo', 'seo'),
-(11, 0, 3, '', 'index.php?option=com_ksenmart&view=countries', 'module.png', 'countries', 'countries'),
-(12, 0, 3, '', 'index.php?option=com_ksenmart&view=comments', 'comments.png', 'comments', 'comments'),
-(13, 0, 2, '', 'index.php?option=com_ksenmart&view=shippings', 'shippings.png', 'shippings', 'shippings'),
-(14, 0, 5, '', 'index.php?option=com_ksenmart&view=account&layout=vhost', 'hardware.png', 'vhost', 'account'),
-(15, 23, 5, '', 'index.php?option=com_ksenmart&view=account&layout=domains', 'domain.png', 'domains', 'account'),
-(16, 0, 5, '', 'index.php?option=com_ksenmart&view=account&layout=tickets_list', 'support.png', 'tickets', 'account'),
-(17, 0, 4, '', 'index.php?option=com_ksenmart&view=users', 'users.png', 'users', 'users');
+(1, 0, 1, 'double,main', 'index.php?option=com_ksenmart&view=orders', 'orders.png', 'orders', 'orders'),
+(2, 0, 1, 'main', 'index.php?option=com_ksenmart&view=catalog', 'products.png', 'catalog', 'catalog'),
+(3, 2, 1, 'main', 'index.php?option=com_ksenmart&view=properties', 'properties.png', 'properties', 'properties'),
+(4, 0, 2, 'main', 'index.php?option=com_ksenmart&view=discounts', 'sales.png', 'discounts', 'discounts'),
+(5, 0, 2, 'main', 'index.php?option=com_ksenmart&view=reports', 'reports.png', 'reports', 'reports'),
+(6, 0, 2, 'main', 'index.php?option=com_ksenmart&view=currencies', 'currencies.png', 'currencies', 'currencies'),
+(7, 2, 1, 'main', 'index.php?option=com_ksenmart&view=exportimport', 'exportimport.png', 'exportimport', 'exportimport'),
+(8, 0, 2, 'main', 'index.php?option=com_ksenmart&view=payments', 'payments.png', 'payments', 'payments'),
+(9, 0, 3, 'sub', 'index.php?option=com_ksenmart&view=settings', 'settings.png', 'settings', 'settings'),
+(10, 0, 3, 'sub', 'index.php?option=com_ksenmart&view=seo', 'seo.png', 'seo', 'seo'),
+(11, 0, 3, 'sub', 'index.php?option=com_ksenmart&view=countries', 'countries.png', 'countries', 'countries'),
+(12, 0, 3, 'sub', 'index.php?option=com_ksenmart&view=comments', 'comments.png', 'comments', 'comments'),
+(13, 0, 2, 'main', 'index.php?option=com_ksenmart&view=shippings', 'shippings.png', 'shippings', 'shippings'),
+(14, 0, 5, 'sub', 'index.php?option=com_ksenmart&view=account&layout=vhost', 'hardware.png', 'vhost', 'account'),
+(15, 23, 5, 'sub', 'index.php?option=com_ksenmart&view=account&layout=domains', 'domain.png', 'domains', 'account'),
+(16, 0, 5, 'sub', 'index.php?option=com_ksenmart&view=account&layout=tickets_list', 'support.png', 'tickets', 'account'),
+(17, 0, 4, 'sub', 'index.php?option=com_ksenmart&view=users', 'users.png', 'users', 'users');
 
 CREATE TABLE IF NOT EXISTS `#__ksenmart_widgets_types` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -660,3 +660,33 @@ INSERT INTO `#__ksenmart_yandeximport` (`setting`, `value`) VALUES
 ('categories', '{}'),
 ('shopname', ''),
 ('company', '');
+
+
+ALTER TABLE `#__ksenmart_products` ENGINE=INNODB;
+ALTER TABLE `#__ksenmart_categories` ENGINE=INNODB;
+ALTER TABLE `#__ksenmart_properties` ENGINE=INNODB;
+ALTER TABLE `#__ksenmart_property_values` ENGINE=INNODB;
+ALTER TABLE `#__ksenmart_product_properties_values` ENGINE=INNODB;
+
+ALTER TABLE `#__ksenmart_product_properties_values` ADD INDEX(`product_id`);
+ALTER TABLE `#__ksenmart_product_properties_values` ADD INDEX(`property_id`);
+ALTER TABLE `#__ksenmart_product_properties_values` ADD INDEX(`value_id`);
+ALTER TABLE `#__ksenmart_products_categories` ADD INDEX(`category_id`);
+ALTER TABLE `#__ksenmart_product_categories_properties` ADD INDEX(`category_id`);
+ALTER TABLE `#__ksenmart_product_categories_properties` ADD INDEX(`property_id`);
+
+#-------------------------------------------------------------------------------------------------------------------------
+
+ALTER TABLE `#__ksenmart_products_categories` ADD FOREIGN KEY (`product_id`) REFERENCES `#__ksenmart_products`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION; 
+ALTER TABLE `#__ksenmart_products_categories` ADD FOREIGN KEY (`category_id`) REFERENCES `#__ksenmart_categories`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+#-------------------------------------------------------------------------------------------------------------------------
+
+ALTER TABLE `#__ksenmart_product_categories_properties` ADD FOREIGN KEY (`category_id`) REFERENCES `#__ksenmart_categories`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+ALTER TABLE `#__ksenmart_product_categories_properties` ADD FOREIGN KEY (`property_id`) REFERENCES `#__ksenmart_properties`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+#-------------------------------------------------------------------------------------------------------------------------
+
+ALTER TABLE `#__ksenmart_product_properties_values` ADD FOREIGN KEY (`product_id`) REFERENCES `#__ksenmart_products`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION; 
+ALTER TABLE `#__ksenmart_product_properties_values` ADD FOREIGN KEY (`property_id`) REFERENCES `#__ksenmart_properties`(`id`) ON DELETE CASCADE ON UPDATE NO ACTION; 
+ALTER TABLE `#__ksenmart_product_properties_values` ADD FOREIGN KEY (`value_id`) REFERENCES `#__ksenmart_property_values`(`id`) ON DELETE NO ACTION ON UPDATE NO ACTION;

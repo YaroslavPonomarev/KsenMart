@@ -2,10 +2,10 @@ UPDATE
 	`#__modules` 
 SET 
 	`title` = 'Поиск KsenMart', 
-	`position` = 'km-list-left', 
-	`published` = '1',
+	`position` = 'ks-list-left', 
+	`published` = 1,
 	`ordering` = 1,
-	`params` = '{"views":["catalog"]}'
+	`params` = '{"views":["catalog"], "views_ksg":["images"]}'
 WHERE 
 	`module` = 'mod_ks_search'
 ;

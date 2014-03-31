@@ -974,22 +974,9 @@ class KsenMartModelCatalog extends JModelKSAdmin {
         return $return;
     }
 
-    function deleteCategory($id) {
+    public function deleteCategory($id) {
         $this->onExecuteBefore('deleteCategory', array(&$id));
 
-        $category = KSSystem::loadDbItem($id, 'categories');
-        $query = $this->_db->getQuery(true);
-        $query->delete('#__ksenmart_products_categories')->where('category_id=' . $id);
-        $this->_db->setQuery($query);
-        $this->_db->query();
-        $query = $this->_db->getQuery(true);
-        $query->delete('#__ksenmart_product_categories_properties')->where('category_id=' . $id);
-        $this->_db->setQuery($query);
-        $this->_db->query();
-        $query = $this->_db->getQuery(true);
-        $query->update('#__ksenmart_categories')->set('parent=' . $category->parent_id)->where('parent=' . $id);
-        $this->_db->setQuery($query);
-        $this->_db->query();
         $table = $this->getTable('categories');
         $table->delete($id);
         KSMedia::deleteItemMedia($id, 'category');
@@ -1044,5 +1031,4 @@ class KsenMartModelCatalog extends JModelKSAdmin {
         $this->onExecuteAfter('deleteManufacturer', array(&$id));
         return true;
     }
-
 }

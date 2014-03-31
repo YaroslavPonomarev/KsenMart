@@ -3,7 +3,7 @@ UPDATE
 SET 
 	`title` = 'Категории KsenMart', 
 	`position` = 'left', 
-	`published` = '1'
+	`published` = 1
 WHERE 
 	`module` = 'mod_km_categories'
 AND

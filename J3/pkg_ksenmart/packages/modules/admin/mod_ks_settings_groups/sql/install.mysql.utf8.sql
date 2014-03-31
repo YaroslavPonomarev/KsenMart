@@ -1,10 +1,10 @@
 UPDATE 
 	`#__modules` 
 SET 
-	`title` = 'Группы настроек KsenMart', 
-	`position` = 'km-list-left', 
-	`published` = '1',
-	`params` = '{"views":["settings"]}'
+	`title` = 'Группы настроек Ksen', 
+	`position` = 'ks-list-left', 
+	`published` = 1,
+	`params` = '{"views":["settings"], "views_ksg":["settings"]}'
 WHERE 
 	`module` = 'mod_ks_settings_groups'
 ;

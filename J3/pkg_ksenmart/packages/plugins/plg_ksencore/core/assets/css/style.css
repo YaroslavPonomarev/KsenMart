@@ -1313,6 +1313,14 @@ table.cat td .inputbox {
 
 .main-icons a:hover,
 .widgets a:hover {
+   background: #ce0115 !important;
+}
+
+.widgets a.sub {
+   background: #8dad00;
+}
+
+.widgets a.sub:hover {
    background: #A10048 !important;
 }
 
@@ -1962,8 +1970,14 @@ table.cat td.name .icon img{
 {
    float: left;
    width: 100%;
-   overflow-x: hidden;
    overflow-y: hidden;
+}
+
+#metro-ui .widgets a{
+   -webkit-transition: all 0.5s ease;
+   -moz-transition: all 0.5s ease;
+   -o-transition: all 0.5s ease;
+   transition: all 0.5s ease;
 }
 
 #edit-panel {
@@ -2070,6 +2084,7 @@ table.cat td.name .icon img{
    height:159px;
    margin: 0;
 }
+
 .widgets a span {
    float: left;
    width:100%;

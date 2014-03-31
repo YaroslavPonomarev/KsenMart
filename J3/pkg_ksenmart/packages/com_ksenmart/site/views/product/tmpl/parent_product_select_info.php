@@ -21,7 +21,7 @@
 		<select class="sel" id="property_childs" name="property_childs" required="true">
 			<option value="0">Выбрать</option>
 			<?php foreach($this->childs_titles as $childs_title):?>
-			<option value="<?php echo JRoute::_('index.php?option=com_ksenmart&view=shopproduct&id='.$childs_title->id.':'.$childs_title->alias.'&Itemid='.KMSystem::getShopItemid())?>" <?php echo ($childs_title->id==$this->product->id?'selected':'')?>><?php echo $childs_title->title?></option>
+			<option value="<?php echo JRoute::_('index.php?option=com_ksenmart&view=product&id='.$childs_title->id.':'.$childs_title->alias.'&Itemid='.KMSystem::getShopItemid())?>" <?php echo ($childs_title->id==$this->product->id?'selected':'')?>><?php echo $childs_title->title?></option>
 			<?php endforeach;?>
 		</select>			
 	</div>
@@ -31,7 +31,7 @@
 	<div class="control-group">
 		<label class="control-label"><?php echo JText::_('KSM_PRODUCT_MANUFACTURER'); ?></label>
 		<div class="controls">
-			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=shopcatalog&manufacturers[]='.$this->product->manufacturer->id.'&Itemid='.KMSystem::getShopItemid().'&clicked=manufacturers')?>"><?php echo $this->product->manufacturer->title?></a></span>
+			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&manufacturers[]='.$this->product->manufacturer->id.'&Itemid='.KMSystem::getShopItemid().'&clicked=manufacturers')?>"><?php echo $this->product->manufacturer->title?></a></span>
 		</div>
 	</div>
 <?php } ?>
@@ -47,7 +47,7 @@
 	<div class="control-group">
 		<label class="control-label"><?php echo JText::_('KSM_PRODUCT_COUNTRY'); ?></label>
 		<div class="controls">
-			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=shopcatalog&countries[]='.$this->product->manufacturer->country->id.'&Itemid='.KMSystem::getShopItemid().'&clicked=countries')?>"><?php echo $this->product->manufacturer->country->title?></a></span>
+			<span><a href="<?php echo JRoute::_('index.php?option=com_ksenmart&view=catalog&countries[]='.$this->product->manufacturer->country->id.'&Itemid='.KMSystem::getShopItemid().'&clicked=countries')?>"><?php echo $this->product->manufacturer->country->title?></a></span>
 		</div>
 	</div>
 <?php } ?>	

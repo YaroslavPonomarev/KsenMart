@@ -2,6 +2,57 @@ body ul {
 	margin: 0;
 }
 
+.btn,
+.btn:visited,
+.btn:link{
+    display: inline-block;
+    padding: 11px 10px !important;
+    font-size: 14px;
+    text-decoration: none;
+    color: #fff !important;
+    border: none !important;
+    cursor: pointer;
+    background: #525252;
+    font-family: "Trebuchet MS";
+    border-radius: 0px !important; 
+    box-shadow: none !important;
+    -webkit-text-shadow: none !important;
+    text-shadow: none !important;
+}
+
+.admin .btn:hover,
+.btn.btn-other:hover{
+    background: #1D86BA;
+}
+
+.btn.save {
+    background: #B9CE01;
+}
+
+.btn.save:hover {
+    color: #fff;
+    background: #1D86BA;
+}
+
+a.btn.close.close,
+a.btn.close:link,
+a.btn.close:visited{
+    opacity: 1;
+    color: #000;
+    background: transparent;
+    text-decoration: underline;
+}
+
+a.btn.close:hover{
+    opacity: 1;
+    text-decoration: none;
+}
+
+.btn.close{
+    opacity: 1;
+    background: transparent;
+}
+
 .admin > .header .container-logo,
 #toolbar-box {
 	display: none;
@@ -797,7 +848,7 @@ margin:0xp;
 .form .ksm-slidemodule-productcategories .lists li label.def-lbl{
 	position: absolute;
 	right: 0px;
-	margin-top: -36px;
+	margin-top: -44px;
 	padding: 0px;
 	height: 36px;
 	width: 36px;
@@ -1012,7 +1063,7 @@ a.add {
 .pagination li a {
     display: block;
     text-align: center;
-    padding: 0 10px;
+    padding: 5px 10px;
 }
 
 .pagi span {
@@ -1484,7 +1535,11 @@ table.cat td.name {padding-left:10px;}
 table.cat td.changeble p {display:none;}
 table.cat td .inputbox {padding:2px 5px;}
 table.cat td.name a.save {background:none;}
-table.cat td.del a {cursor:pointer;}
+table.cat td.del a {
+	cursor:pointer;
+	display: inline-block;
+	float: none;
+}
 #images-preview .cusel {margin:0px;}
 #system-message > dd > ul,#system-message {margin:0px!important;}
 #cat .drop .inputbox {
@@ -1800,7 +1855,12 @@ table.cat td.name .img {
     overflow: hidden;
     margin-right: 4px;
     display: inline-block;
-    background-color: #525252;
+    background: #525252;
+}
+
+.btn.btn-file.active,
+.btn.btn-file:hover {
+	background: #1D86BA;
 }
 
 .btn-file input[type="file"] {
@@ -1987,7 +2047,7 @@ table.cat .KSList__item td.name .image__desc p {
 	float: none;
 }
 
-.layout_changer a.btn{
+.admin .layout_changer a.btn{
 	display: inline-block;
 }
 
@@ -2022,6 +2082,7 @@ table.cat .KSList__item td.name .image__desc p {
 .list table.cat tr{
 	display: table;
 	cursor: move;
+	width: 100%;
 }
 
 .list table.cat th,
@@ -2050,7 +2111,7 @@ table.cat .KSList__item td.name .image__desc p {
 */
 .list table.cat{
 	position: relative;
-	/*font-size: 0;*/
+	width: 100%;
 }
 
 .list table.cat .list_photo {
@@ -2073,4 +2134,26 @@ table.cat .KSList__item td.name .image__desc p {
 
 .list table.cat .del {
 	width: 6%;
+}
+
+.com_ksengallery div.modal.fade.in{
+	top: 0;
+	left: auto;
+	margin: 0;
+	border: none;
+	border-radius: 0;
+	width: 100%;
+	background-color: transparent;
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	-o-box-shadow: none;
+	box-shadow: none;
+	-webkit-transition: none;
+	-moz-transition: none;
+	-o-transition: none;
+	transition: none;
+}
+
+.admin .btn.btn-subhead {
+	display: none;
 }

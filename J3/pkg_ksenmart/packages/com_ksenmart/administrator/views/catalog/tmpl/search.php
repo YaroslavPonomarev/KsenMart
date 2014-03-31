@@ -1,6 +1,5 @@
-<?php
-defined( '_JEXEC' ) or die;
-JHTML::_('behavior.modal');
+<?php defined( '_JEXEC' ) or die;
+	JHTML::_('behavior.modal');
 ?>
 <div class="form">
 	<div class="heading">
@@ -8,8 +7,8 @@ JHTML::_('behavior.modal');
 			<?php echo $this->title; ?>
 		</h3>
 		<div class="save-close">
-			<input type="button" value="<?php echo JText::_('ksm_add')?>" class="save">
-			<input type="button" class="close" onclick="parent.closePopupWindow();">
+			<input type="button" value="<?php echo JText::_('ksm_add')?>" class="save" ng-click="add_related()">
+			<input type="button" class="close" onclick="parent.closePopupWindow();" ng-click="cancel()">
 		</div>
 	</div>
 	<div class="edit">
@@ -37,7 +36,7 @@ JHTML::_('behavior.modal');
 	</div>	
 </div>	
 <script>
-var ProductsList=new KMList({
+var ProductsList = new KMList({
 	'view':'catalog',
 	'item_tpl':'search_item_form',
 	'no_items_tpl':'search_no_items',

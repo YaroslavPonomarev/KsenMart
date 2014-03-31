@@ -146,7 +146,7 @@ jQuery(document).ready(function() {
 
     jQuery('.buy [type="submit"]').parents('form').on('submit', function() {
 
-        var form = jQuery(this).parents('form');
+        var form = jQuery(this);
         var prd_id = form.find('input[name="id"]');
         var prd_price = form.find('input[name="price"]');
         var count = parseFloat(form.find('input[name="count"]').val());

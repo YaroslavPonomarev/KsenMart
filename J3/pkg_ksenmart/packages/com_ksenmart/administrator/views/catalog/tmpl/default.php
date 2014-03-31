@@ -20,6 +20,7 @@ JHTML::_('behavior.modal');
 				<div id="tree">
 					<form id="list-filters">
 						<ul>
+							<?php echo KSSystem::loadModules('ks-list-left')?>
 							<?php echo KSSystem::loadModules('km-list-left')?>
 						</ul>
 					</form>			

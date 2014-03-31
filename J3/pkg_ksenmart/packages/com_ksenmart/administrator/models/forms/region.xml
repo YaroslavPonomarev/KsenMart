@@ -79,7 +79,7 @@
 			type="images" 
 			label="KSM_PHOTOS"
 			class="active"
-			upload_to="media/ksenmart/images/regions/original"
+			upload_to="media/com_ksenmart/images/regions/original"
 			upload_folder="regions"
 		/>
 		

@@ -51,7 +51,18 @@
 					multiple="true"
 					size="7"
 					label="MOD_KS_PAGES_LABEL"
-					description="MOD_KS_PAGES_DESC" />
+					description="MOD_KS_PAGES_DESC" 
+				/>
+				<field
+					name="views_ksg"
+					default="settings"
+					type="ksadminviews" 
+					extension="ksengallery"
+					multiple="true"
+					size="7"
+					label="MOD_KS_PAGES_LABEL"
+					description="MOD_KS_PAGES_DESC" 
+				/>
 			</fieldset>
 			<fieldset
 				name="advanced">
