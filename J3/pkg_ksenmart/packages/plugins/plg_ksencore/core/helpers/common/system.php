@@ -172,10 +172,10 @@ class KSSystem {
      */
     public static function loadJSLanguage() {
         $lang = JFactory::getLanguage();
-        $lang->load('com_ksenmart.js', JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_ksenmart', null, false, false);
+        $lang->load('com_ksenmart.js', JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart', null, false, false);
         
         $lang = $lang->getTag();
-        $filename = JPATH_COMPONENT . DS . 'language' . DS . $lang . DS . $lang . '.com_ksenmart.js.ini';
+        $filename = JPATH_COMPONENT . DIRECTORY_SEPARATOR . 'language' . DIRECTORY_SEPARATOR . $lang . DIRECTORY_SEPARATOR . $lang . '.com_ksenmart.js.ini';
         $version = phpversion();
         
         $php_errormsg = null;
@@ -222,7 +222,7 @@ class KSSystem {
             
             return false;
         }
-        JTable::addIncludePath(JPATH_ADMINISTRATOR . DS . 'components' . DS . 'com_ksenmart' . DS . 'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'tables');
         $table = JTable::getInstance($table, 'KsenmartTable', array());
         
         if ($id > 0) {
@@ -346,15 +346,15 @@ class KSSystem {
         
         jimport('joomla.application.component.model');
         
-        $modelFile = JPATH_SITE . DS . 'components' . DS . self::$ext_name_com . DS . 'models' . DS . $name . '.php';
-        $adminModelFile = JPATH_ADMINISTRATOR . DS . 'components' . DS . self::$ext_name_com . DS . 'models' . DS . $name . '.php';
+        $modelFile = JPATH_SITE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . $name . '.php';
+        $adminModelFile = JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'models' . DIRECTORY_SEPARATOR . $name . '.php';
         
         if (file_exists($modelFile)) {
             require_once ($modelFile);
         } elseif (file_exists($adminModelFile)) {
             require_once ($adminModelFile);
         } else {
-            JModelLegacy::addIncludePath(JPATH_SITE . DS . 'components' . DS . self::$ext_name_com . DS . 'models');
+            JModelLegacy::addIncludePath(JPATH_SITE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'models');
         }
         //Get the right model prefix, e.g. UserModel for com_user
         $model_name = ucfirst(self::$ext_name) . 'Model';
@@ -404,15 +404,15 @@ class KSSystem {
         
         jimport('joomla.application.component.controller');
         
-        $controllerFile = JPATH_SITE . DS . 'components' . DS . self::$ext_name_com . DS . 'controllers' . DS . $name . '.php';
-        $adminControllerFile = JPATH_ADMINISTRATOR . DS . 'components' . DS . self::$ext_name_com . DS . 'controllers' . DS . $name . '.php';
+        $controllerFile = JPATH_SITE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . $name . '.php';
+        $adminControllerFile = JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'controllers' . DIRECTORY_SEPARATOR . $name . '.php';
         
         if (file_exists($controllerFile)) {
             require_once ($controllerFile);
         } elseif (file_exists($adminControllerFile)) {
             require_once ($adminControllerFile);
         } else {
-            JControllerLegacy::addIncludePath(JPATH_SITE . DS . 'components' . DS . self::$ext_name_com . DS . 'controllers');
+            JControllerLegacy::addIncludePath(JPATH_SITE . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . self::$ext_name_com . DIRECTORY_SEPARATOR . 'controllers');
         }
         
         $controller_name = ucfirst(self::$ext_name) . 'Controller';

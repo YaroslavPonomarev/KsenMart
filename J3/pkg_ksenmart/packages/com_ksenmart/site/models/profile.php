@@ -649,7 +649,7 @@ class KsenMartModelProfile extends JModelKSList {
         $boundx = $jinput->get('boundx', 0, 'int');
         $boundy = $jinput->get('boundy', 0, 'int');
         
-        $uploaddir = JPATH_ROOT . DS . 'media' . DS . 'ksenmart' . DS . 'images' . DS . 'users';
+        $uploaddir = JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'ksenmart' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'users';
 
         if($resize){
             foreach ($_FILES as $key => $value) {
@@ -665,15 +665,15 @@ class KsenMartModelProfile extends JModelKSList {
                     $value['name'] = $uid.'_'.$value['name'];
                 }
                 
-                $uploadfile_original = $uploaddir . DS . 'original' . DS. basename($value['name']);
-                $uploadfile_thumb    = $uploaddir . DS . 'thumb' . DS. basename($value['name']);
+                $uploadfile_original = $uploaddir . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR. basename($value['name']);
+                $uploadfile_thumb    = $uploaddir . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR. basename($value['name']);
 
-                if(!file_exists($uploaddir . DS . 'original' . DS)){
-                    mkdir($uploaddir . DS . 'original' . DS);
+                if(!file_exists($uploaddir . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR)){
+                    mkdir($uploaddir . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR);
                 }
 
-                if(!file_exists($uploaddir . DS . 'thumb' . DS)){
-                    mkdir($uploaddir . DS . 'thumb' . DS);
+                if(!file_exists($uploaddir . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR)){
+                    mkdir($uploaddir . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR);
                 }                
 
                 if(!is_uploaded_file($value['tmp_name'])){
@@ -692,11 +692,11 @@ class KsenMartModelProfile extends JModelKSList {
                 return true;
             }
         }else{
-            $avatar_full   = JPATH_ROOT . DS . JRequest::getVar('avatar_full', null);
+            $avatar_full   = JPATH_ROOT . DIRECTORY_SEPARATOR . JRequest::getVar('avatar_full', null);
             if(!empty($avatar_full)){
                 if(file_exists($avatar_full)){
                     $pathinfo       = pathinfo($avatar_full);
-                    $thumb_patch    = $uploaddir . DS . 'thumb' . DS;
+                    $thumb_patch    = $uploaddir . DIRECTORY_SEPARATOR . 'thumb' . DIRECTORY_SEPARATOR;
                     
                     if(copy($pathinfo['dirname'].'/'.$pathinfo['basename'], $thumb_patch.$pathinfo['basename'])){
                         if($this->resizeImage($thumb_patch.$pathinfo['basename'], $x1, $y1, $w, $h, $boundx, $boundy)){

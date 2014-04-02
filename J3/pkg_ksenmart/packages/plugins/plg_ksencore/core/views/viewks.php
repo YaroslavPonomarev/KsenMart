@@ -14,7 +14,7 @@ abstract class JViewKS extends JViewLegacy {
         $this->ext_prefix   = $ext_prefix;
         $this->ext_name     = $ext_name;
 
-        $config['base_path'] = JPATH_ROOT . DS . 'components' . DS . $this->ext_name_com;
+        $config['base_path'] = JPATH_ROOT . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $this->ext_name_com;
         parent::__construct($config);
 
         $name = $this->getName();

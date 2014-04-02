@@ -19,7 +19,7 @@ class JFormFieldImages extends JFormField {
         }
         foreach($this->value as $file) {
             $cparams = JComponentHelper::getParams('com_ksenmart');
-            $source_filename = JPATH_ROOT . DS . 'media' . DS . 'com_ksenmart' . DS . $file->media_type . 's' . DS . $file->folder . DS . 'original' . DS . $file->filename;
+            $source_filename = JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . $file->media_type . 's' . DIRECTORY_SEPARATOR . $file->folder . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR . $file->filename;
 
             $form = JForm::getInstance('com_ksenmart.image' . $file->id, 'image', array('control' => $this->name . '[' . $file->id . '][params]'));
             $params = (array )json_decode($file->params);

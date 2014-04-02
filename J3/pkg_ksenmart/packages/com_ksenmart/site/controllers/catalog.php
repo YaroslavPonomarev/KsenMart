@@ -3,7 +3,7 @@
 jimport('joomla.application.component.controller');
 class KsenMartControllerCatalog extends JControllerLegacy {
     public function __construct($config = array()) {
-        $config['base_path'] = JPATH_ROOT . DS . 'components' . DS . 'com_ksenmart';
+        $config['base_path'] = JPATH_ROOT . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart';
         parent::__construct($config);
         $this->registerTask('get_product_links', 'get_product_links');
     }

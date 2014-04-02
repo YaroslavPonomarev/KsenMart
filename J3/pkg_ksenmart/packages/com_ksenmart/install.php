@@ -11,25 +11,25 @@ class com_ksenmartInstallerScript {
 	function postflight($type, $parent) {
 		jimport('joomla.installer.helper');
 
-		if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
+		if(!defined('DIRECTORY_SEPARATOR')) define('DIRECTORY_SEPARATOR', DIRECTORY_SEPARATOR);
 
-		$path = JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . 'com_ksenmart' . DS . 'install';
+		$path = JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'install';
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
-		if (!JFile::move($path . DS . 'administrator-templates-system' . DS . 'ksenmart.php', JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php')) {
+		if (!JFile::move($path . DIRECTORY_SEPARATOR . 'administrator-templates-system' . DIRECTORY_SEPARATOR . 'ksenmart.php', JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt move file');
 		}
-		if (!JFile::move($path . DS . 'administrator-templates-system' . DS . 'ksenmart-full.php', JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart-full.php')) {
+		if (!JFile::move($path . DIRECTORY_SEPARATOR . 'administrator-templates-system' . DIRECTORY_SEPARATOR . 'ksenmart-full.php', JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart-full.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt move file');
 		}
-		if (!JFile::move($path . DS . 'templates-system' . DS . 'ksenmart.php', JPATH_ROOT . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php')) {
+		if (!JFile::move($path . DIRECTORY_SEPARATOR . 'templates-system' . DIRECTORY_SEPARATOR . 'ksenmart.php', JPATH_ROOT . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt move file');
 		}
-		JFolder::create(JPATH_ROOT . DS . 'images' . DS . 'ksenmart');
-		JFolder::copy($path . DS . 'images-ksenmart', JPATH_ROOT . DS . 'images' . DS . 'ksenmart', null, 1);
+		JFolder::create(JPATH_ROOT . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'ksenmart');
+		JFolder::copy($path . DIRECTORY_SEPARATOR . 'images-ksenmart', JPATH_ROOT . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . 'ksenmart', null, 1);
 	
 		$db = JFactory::getDBO();
 		$query = $db->getQuery(true);
@@ -48,15 +48,15 @@ class com_ksenmartInstallerScript {
 	
 	function uninstall($parent) {
 		jimport('joomla.installer.helper');
-		if (file_exists(JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php') && !JFile::delete(JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php')) {
+		if (file_exists(JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php') && !JFile::delete(JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt delete file');
 		}
-		if (file_exists(JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart-full.php') && !JFile::delete(JPATH_ROOT . DS . 'administrator' . DS . 'templates' . DS . 'system' . DS . 'ksenmart-full.php')) {
+		if (file_exists(JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart-full.php') && !JFile::delete(JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart-full.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt delete file');
 		}
-		if (file_exists(JPATH_ROOT . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php') && !JFile::delete(JPATH_ROOT . DS . 'templates' . DS . 'system' . DS . 'ksenmart.php')) {
+		if (file_exists(JPATH_ROOT . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php') && !JFile::delete(JPATH_ROOT . DIRECTORY_SEPARATOR . 'templates' . DIRECTORY_SEPARATOR . 'system' . DIRECTORY_SEPARATOR . 'ksenmart.php')) {
 			$app = JFactory::getApplication();
 			$app->enqueueMessage('Couldnt delete file');
 		}

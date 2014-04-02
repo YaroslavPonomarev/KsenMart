@@ -169,7 +169,7 @@ class KsenMartModelCatalog extends JModelKSAdmin {
                 $ptable->id = null;
                 if($ptable->check()) {
                     if($ptable->store()) {
-                        copy(JPATH_ROOT . DS . 'media' . DS . 'ksenmart' . DS . 'images' . DS . $ptable->folder . DS . 'original' . DS . $old_filename, JPATH_ROOT . DS . 'media' . DS . 'ksenmart' . DS . 'images' . DS . $ptable->folder . DS . 'original' . DS . $filename);
+                        copy(JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'ksenmart' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $ptable->folder . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR . $old_filename, JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . 'ksenmart' . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $ptable->folder . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR . $filename);
                     } else  return false;
                 }
             }

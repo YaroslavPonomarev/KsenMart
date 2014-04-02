@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die('Restricted access');
 
 if (!class_exists('KMDiscountPlugin')) {
-	require (JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . 'com_ksenmart' . DS . 'classes' . DS . 'kmdiscountplugin.php');
+	require (JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'classes' . DIRECTORY_SEPARATOR . 'kmdiscountplugin.php');
 }
 
 class plgKMDiscountCoupons extends KMDiscountPlugin {

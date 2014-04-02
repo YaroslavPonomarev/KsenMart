@@ -1,7 +1,7 @@
 <?php defined('_JEXEC') or die;
 
 KSSystem::loadModuleFiles('mod_ks_mainmenu');
-require_once (dirname(__file__) . DS . 'helper.php');
+require_once (dirname(__file__) . DIRECTORY_SEPARATOR . 'helper.php');
 
 global $ext_name_com, $ext_prefix;
 

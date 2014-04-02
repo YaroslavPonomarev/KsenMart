@@ -1,7 +1,5 @@
 <?php defined('_JEXEC') or die;
 
-if(!defined('DS')) define('DS', DIRECTORY_SEPARATOR);
-
 define('KSC_PLUGIN', 'plg_system_ksencore');
 
 define('KSC_ADMIN', 'ksencore');

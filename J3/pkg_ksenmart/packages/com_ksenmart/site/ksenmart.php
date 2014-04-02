@@ -7,7 +7,7 @@ $dispatcher->trigger('onLoadKsen', array('ksenmart', array('common'), array(), a
 $dispatcher->trigger('onBeforeStartComponent',array());
 
 if (!class_exists('KsenmartHtmlHelper')) {
-	require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
+	require JPATH_ROOT.DIRECTORY_SEPARATOR.'components'.DIRECTORY_SEPARATOR.'com_ksenmart'.DIRECTORY_SEPARATOR. 'helpers'.DIRECTORY_SEPARATOR.'head.php';
 }
 KsenmartHtmlHelper::AddHeadTags();
 

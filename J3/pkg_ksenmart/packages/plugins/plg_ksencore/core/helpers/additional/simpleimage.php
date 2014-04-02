@@ -796,9 +796,9 @@ class SimpleImage {
 		switch($params['background_type'])
 		{
 			case 'file':
-				if (!empty($file) && file_exists(JPATH_ROOT.DS.$file))
+				if (!empty($file) && file_exists(JPATH_ROOT.DIRECTORY_SEPARATOR.$file))
 				{
-					$background = new SimpleImage(JPATH_ROOT.DS.$file);
+					$background = new SimpleImage(JPATH_ROOT.DIRECTORY_SEPARATOR.$file);
 					imagecopyresampled($bg,$background->image,0,0,0,0,$width,$height,$background->width,$background->height);
 				}
 				else

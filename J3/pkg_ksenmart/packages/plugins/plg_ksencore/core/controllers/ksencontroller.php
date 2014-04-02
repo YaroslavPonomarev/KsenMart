@@ -94,7 +94,7 @@ class KsenController extends JControllerAdmin {
         $message = array();
         $errors = 0;
 
-        JTable::addIncludePath(JPATH_ADMINISTRATOR . DS . 'components' . DS . $this->ext_name_com . DS . 'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $this->ext_name_com . DIRECTORY_SEPARATOR . 'tables');
         $table = JTable::getInstance($table, ucfirst($this->ext_name) . 'Table', array());
         if(!$table) {
             $message[] = JText::_('KSM_CANNOT_GET_TABLE');
@@ -129,7 +129,7 @@ class KsenController extends JControllerAdmin {
         $message = array();
         $errors = 0;
 
-        JTable::addIncludePath(JPATH_ADMINISTRATOR . DS . 'components' . DS . $this->ext_name_com . DS . 'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $this->ext_name_com . DIRECTORY_SEPARATOR . 'tables');
         $table = JTable::getInstance($table, ucfirst($this->ext_name) . 'Table', array());
         if(!$table) {
             $message[] = JText::_('KSM_CANNOT_GET_TABLE');

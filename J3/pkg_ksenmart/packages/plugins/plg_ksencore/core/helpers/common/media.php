@@ -23,7 +23,7 @@ class KSMedia {
         foreach($iparams as $iparam) $dst_file = $iparam . '-' . $dst_file;
 
         if(!class_exists('SimpleImage')) {
-            require dirname(__file__) . DS . '..' . DS . 'additional' . DS . 'simpleimage.php';
+            require dirname(__file__) . DIRECTORY_SEPARATOR . '..' . DIRECTORY_SEPARATOR . 'additional' . DIRECTORY_SEPARATOR . 'simpleimage.php';
         }/*
         if($width == 0) {
             $width = $params->get('thumb_width', 120);
@@ -42,23 +42,23 @@ class KSMedia {
         $dst_path = JPATH_ROOT;
 
         foreach($dst_path_segments as $v) {
-            $dst_path .= DS . $v;
+            $dst_path .= DIRECTORY_SEPARATOR . $v;
             if(!JFolder::exists($dst_path)) {
                 JFolder::create($dst_path);
                 chmod($dst_path, 0777);
             }
         }
-        ($file != '') ? $dst_filename = $dst_path . DS . $dst_file : $dst_filename = $dst_path . DS . 'no.jpg';
+        ($file != '') ? $dst_filename = $dst_path . DIRECTORY_SEPARATOR . $dst_file : $dst_filename = $dst_path . DIRECTORY_SEPARATOR . 'no.jpg';
         
         if(!JFile::exists($dst_filename)) {
             if($file != '') {
-                $src_filename = JPATH_ROOT . DS . 'media' . DS . $ext_name_com . DS . 'images' . DS . $folder . DS . 'original' . DS . basename($file);
+                $src_filename = JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . $ext_name_com . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'original' . DIRECTORY_SEPARATOR . basename($file);
             } else {
-                $src_filename = JPATH_ROOT . DS . 'media' . DS . $ext_name_com . DS . 'images' . DS . $folder . DS . 'no.jpg';
+                $src_filename = JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . $ext_name_com . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'no.jpg';
             }
 
             if(!JFile::exists($src_filename)) {
-                $src_filename = JPATH_ROOT . DS . 'media' . DS . $ext_name_com . DS . 'images' . DS . $folder . DS . 'no.jpg';
+                $src_filename = JPATH_ROOT . DIRECTORY_SEPARATOR . 'media' . DIRECTORY_SEPARATOR . $ext_name_com . DIRECTORY_SEPARATOR . 'images' . DIRECTORY_SEPARATOR . $folder . DIRECTORY_SEPARATOR . 'no.jpg';
             }
             $image = new SimpleImage($src_filename);
             
@@ -103,22 +103,22 @@ class KSMedia {
 
             if($iparams['watermark'] == 1) {
                 $watermark_image = $params->get('watermark_image', '');
-                if(file_exists(JPATH_ROOT . DS . $watermark_image) && is_file(JPATH_ROOT . DS . $watermark_image))
-					$image->watermark(JPATH_ROOT . DS . $watermark_image, $iparams);
+                if(file_exists(JPATH_ROOT . DIRECTORY_SEPARATOR . $watermark_image) && is_file(JPATH_ROOT . DIRECTORY_SEPARATOR . $watermark_image))
+					$image->watermark(JPATH_ROOT . DIRECTORY_SEPARATOR . $watermark_image, $iparams);
             }
 
             $bg_file = $params->get('background_file', '');
             $image->background($width, $height, $iparams, $bg_file, $params->get('background_color', 'ffffff'));
             //$image->best_fit($width, $height);
             
-            if($iparams['background_type'] == 'file' && (empty($bg_file) || (!empty($bg_file) && !file_exists(JPATH_ROOT . DS . $file))))
+            if($iparams['background_type'] == 'file' && (empty($bg_file) || (!empty($bg_file) && !file_exists(JPATH_ROOT . DIRECTORY_SEPARATOR . $file))))
 				$image->save($dst_filename, 'png');
             else
 				$image->save($dst_filename);
 
         }
 
-        return JURI::root() . str_replace(JPATH_ROOT . DS, '', $dst_filename);
+        return JURI::root() . str_replace(JPATH_ROOT . DIRECTORY_SEPARATOR, '', $dst_filename);
     }
 
     public static function setItemMedia($item = null, $owner_type = null) {
@@ -161,7 +161,7 @@ class KSMedia {
         $prefix          = ucfirst($ext_name);
 
         $in = array();
-        JTable::addIncludePath(JPATH_ADMINISTRATOR . DS . 'components' . DS . $ext_name_com . DS . 'tables');
+        JTable::addIncludePath(JPATH_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $ext_name_com . DIRECTORY_SEPARATOR . 'tables');
         if(isset($data['images']) && $data['images']) {
             foreach($data['images'] as $k => $v) {
                 $k = (int)$k;

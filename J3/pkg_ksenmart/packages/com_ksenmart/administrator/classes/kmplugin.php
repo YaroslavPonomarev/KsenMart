@@ -10,7 +10,7 @@ abstract class KMPlugin extends JPlugin {
     
     public function loadLanguage($extension = '', $basePath = JPATH_ADMINISTRATOR){
         $lang = JFactory::getLanguage();
-        $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_ADMINISTRATOR, null, false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_PLUGINS . DS . $this->_type . DS . $this->_name, null, false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_ADMINISTRATOR, $lang->getDefault() , false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_PLUGINS . DS . $this->_type . DS . $this->_name, $lang->getDefault() , false, false);
+        $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_ADMINISTRATOR, null, false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_PLUGINS . DIRECTORY_SEPARATOR . $this->_type . DIRECTORY_SEPARATOR . $this->_name, null, false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_ADMINISTRATOR, $lang->getDefault() , false, false) || $lang->load('plg_' . $this->_type . '_' . $this->_name . '.sys', JPATH_PLUGINS . DIRECTORY_SEPARATOR . $this->_type . DIRECTORY_SEPARATOR . $this->_name, $lang->getDefault() , false, false);
     }
     
     public static function getDefaultCurrencyCode() {

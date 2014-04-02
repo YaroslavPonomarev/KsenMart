@@ -1,7 +1,7 @@
 <?php
 
 define('_JEXEC', 1);
-define('DS', DIRECTORY_SEPARATOR);
+define('DIRECTORY_SEPARATOR', DIRECTORY_SEPARATOR);
 
 if (file_exists(dirname(__FILE__) . '/defines.php')) {
 	include_once dirname(__FILE__) . '/defines.php';
@@ -31,7 +31,7 @@ switch ($task) {
 		$yescredit_email = 'komarov@yes-credit.ru';
 		
 		$lang = JFactory::getLanguage();
-		$lang->load('plg_kmpayment_yescredit.sys', JPATH_ADMINISTRATOR, null, false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_PLUGINS . DS . 'kmpayment' . DS . 'yescredit', null, false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_ADMINISTRATOR, $lang->getDefault() , false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_PLUGINS . DS . 'kmpayment' . DS . 'yescredit', $lang->getDefault() , false, false);
+		$lang->load('plg_kmpayment_yescredit.sys', JPATH_ADMINISTRATOR, null, false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_PLUGINS . DIRECTORY_SEPARATOR . 'kmpayment' . DIRECTORY_SEPARATOR . 'yescredit', null, false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_ADMINISTRATOR, $lang->getDefault() , false, false) || $lang->load('plg_kmpayment_yescredit.sys', JPATH_PLUGINS . DIRECTORY_SEPARATOR . 'kmpayment' . DIRECTORY_SEPARATOR . 'yescredit', $lang->getDefault() , false, false);
 		
 		$company_name = JRequest::getVar('company_name', '');
 		$company_ogrn = JRequest::getVar('company_ogrn', '');

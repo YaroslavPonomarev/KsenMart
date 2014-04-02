@@ -23,7 +23,7 @@ JDispatcher::getInstance()->trigger('onLoadKsen', array('ksenmart', array('commo
 
 KSLoader::loadLocalHelpers(array('common'));
 if (!class_exists('KsenmartHtmlHelper')) {
-	require JPATH_ROOT.DS.'components'.DS.'com_ksenmart'.DS. 'helpers'.DS.'head.php';
+	require JPATH_ROOT.DIRECTORY_SEPARATOR.'components'.DIRECTORY_SEPARATOR.'com_ksenmart'.DIRECTORY_SEPARATOR. 'helpers'.DIRECTORY_SEPARATOR.'head.php';
 }
 KsenmartHtmlHelper::AddHeadTags();
 
@@ -32,7 +32,7 @@ if($km_params->get('modules_styles', true)){
     $document = JFactory::getDocument();
 }
 
-require_once (dirname(__file__) . DS . 'helper.php');
+require_once (dirname(__file__) . DIRECTORY_SEPARATOR . 'helper.php');
 $products = ModKsenmartProductsListHelper::getList($params);
 
 if(count($products) > 0){

@@ -16,16 +16,16 @@ class KsenmartHtmlHelper {
         if($params->get('include_jquery', 1)) {
             $document->addScript('http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js');
         }
-        $document->addScript(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'js' . DS . 'bootstrap.min.js');
-        $document->addScript(JURI::base() . 'administrator' . DS . 'components' . DS . 'com_ksenmart' . DS . 'js' . DS . 'jquery.custom.min.js');
-        $document->addScript(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'js' . DS . 'common.js');
+        $document->addScript(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'bootstrap.min.js');
+        $document->addScript(JURI::base() . 'administrator' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'jquery.custom.min.js');
+        $document->addScript(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'js' . DIRECTORY_SEPARATOR . 'common.js');
         
-        $document->addStyleSheet(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'css' . DS . 'common.css');
+        $document->addStyleSheet(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'common.css');
         
         if($params->get('include_css', 1)) {
-            $document->addStyleSheet(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'css' . DS . 'bootstrap.min.css');
-            $document->addStyleSheet(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'css' . DS . 'bootstrap-responsive.min.css');
-            $document->addStyleSheet(JURI::base() . 'components' . DS . 'com_ksenmart' . DS . 'css' . DS . 'template.css');
+            $document->addStyleSheet(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'bootstrap.min.css');
+            $document->addStyleSheet(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'bootstrap-responsive.min.css');
+            $document->addStyleSheet(JURI::base() . 'components' . DIRECTORY_SEPARATOR . 'com_ksenmart' . DIRECTORY_SEPARATOR . 'css' . DIRECTORY_SEPARATOR . 'template.css');
         }
         
         $js = "

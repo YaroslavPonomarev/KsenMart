@@ -2,7 +2,7 @@
 defined( '_JEXEC' ) or die;
 
 if (!class_exists('KsenmartTable')){
-	require JPATH_COMPONENT_ADMINISTRATOR . DS . 'tables' .DS.'ksenmart.php' ;
+	require JPATH_COMPONENT_ADMINISTRATOR . DIRECTORY_SEPARATOR . 'tables' .DIRECTORY_SEPARATOR.'ksenmart.php' ;
 }
 
 class KsenmartTableProductRelations extends KsenmartTable

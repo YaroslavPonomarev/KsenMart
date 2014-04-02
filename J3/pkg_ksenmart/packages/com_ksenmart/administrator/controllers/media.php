@@ -75,7 +75,7 @@ class KsenMartControllerMedia extends KsenMartController {
 		$to = explode("/", $to);
 		
 		foreach ($to as $s) {
-			$path = $path . DS . $s;
+			$path = $path . DIRECTORY_SEPARATOR . $s;
 			if (!JFolder::exists($path)) {
 				if (!JFolder::create($path)) {
 					echo json_encode(array(
@@ -100,7 +100,7 @@ class KsenMartControllerMedia extends KsenMartController {
 			return JFactory::getApplication()->close();
 		}
 		$pathinfo = pathinfo($file['name']);
-		$fileName = $path . DS . microtime(true) . '.' . $pathinfo['extension'];
+		$fileName = $path . DIRECTORY_SEPARATOR . microtime(true) . '.' . $pathinfo['extension'];
 		
 		
 		try {
@@ -179,7 +179,7 @@ class KsenMartControllerMedia extends KsenMartController {
 		$to = explode("/", $to);
 		
 		foreach ($to as $s) {
-			$path = $path . DS . $s;
+			$path = $path . DIRECTORY_SEPARATOR . $s;
 			if (!JFolder::exists($path)) {
 				if (!JFolder::create($path)) {
 					echo json_encode(array(
@@ -192,7 +192,7 @@ class KsenMartControllerMedia extends KsenMartController {
 		}
 		
 		$pathinfo = pathinfo($file['name']);
-		$fileName = $path . DS . microtime(true) . '.' . $pathinfo['extension'];
+		$fileName = $path . DIRECTORY_SEPARATOR . microtime(true) . '.' . $pathinfo['extension'];
 		copy($file['tmp_name'], $fileName);
 		
 		echo json_encode(array(
