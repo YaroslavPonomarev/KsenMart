@@ -15,7 +15,7 @@ class KSLoader {
             global $ext_name_com;
             $ext_name_com = $ext_name_com;
         }
-        $base = JPATH_ROOT . DIRECTORY_SEPARATOR . 'administrator' . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $ext_name_com . DIRECTORY_SEPARATOR . 'helpers' . DIRECTORY_SEPARATOR;
+        $base = JPATH_ROOT . DS . 'administrator' . DS . 'components' . DS . $ext_name_com . DS . 'helpers' . DS;
         
         self::loadHelpers($folders, $base, $ignoreHelpers, $prefix);
     }
@@ -30,8 +30,8 @@ class KSLoader {
             foreach ($helpers as $helper){
                 list($tHelper) = explode('.', $helper);
                 if(!in_array($tHelper, $ignoreHelpers)){
-                    if ($helper != '.' && $helper != '..' && is_file($path . DIRECTORY_SEPARATOR . $helper)) {
-                        self::loadHelper($tHelper, $path . DIRECTORY_SEPARATOR . $helper);
+                    if ($helper != '.' && $helper != '..' && is_file($path . DS . $helper)) {
+                        self::loadHelper($tHelper, $path . DS . $helper);
                     }
                 }
             }

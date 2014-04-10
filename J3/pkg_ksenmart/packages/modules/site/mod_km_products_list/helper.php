@@ -3,16 +3,16 @@
 /**
  *
  * $Id: helper.php 1.0.0 2013-04-17 09:04:59 Bereza Kirill $
- * @package	    Joomla! 
- * @subpackage	Список товаров
+ * @package     Joomla! 
+ * @subpackage  Список товаров
 
  * @verion     1.0.0
  * @description Отображает список товаров из компонента KsenMart
- * @copyright	  Copyright © 2013 - All rights reserved.
- * @license		  GNU General Public License v2.0
- * @author		  Bereza Kirill
- * @author mail	kirill.bereza@zebu.com
- * @website		  https://www.free-lance.ru/users/TakT0101/
+ * @copyright     Copyright © 2013 - All rights reserved.
+ * @license       GNU General Public License v2.0
+ * @author        Bereza Kirill
+ * @author mail kirill.bereza@zebu.com
+ * @website       https://www.free-lance.ru/users/TakT0101/
  *
  * The module methods
  * -------------------------------
@@ -26,9 +26,9 @@ defined('_JEXEC') or die('Restricted access');
 /**
  * Example Module Helper
  *
- * @package		  Joomla!
- * @subpackage	Список товаров
- * @since 		  1.0.0
+ * @package       Joomla!
+ * @subpackage  Список товаров
+ * @since         1.0.0
  * @class       ModKsenmartbrandsHelper
  */
 
@@ -37,12 +37,12 @@ class ModKsenmartProductsListHelper {
     /**
      * Do something getItems method
      *
-     * @param 	
+     * @param   
      * @return
      */
     public static function getList($params) {
 
-        $type = $params->get('type');
+        $type = $params->get('type', 'new');
         $Itemid = JRequest::getVar('categories', null);
 
         $db = JFactory::getDbo();
@@ -67,6 +67,10 @@ class ModKsenmartProductsListHelper {
         }
         if($type == 'promotion'){
             $query->where('(p.promotion = 1)');
+        }
+
+        if($params->get('parent_products', 1)){
+            $query->where('(p.parent_id = 0)');
         }
         
         $query->group('p.id');

@@ -14,7 +14,7 @@ abstract class JViewKS extends JViewLegacy {
         $this->ext_prefix   = $ext_prefix;
         $this->ext_name     = $ext_name;
 
-        $config['base_path'] = JPATH_ROOT . DIRECTORY_SEPARATOR . 'components' . DIRECTORY_SEPARATOR . $this->ext_name_com;
+        $config['base_path'] = JPATH_ROOT . DS . 'components' . DS . $this->ext_name_com;
         parent::__construct($config);
 
         $name = $this->getName();
@@ -61,7 +61,7 @@ abstract class JViewKS extends JViewLegacy {
 
         $function   = isset($tpl) ? $current_layout . '_' . $tpl : $current_layout;
         $dispatcher = JDispatcher::getInstance();
-        $dispatcher->trigger('onBeforeDisplay' . $name . strtoupper($this->ext_prefix) . $function, array(&$this, &$tpl, &$html));
+        $dispatcher->trigger('onBeforeDisplay' . strtoupper($this->ext_prefix) . $name . $function, array(&$this, &$tpl, &$html));
         
         if(!empty($layout)){
             $this->setLayout($layout);
@@ -76,7 +76,7 @@ abstract class JViewKS extends JViewLegacy {
 
         $this->setLayout($current_layout);
 
-        $dispatcher->trigger('onAfterDisplay' . $name . strtoupper($this->ext_prefix) . $function, array(&$this, &$tpl, &$html));
+        $dispatcher->trigger('onAfterDisplay' . strtoupper($this->ext_prefix) . $name . $function, array(&$this, &$tpl, &$html));
 
         return $html;
     }

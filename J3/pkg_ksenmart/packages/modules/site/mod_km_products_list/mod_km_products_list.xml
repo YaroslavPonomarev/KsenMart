@@ -8,7 +8,7 @@
 	<authorUrl></authorUrl>
 	<version>2.0.1</version>
     <creationDate>March 2014</creationDate>
-	<description>Список продуктов KsenMart 2.0</description>
+	<description>Список продуктов KsenMart</description>
 	<files>
 		<filename module="mod_km_products_list">mod_km_products_list.php</filename>
 		<folder>tmpl</folder>
@@ -45,13 +45,27 @@
 					name="layout"
 					type="modulelayout"
 					label="JFIELD_ALT_LAYOUT_LABEL"
-					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />	
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC"
+				/>
+
+				<field
+					name="parent_products"
+					type="radio"
+					class="btn-group btn-group-yesno"
+					default="1"
+					label="MOD_KM_PRODUCTS_LIST_PARENT_PRODUCTS_LABEL"
+					description="MOD_KM_PRODUCTS_LIST_PARENT_PRODUCTS_DESC"
+				>
+					<option value="1">JYES</option>
+					<option value="0">JNO</option>
+				</field>
 				<field
 					name="col"
 					type="text"
 					default="10"
 					label="MOD_KM_PRODUCTS_LIST_COL"
-					description="MOD_KM_PRODUCTS_LIST_COL" />	
+					description="MOD_KM_PRODUCTS_LIST_COL"
+				/>
 				<field
 					name="type"
 					type="list"
@@ -65,13 +79,13 @@
 					<option
 						value="hot">MOD_KM_PRODUCTS_LIST_HITS</option>
 					<option
-						value="ordering">MOD_KM_PRODUCTS_LIST_TOP_ORDERED</option>	
+						value="ordering">MOD_KM_PRODUCTS_LIST_TOP_ORDERED</option>
 					<option
-						value="hits">MOD_KM_PRODUCTS_LIST_TOP_HITS</option>		
+						value="hits">MOD_KM_PRODUCTS_LIST_TOP_HITS</option>
 					<option
-						value="id">MOD_KM_PRODUCTS_LIST_LAST_ADDED</option>							
-				</field>					
-			</fieldset>		
-		</fields>	
-	</config>	
+						value="id">MOD_KM_PRODUCTS_LIST_LAST_ADDED</option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
 </extension>
